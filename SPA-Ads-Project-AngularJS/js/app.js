@@ -9,7 +9,7 @@ var adsApp = angular.module('adsApp', ['ngRoute'])
 		templateUrl: 'templates/login.html'
 	});
 	$routeProvider.when('/register', {
-		templateUrl: 'templates/registretion.html'
+		templateUrl: 'templates/registration.html'
 	});
 	$routeProvider.otherwise('/register', {
 		redirectTo: '/ads'

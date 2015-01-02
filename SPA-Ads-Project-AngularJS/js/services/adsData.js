@@ -28,8 +28,22 @@ adsApp.factory('adsData', function ($http, $log) {
 		})
 	}
 
+	var getAllCategories = function getAllCategories(success) {
+		$http({
+				method: 'GET',
+				url: 'http://softuni-ads.azurewebsites.net/api/categories'
+		})
+		.success(function(data, status, headers, config) {
+			success(data);
+		})
+		.error(function(data, status, headers, config) {
+			$log.warn(data);
+		})
+	}
+
 	return {
 		getAllAds: getAllAds,
-		getAllTowns: getAllTowns
+		getAllTowns: getAllTowns,
+		getAllCategories: getAllCategories
 	}
 });

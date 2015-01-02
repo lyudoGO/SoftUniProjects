@@ -8,4 +8,7 @@ adsApp.controller('AdsController', function($scope, adsData) {
 	adsData.getAllTowns(function(resp) {
 		$scope.towns = resp;
 	});
+	adsData.getAllTowns(function(resp) {
+		$scope.categories = resp;
+	});
 })
