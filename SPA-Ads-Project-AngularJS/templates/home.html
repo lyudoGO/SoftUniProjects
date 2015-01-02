@@ -11,14 +11,22 @@
     </div>
     <!-- Main ads bar -->
     <div id="main-bar" class="col-md-6">
-        <div class="jumbotron">
+        <div ng-repeat="ad in data.ads" class="jumbotron">
             <div class="row">
-                <h3 class="pull-left">iPhone 4S for Sale</h3>
-                <span class="pull-right">3-Jan-2015</span>
+                <div class="col-md-7">
+                    <h3 class="pull-left">{{ad.title}}</h3>
+                </div>
+                <div class="col-md-5">
+                    <span class="pull-right">{{ad.date | date: 'd-MM-yyyy'}}</span>
+                </div>
             </div>
             <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <img src="" alt="Image" ng-src="{{ad.imageDataUrl}}">
+                </div>
+                <div class="col-md-8">
+                    <div>{{ad.text}}</div>
+                </div>
             </div>
         </div>
     </div>
@@ -29,10 +37,7 @@
                 <h3>Categories</h3>
                 <ul class="nav nav-pills nav-stacked">
                     <li><a href="#">All</a></li>
-                    <li><a href="#">Cars</a></li>
-                    <li><a href="#">Properties</a></li>
-                    <li><a href="#">Electronics</a></li>
-                    <li><a href="#">Jobs</a></li>
+                    <li ng-repeat="categorie in data.ads"><a href="#">{{categorie.categoryId}}</a></li>
                 </ul>
             </div>
         </div>
@@ -44,9 +49,7 @@
                     <h3>Towns</h3>
                     <ul class="nav nav-pills nav-stacked">
                         <li><a href="#">All</a></li>
-                        <li><a href="#">Plovdiv</a></li>
-                        <li><a href="#">Sofia</a></li>
-                        <li><a href="#">Ruse</a></li>
+                        <li ng-repeat="town in towns"><a href="#">{{town.name}}</a></li>
                     </ul>
                 </div>
             </div>
