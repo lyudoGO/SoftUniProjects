@@ -14,10 +14,10 @@
     <div id="main-bar" class="col-md-6">
         <div ng-repeat="ad in data.ads" class="jumbotron">
             <div class="row">
-                <div class="col-md-7">
-                    <h3 class="pull-left">{{ad.title}}</h3>
+                <div class="col-md-9">
+                    <h3 class="pull-left">{{ad.title}}{{categoriesId}}</h3>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-3">
                     <span class="pull-right">{{ad.date | date: 'd-MM-yyyy'}}</span>
                 </div>
             </div>
@@ -50,20 +50,20 @@
     <div id="categories-sidebar" class="col-md-3">
         <div class="jumbotron">
             <div class="bs-component">
-                <h3>Categories</h3>
+                <h3 class="text-center">Categories</h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#/ads">All</a></li>
-                    <li ng-repeat="categorie in categories"><a href="#">{{categorie.name}}</a></li>
+                    <li><a href="#/">All</a></li>
+                    <li ng-repeat="category in categories"><a href="#/category/{{category.id}}">{{category.name}}</a></li>
                 </ul>
             </div>
         </div>
     <!-- Towns side bar -->
         <div class="jumbotron">
             <div class="bs-component">
-                <h3>Towns</h3>
+                <h3 class="text-center">Towns</h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#/ads">All</a></li>
-                    <li ng-repeat="town in towns"><a href="" ng-click="">{{town.name}}</a></li>
+                    <li><a href="#/">All</a></li>
+                    <li ng-repeat="town in towns"><a href="#/town/{{town.id}}" >{{town.name}}</a></li>
                 </ul>
             </div>
         </div>
@@ -72,13 +72,11 @@
     <div class="col-md-6 col-md-offset-3">
         <div class="bs-component">
             <ul class="pagination">
-                <li><a href="#">First</a></li>
-                <li><a href="#">Previous</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">Next</a></li>
-                <li><a href="#">Last</a></li>
+                <li><a href="#/">First</a></li>
+                <li><a href="#/ads/page/{{startPage - 1}}">Previous</a></li>
+                <li ng-repeat="page in numPages | limitTo : 7"><a href="#/ads/page/{{page}}">{{page}}</a></li>
+                <li><a href="#/ads/page/{{startPage + 1}}">Next</a></li>
+                <li><a href="#/ads/page/{{numPages.length}}">Last</a></li>
             </ul>
         </div>
     </div>
