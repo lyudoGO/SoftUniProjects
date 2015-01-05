@@ -2,6 +2,9 @@
 
 var adsApp = angular.module('adsApp', ['ngRoute'])
 .config(function($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl: 'templates/home.html'
+	});
 	$routeProvider.when('/ads', {
 		templateUrl: 'templates/home.html'
 	});
@@ -11,7 +14,7 @@ var adsApp = angular.module('adsApp', ['ngRoute'])
 	$routeProvider.when('/register', {
 		templateUrl: 'templates/registration.html'
 	});
-	$routeProvider.otherwise('/register', {
+	$routeProvider.otherwise({
 		redirectTo: '/ads'
 	});
 });

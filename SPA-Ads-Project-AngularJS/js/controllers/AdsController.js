@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('AdsController', function($scope, adsData) {
+adsApp.controller('AdsController', function($scope, $routeParams, adsData) {
 	$scope.title = 'Home';
 	adsData.getAllAds(function(resp) {
 		$scope.data = resp;
@@ -8,7 +8,7 @@ adsApp.controller('AdsController', function($scope, adsData) {
 	adsData.getAllTowns(function(resp) {
 		$scope.towns = resp;
 	});
-	adsData.getAllTowns(function(resp) {
+	adsData.getAllCategories(function(resp) {
 		$scope.categories = resp;
 	});
 })
