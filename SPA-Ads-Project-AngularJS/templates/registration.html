@@ -1,0 +1,83 @@
+<div class="row">
+	<!-- Login side bar -->
+    <div class="col-md-3">
+        <div class="jumbotron">
+            <div class="bs-component">
+                <p>To publish a new ad, please login.</p>
+                <p><a href="#/login" class="btn btn-primary btn-md">Login</a></p>
+                <p><a href="#/register" class="btn btn-primary btn-md">Register</a></p>
+                <p><a href="#/ads" class="btn btn-primary btn-md">Home page</a></p>
+            </div>
+        </div>
+    </div>
+    <!-- Main registration form -->
+    <div class="col-md-8">
+	    <div class="well bs-component">
+	        <form class="form-horizontal">
+	          <fieldset>
+	            <legend class="text-center">User Registration</legend>
+	            <div class="col-md-6">
+		            <div class="form-group">
+		              <label for="inputUsername" class="col-md-3 control-label">Username</label>
+		              <div class="col-md-9">
+		                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+		              </div>
+		            </div>
+		            <div class="form-group">
+		              <label for="inputPassword" class="col-md-3 control-label">Password</label>
+		              <div class="col-md-9">
+		                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+		              </div>
+		            </div>
+		            <div class="form-group">
+		              <label for="inputName" class="col-md-3 control-label">Name</label>
+		              <div class="col-md-9">
+		                <input type="text" class="form-control" id="inputName" placeholder="Name">
+		              </div>
+		            </div>
+		            <div class="form-group">
+		              <label for="inputPhone" class="col-md-3 control-label">Phone</label>
+		              <div class="col-md-9">
+		                <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+		              </div>
+		            </div>
+	        	</div>
+	            <div class="col-md-6">
+		            <div class="form-group">
+		              <label for="inputUsername" class="col-md-3 control-label">Username</label>
+		              <div class="col-md-9">
+		                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+		              </div>
+		            </div>
+		            <div class="form-group">
+		              <label for="confirmPassword" class="col-md-3 control-label">Confirm password</label>
+		              <div class="col-md-9">
+		                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+		              </div>
+		            </div>
+		            <div class="form-group">
+		              <label for="inputEmail" class="col-md-3 control-label">Email</label>
+		              <div class="col-md-9">
+		                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+		              </div>
+		            </div>
+		            <div class="form-group">
+		              <label for="select" class="col-md-3 control-label">Town</label>
+		              <div class="col-md-9">
+		                <select class="form-control" id="select">
+	                        <option ng-repeat="town in towns">{{town.name}}</option>
+	                    </select>
+		              </div>
+		            </div>
+	        	</div>
+	            <div class="form-group">
+	              <div class="col-md-9 col-md-offset-2">
+	                <button type="submit" class="btn btn-primary">Register</button>
+	                <a class="pull-right" href="#/login">Login here</a>
+	              </div>
+	            </div>
+	          </fieldset>
+	        </form>
+	    </div>
+	</div>
+</div>
