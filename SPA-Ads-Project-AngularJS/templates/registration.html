@@ -1,14 +1,7 @@
 <div class="row">
-	<!-- Login side bar -->
+    <!-- Left public side bar -->
     <div class="col-md-3">
-        <div class="jumbotron">
-            <div class="bs-component">
-                <p>To publish a new ad, please login.</p>
-                <p><a href="#/login" class="btn btn-primary btn-md">Login</a></p>
-                <p><a href="#/register" class="btn btn-primary btn-md">Register</a></p>
-                <p><a href="#/ads" class="btn btn-primary btn-md">Home page</a></p>
-            </div>
-        </div>
+        <left-public-sidebar></left-public-sidebar>
     </div>
     <!-- Main registration form -->
     <div class="col-md-8">
@@ -20,59 +13,52 @@
 		            <div class="form-group">
 		              <label for="inputUsername" class="col-md-3 control-label">Username</label>
 		              <div class="col-md-9">
-		                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+		                <input type="text" class="form-control" id="inputUsername" placeholder="Username" ng-model="user.username">
 		              </div>
 		            </div>
 		            <div class="form-group">
 		              <label for="inputPassword" class="col-md-3 control-label">Password</label>
 		              <div class="col-md-9">
-		                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+		                <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="user.password">
 		              </div>
 		            </div>
 		            <div class="form-group">
 		              <label for="inputName" class="col-md-3 control-label">Name</label>
 		              <div class="col-md-9">
-		                <input type="text" class="form-control" id="inputName" placeholder="Name">
+		                <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="user.name">
 		              </div>
 		            </div>
 		            <div class="form-group">
 		              <label for="inputPhone" class="col-md-3 control-label">Phone</label>
 		              <div class="col-md-9">
-		                <input type="text" class="form-control" id="inputPhone" placeholder="Phone">
+		                <input type="text" class="form-control" id="inputPhone" placeholder="Phone" ng-model="user.phone">
 		              </div>
 		            </div>
 	        	</div>
 	            <div class="col-md-6">
 		            <div class="form-group">
-		              <label for="inputUsername" class="col-md-3 control-label">Username</label>
-		              <div class="col-md-9">
-		                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
-		              </div>
-		            </div>
-		            <div class="form-group">
 		              <label for="confirmPassword" class="col-md-3 control-label">Confirm password</label>
 		              <div class="col-md-9">
-		                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+		                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" ng-model="user.confirmPassword">
 		              </div>
 		            </div>
 		            <div class="form-group">
 		              <label for="inputEmail" class="col-md-3 control-label">Email</label>
 		              <div class="col-md-9">
-		                <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+		                <input type="text" class="form-control" id="inputEmail" placeholder="Email" ng-model="user.email">
 		              </div>
 		            </div>
 		            <div class="form-group">
 		              <label for="select" class="col-md-3 control-label">Town</label>
 		              <div class="col-md-9">
-		                <select class="form-control" id="select">
-	                        <option ng-repeat="town in towns">{{town.name}}</option>
+		                <select class="form-control" id="inputTown" ng-options="town.id as town.name for town in towns" ng-model="user.townId">
 	                    </select>
 		              </div>
 		            </div>
 	        	</div>
 	            <div class="form-group">
 	              <div class="col-md-9 col-md-offset-2">
-	                <button type="submit" class="btn btn-primary">Register</button>
+	                <button type="submit" class="btn btn-primary" ng-click="registerUser(user)">Register</button>
 	                <a class="pull-right" href="#/login">Login here</a>
 	              </div>
 	            </div>
