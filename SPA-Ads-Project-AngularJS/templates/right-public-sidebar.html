@@ -1,0 +1,23 @@
+<!-- Right public side bar -->
+<div>
+    <!-- Categories side bar -->
+        <div class="jumbotron">
+            <div class="bs-component">
+                <h3 class="text-center">Categories</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#/">All</a></li>
+                    <li ng-repeat="category in categories"><a href="#/category/{{category.id}}">{{category.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- Towns side bar -->
+        <div class="jumbotron">
+            <div class="bs-component">
+                <h3 class="text-center">Towns</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#/">All</a></li>
+                    <li ng-repeat="town in towns"><a href="#/town/{{town.id}}" >{{town.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+</div>
