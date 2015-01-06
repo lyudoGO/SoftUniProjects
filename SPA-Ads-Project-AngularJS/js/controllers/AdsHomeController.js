@@ -1,6 +1,7 @@
 'use strict';
 
-adsApp.controller('AdsController', function($scope, $routeParams, adsDataService) {
+adsApp.controller('AdsHomeController', function($scope, $routeParams, adsDataService) {
+	$('#title').text('Home');
 	$scope.pageSize = 3;
 	if($routeParams.page == undefined) {
 		$scope.startPage = 1;
