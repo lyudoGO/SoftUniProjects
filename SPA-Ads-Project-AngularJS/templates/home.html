@@ -1,14 +1,7 @@
 <div class="row">
-    <!-- Login side bar -->
+    <!-- Left public side bar -->
     <div class="col-md-3">
-        <div class="jumbotron">
-            <div class="bs-component">
-                <p>To publish a new ad, please login.</p>
-                <p><a href="#/login" class="btn btn-primary btn-md">Login</a></p>
-                <p><a href="#/register" class="btn btn-primary btn-md">Register</a></p>
-                <p><a href="#/ads" class="btn btn-primary btn-md">Home page</a></p>
-            </div>
-        </div>
+        <left-public-sidebar></left-public-sidebar>
     </div>
     <!-- Main ads bar -->
     <div id="main-bar" class="col-md-6">
@@ -46,27 +39,9 @@
             </div>
         </div>
     </div>
-    <!-- Categories side bar -->
     <div id="categories-sidebar" class="col-md-3">
-        <div class="jumbotron">
-            <div class="bs-component">
-                <h3 class="text-center">Categories</h3>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#/">All</a></li>
-                    <li ng-repeat="category in categories"><a href="#/category/{{category.id}}">{{category.name}}</a></li>
-                </ul>
-            </div>
-        </div>
-    <!-- Towns side bar -->
-        <div class="jumbotron">
-            <div class="bs-component">
-                <h3 class="text-center">Towns</h3>
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#/">All</a></li>
-                    <li ng-repeat="town in towns"><a href="#/town/{{town.id}}" >{{town.name}}</a></li>
-                </ul>
-            </div>
-        </div>
+        <right-public-sidebar></right-public-sidebar>
+        
     </div>
     <!-- Pager -->
     <div class="col-md-6 col-md-offset-3">
