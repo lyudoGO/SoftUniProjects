@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('TownsController', ['$scope', '$routeParams', 'townsDataService', function($scope, $routeParams, townsDataService) {
+adsApp.controller('TownsController', ['$scope', 'townsDataService', function($scope, townsDataService) {
 
 	townsDataService.getAllTowns(function(resp) {
 		$scope.towns = resp;
