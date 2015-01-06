@@ -2,7 +2,7 @@
 
 adsApp.directive('rightPublicSidebar', function() {
 	return {
-		controller: 'AdsHomeController',
+		controller: 'TownsController',
 		restrict: 'E',
 		templateUrl:'templates/right-public-sidebar.html',
 		//replace: true
