@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('AdsHomeController', function($scope, $routeParams, adsDataService) {
+adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataService', function($scope, $routeParams, adsDataService) {
 	$('#title').text('Home');
 	$scope.pageSize = 3;
 	if($routeParams.page == undefined) {
@@ -34,4 +34,4 @@ adsApp.controller('AdsHomeController', function($scope, $routeParams, adsDataSer
 	adsDataService.getAllCategories(function(resp) {
 		$scope.categories = resp;
 	});
-})
+}])
