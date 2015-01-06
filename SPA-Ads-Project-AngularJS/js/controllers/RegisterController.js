@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('RegisterController', ['$scope', 'townsDataService', function($scope, townsDataService) {
+adsApp.controller('RegisterController', ['$scope', 'townsDataService', 'userDataService', function($scope, townsDataService, userDataService) {
 	$('#title').text('Register');
 	townsDataService.getAllTowns()
 					.$promise
@@ -8,4 +8,8 @@ adsApp.controller('RegisterController', ['$scope', 'townsDataService', function(
 						$scope.towns = data;
 						console.log(data);
 					});
+	$scope.registerUser = function (user) {
+		//console.log(user);
+		userDataService.registerUser(user);
+	}
 }]);
