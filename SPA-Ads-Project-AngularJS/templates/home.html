@@ -6,42 +6,10 @@
         <div ng-include="'templates/user-navigation-sidebar.html'" ng-show="isLogged"></div>
     </div>
     <!-- Main ads bar -->
-    <div ng-include="'templates/user-publish-ads.html'" ng-show="false"></div>
     <div id="main-bar" class="col-md-6">
-        <div ng-repeat="ad in data.ads" class="jumbotron">
-            <div class="row">
-                <div class="col-md-9">
-                    <h3 class="pull-left">{{ad.title}}{{categoriesId}}</h3>
-                </div>
-                <div class="col-md-3">
-                    <span class="pull-right">{{ad.date | date: 'd-MM-yyyy'}}</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="" alt="No Image" ng-src="{{ad.imageDataUrl}}">
-                </div>
-                <div class="col-md-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Ad text</div>
-                        <div class="panel-body">{{ad.text}}</div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Name</div>
-                        <div class="panel-body">{{ad.ownerName}}</div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Email</div>
-                        <div class="panel-body">{{ad.ownerEmail}}</div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Telephone</div>
-                        <div class="panel-body">{{ad.ownerPhone}}</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div ng-include="'templates/all-ads.html'"></div>
     </div>
+    <!-- Right public side bar -->
     <div id="categories-sidebar" class="col-md-3">
         <right-category-sidebar></right-category-sidebar>
         <right-town-sidebar></right-town-sidebar>
