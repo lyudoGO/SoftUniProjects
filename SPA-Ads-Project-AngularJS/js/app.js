@@ -7,7 +7,7 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'LocalStorageMod
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
-	$routeProvider.when('/category/:categoriesId', {
+	$routeProvider.when('/category/:categoriesId/town/:townsId', {
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
