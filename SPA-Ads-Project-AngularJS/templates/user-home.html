@@ -1,0 +1,14 @@
+<div class="row">
+	<!-- Left user side bar -->
+    <div class="col-md-3">
+        <div ng-include="'templates/user-navigation-sidebar.html'"></div>
+    </div>
+    <!-- Main ads bar -->
+	<div class="col-md-6" ng-include="'templates/all-ads.html'" ng-show="!isPublish"></div>
+	<div class="col-md-9" ng-include="'templates/user-publish-ads.html'" ng-show="isPublish"></div>
+    <!-- Right public side bar -->
+    <div class="col-md-3" ng-show="!isPublish">
+        <right-category-sidebar></right-category-sidebar>
+        <right-town-sidebar></right-town-sidebar>
+    </div>
+</div>
