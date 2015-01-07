@@ -3,10 +3,12 @@
     <div class="jumbotron">
         <div class="bs-component">
             <h3 class="text-center">Navigation</h3>
-            <p class="text-center"><a href="#/" class="btn btn-primary btn-md">Home page</a></p>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-md">My Ads</a></p>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-md">Publish New Ad</a></p>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-md">Edit Profile</a></p>
+            <h3 class="text-center">Username: {{username}}</h3>
+            <p class="text-center"><a href="#/" class="btn btn-primary btn-sm">Home page</a></p>
+            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">My Ads</a></p>
+            <p class="text-center"><a href="#/user/postAd" class="btn btn-primary btn-sm">Publish New Ad</a></p>
+            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">Edit Profile</a></p>
+            <p class="text-center"><a href="#/" class="btn btn-primary btn-sm" ng-click="logout()">Logout</a></p>
         </div>
     </div>
 </div>
