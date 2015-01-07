@@ -1,7 +1,5 @@
 'use strict';
 
-adsApp.controller('BaseController', ['$rootScope', function($rootScope) {
-
-	
-
+adsApp.controller('BaseController', ['$scope', function($scope) {
+	$scope.pageTitle = 'Home';
 }]);

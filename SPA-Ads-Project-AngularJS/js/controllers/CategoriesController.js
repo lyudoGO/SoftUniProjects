@@ -1,11 +1,6 @@
 'use strict';
 
-adsApp.controller('CategoriesController', ['$scope', '$routeParams', 'categoriesDataService', function($scope, $routeParams, categoriesDataService) {
-
-	function getCategoryId(id) {
-		$routeParams.categoriesId = id;
-	}
-
+adsApp.controller('CategoriesController', ['$scope', 'categoriesDataService', function($scope, categoriesDataService) {
 	categoriesDataService.getAllCategories(function(resp) {
 		$scope.categories = resp;
 	});
