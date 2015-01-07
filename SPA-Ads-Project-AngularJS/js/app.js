@@ -2,12 +2,12 @@
 
 var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'LocalStorageModule'])
 .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/')
-.config(['$routeProvider', 'localStorageServiceProvider', function($routeProvider, localStorageServiceProvider) {
+.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
-	$routeProvider.when('/category/:categoriesId/town/:townsId', {
+	$routeProvider.when('/category/:categoriesId', {
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
@@ -27,11 +27,11 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'LocalStorageMod
 		templateUrl: 'templates/registration.html',
 		controller: 'RegisterController'
 	});
+	$routeProvider.when('/user/ads', {
+		templateUrl: 'templates/home.html',
+		controller: 'UserAdsController'
+	});
 	$routeProvider.otherwise({
 		redirectTo: '/'
 	});
-
-	/*// Web storage settings
-	localStorageServiceProvider.setStorageType('localStorage');
-	localStorageServiceProvider.setPrefix('adsApp');*/
 }]);
