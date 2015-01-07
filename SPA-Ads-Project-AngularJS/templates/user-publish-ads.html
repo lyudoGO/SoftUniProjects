@@ -1,69 +1,65 @@
 <!-- User publish ads form -->
-    <div class="col-md-8">
-	    <div class="well bs-component">
-	        <form class="form-horizontal">
-	        <fieldset>
-	            <legend class="text-center">Publish New Ad</legend>
-	            <div class="row">
-	            	<div class="col-md-8">
-			            <div class="form-group">
-			              <label for="inputTitle" class="col-md-3 control-label">Title</label>
-			              <div class="col-md-7">
-			                <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="">
-			              </div>
-			            </div>
-			            <div class="form-group">
-			              <label for="inputText" class="col-md-3 control-label">Text</label>
-			              <div class="col-md-7">
-			                <input type="text" class="form-control" id="inputText" placeholder="Text" ng-model="">
-			              </div>
-			            </div>
-		            </div>
-    	            <div class="col-md-4">
-			            <div class="form-group">
-			              <img src="" alt="No Image" ng-src="">
-			            </div>
-		        	</div>
-		        </div>
-
+<div class="well bs-component">
+    <form class="form-horizontal">
+    <fieldset>
+        <legend class="text-center">Publish New Ad - {{username}}</legend>
+        <div class="row">
+        	<div class="col-md-8">
 	            <div class="form-group">
-	                <label for="inputImage" class="col-md-3 control-label">Image</label>
-	                <div class="col-md-7">
-	                  <input type="text" class="form-control" id="inputImage" placeholder="Image" ng-model="">
-	                </div>
-	                <div class="col-md-2">
-	                	<button type="submit" class="btn btn-primary" ng-click="">Browse...</button>
-	                </div>
-	            </div>
-	        	
-
-	            <div class="form-group">
-	              <label for="select" class="col-md-3 control-label">Category</label>
-	              <div class="col-md-5">
-	                <select class="form-control" id="inputCategory" ng-options="category.id as category.name for category in categories" ng-model="">
-                    </select>
+	              <label for="inputTitle" class="col-md-3 control-label">Title</label>
+	              <div class="col-md-7">
+	                <input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="dataAd.title" required>
 	              </div>
 	            </div>
-
 	            <div class="form-group">
-	              <label for="select" class="col-md-3 control-label">Town</label>
-	              <div class="col-md-5">
-	                <select class="form-control" id="inputTown" ng-options="town.id as town.name for town in towns" ng-model="">
-                    </select>
+	              <label for="inputText" class="col-md-3 control-label">Text</label>
+	              <div class="col-md-7">
+	                <input type="text" class="form-control" id="inputText" placeholder="Text" ng-model="dataAd.text" required>
 	              </div>
 	            </div>
-
+            </div>
+            <div class="col-md-4">
 	            <div class="form-group">
-	                <div class="col-md-6">
-	                    <button type="submit" class="btn btn-primary" ng-click="">Publish</button>
-	                </div>
-	                <div class="col-md-6">
-	                	<button type="submit" class="btn btn-primary" ng-click="">Cancel</button>
-	                </div>
+	              <img src="" alt="No Image" ng-src="">
 	            </div>
+        	</div>
+        </div>
 
-	        </div>
-	        </fieldset>
-	        </form>
-	    </div>
-	</div>
+        <div class="form-group">
+            <label for="inputImage" class="col-md-3 control-label">Image</label>
+            <div class="col-md-7">
+              <input type="text" class="form-control" id="inputImage" placeholder="Image" ng-model="dataAd.imageDataUrl">
+            </div>
+            <div class="col-md-2">
+            	<button type="submit" class="btn btn-primary" ng-click="">Browse...</button>
+            </div>
+        </div>
+    	
+
+        <div class="form-group">
+          <label for="select" class="col-md-3 control-label">Category</label>
+          <div class="col-md-5">
+            <select class="form-control" id="inputCategory" ng-options="category.id as category.name for category in categories" ng-model="categoryid">
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="select" class="col-md-3 control-label">Town</label>
+          <div class="col-md-5">
+            <select class="form-control" id="inputTown" ng-options="town.id as town.name for town in towns" ng-model="townid">
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 text-center">
+                <button type="submit" class="btn btn-primary" ng-click="publishAd()">Publish</button>
+                <button type="submit" class="btn btn-primary" ng-click="">Cancel</button>
+            </div>
+        </div>
+
+    </div>
+    </fieldset>
+    </form>
+</div>
