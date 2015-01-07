@@ -1,9 +1,12 @@
 <div class="row">
     <!-- Left public side bar -->
     <div class="col-md-3">
-        <left-public-sidebar></left-public-sidebar>
+        <!-- <left-public-sidebar></left-public-sidebar> -->
+        <div ng-include="'templates/left-public-sidebar.html'" ng-show="!isLogged"></div>
+        <div ng-include="'templates/user-navigation-sidebar.html'" ng-show="isLogged"></div>
     </div>
     <!-- Main ads bar -->
+    <div ng-include="'templates/user-publish-ads.html'" ng-show="false"></div>
     <div id="main-bar" class="col-md-6">
         <div ng-repeat="ad in data.ads" class="jumbotron">
             <div class="row">
@@ -40,8 +43,8 @@
         </div>
     </div>
     <div id="categories-sidebar" class="col-md-3">
-        <right-public-sidebar></right-public-sidebar>
-        
+        <right-category-sidebar></right-category-sidebar>
+        <right-town-sidebar></right-town-sidebar>
     </div>
     <!-- Pager -->
     <div class="col-md-6 col-md-offset-3">
