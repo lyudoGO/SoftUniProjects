@@ -24,6 +24,10 @@ adsApp.factory('authenticationService', function() {
 		localStorage.removeItem(key);
 	}
 
+	function isLogged() {
+		return !!getUser();
+	}
+
 	function isAdmin() {
 		var isAdmin = getUser().isAdmin;
 		return isAdmin;
@@ -34,6 +38,7 @@ adsApp.factory('authenticationService', function() {
 		getUser: getUser,
 		getHeaders: getHeaders,
 		removeUser: removeUser,
+		isLogged: isLogged,
 		isAdmin: isAdmin
 	}
 });
