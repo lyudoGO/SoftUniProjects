@@ -1,8 +1,8 @@
 'use strict';
 
-adsApp.controller('LoginController', ['$scope', '$location', 'userDataService', function($scope, $location, userDataService) {
+adsApp.controller('LoginController', ['$rootScope', '$scope', '$location', 'userDataService', function($rootScope, $scope, $location, userDataService) {
 	/*$('#title').text('Login');*/
-	$scope.pageTitle = 'Login';
+
 	$scope.loginUser = function (user) {
 		userDataService.loginUser(user)
 						.$promise
@@ -10,5 +10,4 @@ adsApp.controller('LoginController', ['$scope', '$location', 'userDataService', 
 							$location.path('/');
 						});
 	}
-	console.log($scope.pageTitle);
 }]);
