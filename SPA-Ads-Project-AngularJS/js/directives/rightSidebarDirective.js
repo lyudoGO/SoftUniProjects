@@ -1,10 +1,10 @@
 'use strict';
 
-adsApp.directive('rightPublicSidebar', function() {
+adsApp.directive('rightTownSidebar', function() {
 	return {
 		controller: 'TownsController',
 		restrict: 'E',
-		templateUrl:'templates/right-public-sidebar.html',
+		templateUrl:'templates/directives/right-town-sidebar.html',
 		//replace: true
 	};
 });
