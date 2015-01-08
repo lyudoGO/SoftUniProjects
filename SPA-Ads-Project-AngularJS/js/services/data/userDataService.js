@@ -13,12 +13,13 @@ adsApp.factory('userDataService', ['$resource', 'baseServiceUrl', 'authenticatio
 	}
 
 	function loginUser(user) {
-		return $resource(baseServiceUrl + 'user/login')
-						.save(user)
-						.$promise
-						.then(function (data) {
-							authenticationService.saveUser(angular.toJson(data));
-						});
+		var resource = $resource(baseServiceUrl + 'user/login')
+						.save(user);
+		resource.$promise
+				.then(function (data) {
+					authenticationService.saveUser(angular.toJson(data));
+				});
+		return resource;
 	}
 
 	function logoutUser() {

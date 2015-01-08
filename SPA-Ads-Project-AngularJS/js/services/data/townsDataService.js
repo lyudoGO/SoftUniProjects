@@ -1,9 +1,18 @@
 'use strict';
 
-adsApp.factory('townsDataService', ['$resource', 'baseServiceUrl', function ($resource, baseServiceUrl) {
-	var resource = $resource(baseServiceUrl + 'towns');
-	function getAllTowns() {
-		return resource.query();
+adsApp.factory('townsDataService', ['$http', '$log', 'baseServiceUrl', function ($http, $log, baseServiceUrl) {
+	/*var resource = $resource(baseServiceUrl + 'towns');*/
+	function getAllTowns(success) {
+		$http({
+				method: 'GET',
+				url: baseServiceUrl + 'towns'
+		})
+		.success(function(data, status, headers, config) {
+			success(data);
+		})
+		.error(function(data, status, headers, config) {
+			$log.warn(data);
+		})
 	}
 
 	return {
