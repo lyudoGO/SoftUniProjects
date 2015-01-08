@@ -28,8 +28,12 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'LocalStorageMod
 		controller: 'RegisterController'
 	});
 	$routeProvider.when('/user/ads', {
-		templateUrl: 'templates/home.html',
+		templateUrl: 'templates/user-home.html',
 		controller: 'UserAdsController'
+	});
+	$routeProvider.when('/user/postAd', {
+		templateUrl: 'templates/user-home.html',
+		controller: 'UserPostAdController'
 	});
 	$routeProvider.otherwise({
 		redirectTo: '/'
