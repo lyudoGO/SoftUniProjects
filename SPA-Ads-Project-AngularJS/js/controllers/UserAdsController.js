@@ -15,6 +15,12 @@ adsApp.controller('UserAdsController', ['$scope', 'userAdsService', 'authenticat
 		userAccessToken = userData['access_token'];
 	};
 
+	$scope.status = '';
+
+	$scope.filterByStatus = function(stat) {
+		$scope.status = stat;
+	};
+
 	userAdsService.getAllUserAds(userAccessToken, function(data) {
 		if (data.numItems == 0) {
 			alert('No ads from this user!');
