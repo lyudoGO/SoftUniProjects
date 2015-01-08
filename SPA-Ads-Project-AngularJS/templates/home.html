@@ -8,15 +8,8 @@
     <!-- Main ads bar -->
     <div id="main-bar" class="col-md-6">
         <div ng-include="'templates/all-ads.html'"></div>
-    </div>
-    <!-- Right public side bar -->
-    <div id="categories-sidebar" class="col-md-3">
-        <right-category-sidebar></right-category-sidebar>
-        <right-town-sidebar></right-town-sidebar>
-    </div>
-    <!-- Pager -->
-    <div class="col-md-6 col-md-offset-3">
-        <div class="bs-component">
+        <!-- Pager -->
+        <div class="bs-component text-center">
             <ul class="pagination">
                 <li><a href="#/">First</a></li>
                 <li><a href="#/ads/page/{{startPage - 1}}">Previous</a></li>
@@ -25,5 +18,10 @@
                 <li><a href="#/ads/page/{{numPages.length}}">Last</a></li>
             </ul>
         </div>
+    </div>
+    <!-- Right public side bar -->
+    <div id="categories-sidebar" class="col-md-3">
+        <right-category-sidebar></right-category-sidebar>
+        <right-town-sidebar></right-town-sidebar>
     </div>
 </div>
