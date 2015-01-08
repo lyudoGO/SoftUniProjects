@@ -20,5 +20,17 @@ adsApp.controller('UserAdsController', ['$scope', 'userAdsService', 'authenticat
 			alert('No ads from this user!');
 		};
 		$scope.data = data;
+		$scope.numPages = [];
+		$scope.startPage = 1;
+		for (var i = 0; i < data.numPages; i++) {
+			$scope.numPages[i] = i + 1;
+		};
 	});
+
+	$scope.DeactivateAd = function DeactivateAd(id) {
+		userAdsService.deactivateUserAd(userAccessToken, id, function(data) {
+			alert('Ad with id = ' + id + ' was deactivate!');
+		});
+	}
+
 }]);
