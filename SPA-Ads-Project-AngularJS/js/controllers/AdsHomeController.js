@@ -1,7 +1,6 @@
 'use strict';
 
 adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataService', 'authenticationService', function($scope, $routeParams, adsDataService, authenticationService) {
-	$scope.pageTitle = 'Home';
 	$scope.pageSize = 3;
 	$scope.isLogged = authenticationService.isLogged();
 	if (authenticationService.getUser()) {
