@@ -16,7 +16,22 @@ adsApp.factory('userAdsService', ['$http', '$log', 'baseServiceUrl', function ($
 		})
 	}
 
+	function deactivateUserAd(userAccessToken, id, success) {
+		$http({
+				method: 'PUT',
+				headers: { Authorization: 'Bearer ' + userAccessToken },
+				url: baseServiceUrl + 'user/ads/deactivate/' + id
+		})
+		.success(function(data, status, headers, config) {
+			success(data);
+		})
+		.error(function(data, status, headers, config) {
+			$log.error(data);
+		})
+	}
+
 	return {
-		getAllUserAds: getAllUserAds
+		getAllUserAds: getAllUserAds,
+		deactivateUserAd: deactivateUserAd
 	}
 }]);
