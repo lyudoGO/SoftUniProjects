@@ -16,9 +16,15 @@ adsApp.controller('UserAdsController', ['$scope', 'userAdsService', 'authenticat
 	};
 
 	$scope.status = '';
+	
 
 	$scope.filterByStatus = function(stat) {
 		$scope.status = stat;
+		if (stat == 'Inactive') {
+			$scope.isInactive = true;
+		} else {
+			$scope.isInactive = false;
+		};
 	};
 
 	userAdsService.getAllUserAds(userAccessToken, function(data) {
@@ -33,10 +39,15 @@ adsApp.controller('UserAdsController', ['$scope', 'userAdsService', 'authenticat
 		};
 	});
 
-	$scope.DeactivateAd = function DeactivateAd(id) {
+	$scope.deactivateAd = function deactivateAd(id) {
 		userAdsService.deactivateUserAd(userAccessToken, id, function(data) {
 			alert('Ad with id = ' + id + ' was deactivate!');
 		});
 	}
 
+	$scope.deleteUserAd = function deleteUserAd(id) {
+		userAdsService.deleteUserAd(userAccessToken, id, function(data) {
+			alert('Ad with id = ' + id + ' was delete!');
+		});
+	}
 }]);
