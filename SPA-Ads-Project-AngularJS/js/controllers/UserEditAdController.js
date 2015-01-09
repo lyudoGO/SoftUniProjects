@@ -13,7 +13,7 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 	$scope.adId = $routeParams.adId;
 
 	$scope.isChangeImg = function() {
-		$scope.dataAd['changeImage'] = true;console.log($scope.dataAd.changeImage);
+		$scope.dataAd['changeImage'] = true;
 	}
 
 	$scope.deleteImg = function() {
@@ -35,15 +35,22 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 			alert('Ad was edit!');
 		});
 	}
-	
+		
+	$scope.deleteAd = function (userAccessToken, id) {
+		userEditAdService.deleteUserAd(userAccessToken, id, function(data) {
+			$location.path('/user/ads');
+			alert('Ad was delete!');
+		});
+	}
+
 	userEditAdService.getUserAdById($scope.userAccessToken, $scope.adId, function(data) {
 		$scope.dataAd = data;
 		$scope.dataAd['changeImage'] = false;
 		alert('Ad was get!');
-		console.log($scope.adId);
 	});
 
 	$scope.cancelAd = function (dataAd) {
 		$scope.dataAd = {};
+		alert('You are canceling editing!');
 	}
 }]);
