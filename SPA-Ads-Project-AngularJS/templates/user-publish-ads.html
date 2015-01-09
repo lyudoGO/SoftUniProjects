@@ -2,7 +2,7 @@
 <div class="well bs-component">
     <form class="form-horizontal">
     <fieldset>
-        <legend class="text-center">Publish New Ad - {{username}}</legend>
+        <legend class="text-center">Publish New Ad</legend>
         <div class="row">
         	<div class="col-md-8">
 	            <div class="form-group">
@@ -20,7 +20,8 @@
             </div>
             <div class="col-md-4">
 	            <div class="form-group">
-	              <img src="" alt="No Image" ng-src="">
+                <!-- <img src="" alt="No Image" ng-src="{{imagePath?'imagePath':'img/no_image.svg'}}"> -->
+	              <img src="" alt="No Image" ng-src="data:{{image.filetype}};base64,{{image.base64}}">
 	            </div>
         	</div>
         </div>
@@ -29,9 +30,11 @@
             <label for="inputImage" class="col-md-3 control-label">Image</label>
             <div class="col-md-7">
               <input type="text" class="form-control" id="inputImage" placeholder="Image" ng-model="dataAd.imageDataUrl">
-            </div>
+            </div>{{dataAd.imageDataUrl}}
             <div class="col-md-2">
-            	<button type="submit" class="btn btn-primary" ng-click="">Browse...</button>
+            <input type="file" class="btn btn-primary col-md-8" ng-model="image" base-sixty-four-input/>
+              <!--   <input ng-enter="ok(newDataSelectedAd)" class="col-md-6" id="imgInp" accept="image/*" type="file" ng-model="img"
+                     onchange="angular.element(this).scope().attachFile()"/> -->
             </div>
         </div>
     	
@@ -39,7 +42,7 @@
         <div class="form-group">
           <label for="select" class="col-md-3 control-label">Category</label>
           <div class="col-md-5">
-            <select class="form-control" id="inputCategory" ng-options="category.id as category.name for category in categories" ng-model="categoryid">
+            <select class="form-control" id="inputCategory" ng-options="category.id as category.name for category in categories" ng-model="dataAd.categoryId">
             </select>
           </div>
         </div>
@@ -47,19 +50,21 @@
         <div class="form-group">
           <label for="select" class="col-md-3 control-label">Town</label>
           <div class="col-md-5">
-            <select class="form-control" id="inputTown" ng-options="town.id as town.name for town in towns" ng-model="townid">
+            <select class="form-control" id="inputTown" ng-options="town.id as town.name for town in towns" ng-model="dataAd.townId">
             </select>
           </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-6 text-center">
-                <button type="submit" class="btn btn-primary" ng-click="publishAd()">Publish</button>
-                <button type="submit" class="btn btn-primary" ng-click="">Cancel</button>
+                <button type="submit" class="btn btn-primary" ng-click="publishAd(userAccessToken, dataAd)">Publish</button>
+                <button type="submit" class="btn btn-primary" ng-click="cancelAd(dataAd)">Cancel</button>
             </div>
         </div>
 
     </div>
     </fieldset>
     </form>
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+  <button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
 </div>
