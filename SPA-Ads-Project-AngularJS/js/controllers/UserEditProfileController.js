@@ -2,7 +2,7 @@
 
 adsApp.controller('UserEditProfileController', ['$scope', '$location', '$routeParams', 'userEditProfileService', 'authenticationService', 'townsDataService', function($scope, $location, $routeParams, userEditProfileService, authenticationService, townsDataService) {
 
-		$scope.$parent.pageTitle = 'Edit User Profile';
+		$('#title').text('Edit User Profile');
 		var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 		$scope.userAccessToken = userData['access_token'];
 		$scope.username = userData['username'];
