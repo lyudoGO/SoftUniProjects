@@ -1,0 +1,50 @@
+<!-- Left user side bar -->
+<div class="col-md-3">
+    <div ng-include="'templates/user-navigation-sidebar.html'"></div>
+</div>
+<!-- User delete confirm form -->
+<div class="col-md-9">
+<div class="jumbotron">
+    <div class="row">
+         <div class="panel panel-default">
+            <div class="panel-heading text-center"><h2>Confirm Deleting dataAd?</h2></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <h3 class="pull-left">{{dataAd.title}}</h3>
+        </div>
+        <div class="col-md-3">
+            <span class="pull-right">{{dataAd.date | date: 'd-MM-yyyy'}}</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="" alt="No Image" ng-src="{{dataAd.imageDataUrl}}">
+        </div>
+        <div class="col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">Ad text</div>
+                <div class="panel-body">{{dataAd.text}}</div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Category</div>
+                <div class="panel-body">{{dataAd.categoryName}}</div>
+            </div>
+                <div class="panel panel-default">
+                <div class="panel-heading">Town</div>
+                <div class="panel-body">{{dataAd.townName}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="#/user/ads" type="submit" class="btn btn-primary btn-md" ng-click="deleteAd(userAccessToken, adId)">Delete</a>
+            <a href="#/user/ads" type="submit" class="btn btn-primary btn-md" ng-click="">Cancel</a>
+        </div>
+    </div>
+</div>
+</div>
