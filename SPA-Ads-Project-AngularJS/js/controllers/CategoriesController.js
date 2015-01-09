@@ -8,12 +8,14 @@ adsApp.controller('CategoriesController', ['$scope', 'categoriesDataService', fu
 	$scope.getCategoryId = function getCategoryId(id, name) {
 		$scope.parameters.categoryId = id;
 		$scope.parameters.categoryName = name;
+		$scope.parameters.startPage = 1;
 		/*alert($scope.parameters.categoryId);*/
 	};
 
 	$scope.cancelCategoryId = function cancelCategoryId() {
 		$scope.parameters.categoryId = '';
 		$scope.parameters.categoryName = '';
+		$scope.parameters.startPage = 1;
 		/*alert($scope.parameters.categoryId);*/
 	}
 }]);
