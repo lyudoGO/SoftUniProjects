@@ -4,20 +4,11 @@
         <div class="bs-component">
             <h3 class="text-center">Navigation</h3>
             <h3 class="text-center">Username: {{username}}</h3>
-            <p class="text-center"><a href="#/user/home" class="btn btn-primary btn-sm">Home page</a></p>
+            <p class="text-center"><a href="#/user/home" class="btn btn-primary btn-sm" ng-click="reload()">Home page</a></p>
             <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">My Ads</a></p>
             <p class="text-center"><a href="#/user/ads/publish" class="btn btn-primary btn-sm">Publish New Ad</a></p>
             <p class="text-center"><a href="#/user/profile" class="btn btn-primary btn-sm">Edit Profile</a></p>
             <p class="text-center"><a href="#/" class="btn btn-primary btn-sm" ng-click="logout()">Logout</a></p>
         </div>
     </div>
-<!--     <div class="jumbotron" ng-show="!isPublish">
-    <div class="bs-component">
-        <h3 class="text-center">My Ads</h3>
-        <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">All</a></p>
-        <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">Published</a></p>
-        <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">Waiting Approval</a></p>
-        <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm">Inactive</a></p>
-    </div>
-</div> -->
 </div>
