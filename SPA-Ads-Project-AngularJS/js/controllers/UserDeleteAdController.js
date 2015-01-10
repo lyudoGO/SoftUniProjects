@@ -14,15 +14,22 @@ adsApp.controller('UserDeleteAdController', ['$scope', '$location', '$routeParam
 	$scope.adId = $routeParams.adId;
 
 	$scope.deleteAd = function (userAccessToken, id) {
-		userEditAdService.deleteUserAd(userAccessToken, id, function(data) {
-			$location.path('/user/ads');
-			alert('Ad was delete!');
-		});
+		userEditAdService.deleteUserAd(userAccessToken, id, 
+			function(data, status, headers, config) {
+				$location.path('/user/ads');
+				$scope.alertMsg('success', 'Ad was successfully deleted!');
+			},
+			function (data, status, headers, config) {
+            	$scope.alertMsg('danger', 'Failed to delete ad. Please try again later.');
+        	});
 	}
 
-	userEditAdService.getUserAdById($scope.userAccessToken, $scope.adId, function(data) {
-		$scope.dataAd = data;
-		$scope.dataAd['changeImage'] = false;
-		alert('Ad was get!');
-	});
+	userEditAdService.getUserAdById($scope.userAccessToken, $scope.adId, 
+		function(data, status, headers, config) {
+			$scope.dataAd = data;
+			$scope.alertMsg('success', 'Ad was successfully loaded!');
+		},
+		function (data, status, headers, config) {
+        	$scope.alertMsg('danger', 'Failed to load ad by id. Please try again later.');
+    	});
 }]);
