@@ -1,4 +1,4 @@
-<div ng-repeat="ad in data.ads" class="jumbotron">
+<div ng-repeat="ad in data.ads | filter: status" class="jumbotron">
     <div class="row">
         <div class="col-md-9">
             <h3 class="pull-left">{{ad.title}}</h3>
@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-md-3">
-            <img src="" alt="No Image" ng-src="{{ad.imageDataUrl}}">
+            <img src="" alt="No Image" ng-src="{{ad.imageDataUrl?ad.imageDataUrl:'img/no_image.svg'}}">
         </div>
         <div class="col-md-6">
             <div class="panel panel-default">
@@ -30,7 +30,12 @@
                 <div class="panel-heading">Status</div>
                 <div class="panel-body">{{ad.status}}</div>
             </div>
-            <button type="submit" class="btn btn-primary" ng-click="">Deactivate</button>
+            <p class="text-center" ng-show="!isInactive"><button type="button" class="btn btn-primary btn-md" ng-click="deactivateAd(ad.id)">Deactivate</button></p>
+            <div ng-show="isInactive">
+                <p class="text-center"><a href="#/user/ads/edit/{{ad.id}}"  class="btn btn-primary btn-md" ng-click="">Edit</a></p>
+                <p class="text-center"><button type="submit" class="btn btn-primary btn-md" ng-click="publishAgainUserAd(ad.id)">Publish Again</button></p>
+                <p class="text-center"><a href="#/user/ads/delete/{{ad.id}}" class="btn btn-primary btn-md" ng-click="">Delete</a></p>
+            </div>
         </div>
     </div>
 </div>
