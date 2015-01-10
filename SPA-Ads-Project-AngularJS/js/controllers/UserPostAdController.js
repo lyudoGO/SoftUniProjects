@@ -1,22 +1,13 @@
 'use strict';
 
 adsApp.controller('UserPostAdController', ['$scope', '$location', 'userPostAdService', 'authenticationService', 'categoriesDataService', 'townsDataService', function($scope, $location, userPostAdService, authenticationService, categoriesDataService, townsDataService) {
-	$scope.$parent.pageTitle = 'Publish New Ad';
+	$('#title').text('Publish New Ad');
 	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
 	$scope.isLogged = authenticationService.isLogged();
 	$scope.isPublish = true;
 	$scope.isUserHome = true;
-/*	console.log(angular.fromJson(localStorage.getItem('user')));
-	if (authenticationService.getUser()) {
-		var userData = angular.fromJson(authenticationService.getUser());
-		$scope.username = userData['username'];
-	};
-	if (authenticationService.getUser()) {
-		var userData = angular.fromJson(authenticationService.getUser());
-		userAccessToken = userData['access_token'];
-	};*/
 
 	$scope.dataAd = {
 		title: '',
@@ -34,13 +25,20 @@ adsApp.controller('UserPostAdController', ['$scope', '$location', 'userPostAdSer
 		$scope.categories = data;
 	});
 
-	$scope.publishAd = function (userAccessToken, dataAd) {
-		userPostAdService.postUserAd(userAccessToken, dataAd, function(data) {
-			$location.path('/user/ads');
-		});
+	$scope.publishAd = function (userAccessToken, dataAd, filetype, base64) {
+		$scope.dataAd.imageDataUrl = "data:" + filetype + ";base64," + base64;
+		userPostAdService.postUserAd(userAccessToken, dataAd, 
+			function(data, status, headers, config) {
+				$location.path('/user/ads');
+				$scope.alertMsg('success', 'Ad was successfully published!');
+			},
+			function (data, status, headers, config) {
+            	$scope.alertMsg('danger', 'Publish ad failed. Please try again later.');
+        	});
 	}
 	
 	$scope.cancelAd = function (dataAd) {
-		$scope.dataAd = {};
+		$location.path('/user/ads');
+		$scope.alertMsg('warning', 'You canceled the publication of the ad!');
 	}
 }]);
