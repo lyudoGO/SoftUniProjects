@@ -2,7 +2,7 @@
 
 adsApp.factory('userPostAdService', ['$http', '$log', 'baseServiceUrl', function ($http, $log, baseServiceUrl) {
 		
-	function postUserAd(userAccessToken, dataAd, success) {
+	function postUserAd(userAccessToken, dataAd, success, error) {
 		$http({
 				method: 'POST',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
@@ -13,6 +13,7 @@ adsApp.factory('userPostAdService', ['$http', '$log', 'baseServiceUrl', function
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
