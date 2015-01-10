@@ -9,10 +9,18 @@
 
 #wrapper {
 	padding: 80px;
+	overflow: hidden;
 }
 
-#main-bar {
-	
+#errors {
+	position: absolute;
+	left: 10%;
+	top: 20%;
+	border: 5px solid black;
+}
+
+img {
+	width: 50%;
 }
 
 #categories-sidebar {
@@ -22,7 +30,8 @@
 #towns-sidebar {
 }
 
-img {
+#loading {
+	margin: 20px;
 	width: 100%;
 }
 
