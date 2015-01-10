@@ -5,8 +5,8 @@
         <div ng-include="'templates/user/user-ads-navigation-sidebar.html'" ng-show="!isPublish"></div>
     </div>
     <!-- Main ads bar -->
-    <div class="col-md-9" ng-include="'templates/public/all-ads.html'" ng-show="isLogged && ready"></div>
-    <div class="col-md-9" ng-include="'templates/user/user-ads.html'" ng-show="!isPublish"></div>
+    <div class="col-md-6" ng-include="'templates/public/all-ads.html'" ng-show="!isUserHome"></div>
+    <div class="col-md-9" ng-include="'templates/user/user-ads.html'" ng-show="!isPublish && isUserHome"></div>
     <div class="col-md-9" ng-include="'templates/user/user-publish-ads.html'" ng-show="isPublish"></div>
     <!-- Pager -->
     <div class="bs-component text-center" ng-show="!isPublish">
