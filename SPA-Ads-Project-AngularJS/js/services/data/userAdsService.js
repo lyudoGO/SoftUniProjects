@@ -2,7 +2,7 @@
 
 adsApp.factory('userAdsService', ['$http', '$log', 'baseServiceUrl', function ($http, $log, baseServiceUrl) {
 		
-	function getAllUserAds(userAccessToken, success) {
+	function getAllUserAds(userAccessToken, success, error) {
 		$http({
 				method: 'GET',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
@@ -12,25 +12,28 @@ adsApp.factory('userAdsService', ['$http', '$log', 'baseServiceUrl', function ($
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
 
-	function deactivateUserAd(userAccessToken, id, success) {
+	function deactivateUserAd(userAccessToken, id, success, error) {
 		$http({
 				method: 'PUT',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
 				url: baseServiceUrl + 'user/ads/deactivate/' + id
 		})
 		.success(function(data, status, headers, config) {
+			error(data);
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
 
-	function publishAgainUserAd(userAccessToken, id, success) {
+	function publishAgainUserAd(userAccessToken, id, success, error) {
 		$http({
 				method: 'PUT',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
@@ -40,6 +43,7 @@ adsApp.factory('userAdsService', ['$http', '$log', 'baseServiceUrl', function ($
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
