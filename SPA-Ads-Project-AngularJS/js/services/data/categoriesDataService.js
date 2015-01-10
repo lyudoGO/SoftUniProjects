@@ -1,8 +1,7 @@
 'use strict';
 
 adsApp.factory('categoriesDataService', ['$http', '$log', 'baseServiceUrl', function ($http, $log, baseServiceUrl) {
-	/*var resource = $resource(baseServiceUrl + 'towns');*/
-	function getAllCategories(success) {
+	function getAllCategories(success, error) {
 		$http({
 				method: 'GET',
 				url: baseServiceUrl + 'categories'
@@ -11,6 +10,7 @@ adsApp.factory('categoriesDataService', ['$http', '$log', 'baseServiceUrl', func
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
