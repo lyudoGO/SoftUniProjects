@@ -39,12 +39,12 @@ adsApp.controller('UserEditProfileController', ['$scope', '$location', '$routePa
 		}
 
 		$scope.cancelUpdateProfile = function cancelUpdateProfile(profileData) {
-			$scope.profileData = {};
+			$location.path('/user/ads');
 			$scope.alertMsg('info', 'You canceled the update profile!');
 		}
 
 		$scope.cancelChangePassword = function cancelChangePassword(passwordData) {
-			$scope.passwordData = {};
+			$location.path('/user/ads');
 			$scope.alertMsg('info', 'You canceled the change passowrd!');
 		}
 }]);
