@@ -1,7 +1,7 @@
 <div class="row">
     <!-- Left user side bar -->
     <div class="col-md-3">
-        <div ng-include="'templates/user-navigation-sidebar.html'"></div>
+        <div ng-include="'templates/user/user-navigation-sidebar.html'"></div>
     </div>
     <!-- User edit ad form -->
     <div class="well bs-component col-md-8">
@@ -64,7 +64,7 @@
             <div class="row"> 
                 <div class="form-group text-center">
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary btn-block" ng-click="editAd(userParams.userAccessToken, dataAd, adId)">Edit</button>
+                        <button type="submit" class="btn btn-primary btn-block" ng-click="editAd(userAccessToken, dataAd, adId)">Edit</button>
                         <a href="#/user/ads"  class="btn btn-primary btn-block" ng-click="cancelAd(dataAd)">Cancel</a>
                     </div>
                 </div>
