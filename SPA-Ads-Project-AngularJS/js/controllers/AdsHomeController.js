@@ -41,16 +41,21 @@ adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataServic
 	};
 
 	function getAllAds() {
-		adsDataService.getAllAds($scope.parameters.categoryId, $scope.parameters.townId, $scope.parameters.startPage, $scope.parameters.pageSize, function(data) {
-			$scope.data = data;
-			$scope.ready = true;
-			$scope.numPages = [];
+		adsDataService.getAllAds($scope.parameters.categoryId, $scope.parameters.townId, $scope.parameters.startPage, $scope.parameters.pageSize, 
+			function(data, status, headers, config) {
+				$scope.alertMsg('success', 'Ads was successfully loaded!');
+				$scope.data = data;
+				$scope.ready = true;
+				$scope.numPages = [];
 
-			var startWithPage = $scope.parameters.startPage - 1;
-			for (var i = 0; i < 5; i++, startWithPage++) {
-				$scope.numPages[i] = startWithPage + 1;
-			};
-		});
+				var startWithPage = $scope.parameters.startPage - 1;
+				for (var i = 0; i < 5; i++, startWithPage++) {
+					$scope.numPages[i] = startWithPage + 1;
+				};
+			},
+			function (data, status, headers, config) {
+            	$scope.alertMsg('danger', 'Failed to load all ads. Please try again later.');
+        	});
 	}
 
 	$scope.changePage = function changePage(page) {
