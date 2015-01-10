@@ -2,10 +2,11 @@
 
 adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams', 'userEditAdService', 'authenticationService', 'categoriesDataService', 'townsDataService', function($scope, $location, $routeParams, userEditAdService, authenticationService, categoriesDataService, townsDataService) {
 	$('#title').text('Edit Ad');
-	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
+	$scope.userAccessToken = $scope.userParams.userAccessToken;
+/*	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
-	$scope.isLogged = authenticationService.isLogged();
+	$scope.isLogged = authenticationService.isLogged();*/
 	$scope.isPublish = false;
 	$scope.isEdit = true;
 	$scope.isUserHome = true;
@@ -45,7 +46,6 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 	});
 
 	$scope.editAd = function (userAccessToken, dataAd, id) {
-		
 		if (isDeleteImage) {
 			$scope.dataAd.imageDataUrl = null;
 		};

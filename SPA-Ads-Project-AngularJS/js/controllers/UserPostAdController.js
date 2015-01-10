@@ -2,10 +2,11 @@
 
 adsApp.controller('UserPostAdController', ['$scope', '$location', 'userPostAdService', 'authenticationService', 'categoriesDataService', 'townsDataService', function($scope, $location, userPostAdService, authenticationService, categoriesDataService, townsDataService) {
 	$('#title').text('Publish New Ad');
-	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
+	$scope.userAccessToken = $scope.userParams.userAccessToken;
+/*	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
-	$scope.isLogged = authenticationService.isLogged();
+	$scope.isLogged = authenticationService.isLogged();*/
 	$scope.isPublish = true;
 	$scope.isUserHome = true;
 

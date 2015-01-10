@@ -3,10 +3,11 @@
 adsApp.controller('UserDeleteAdController', ['$scope', '$location', '$routeParams', 'userEditAdService', 'authenticationService', function($scope, $location, $routeParams, userEditAdService, authenticationService) {
 	$('#title').text('Delete Ad');
 
-	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
+	$scope.userAccessToken = $scope.userParams.userAccessToken;
+/*	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
-	$scope.isLogged = authenticationService.isLogged();
+	$scope.isLogged = authenticationService.isLogged();*/
 	$scope.isPublish = false;
 	$scope.isEdit = true;
 	$scope.isUserHome = true;

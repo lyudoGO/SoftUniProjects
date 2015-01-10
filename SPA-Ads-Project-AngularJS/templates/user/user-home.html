@@ -1,13 +1,13 @@
 <div class="row">
 	<!-- Left user side bar -->
     <div class="col-md-3">
-        <div ng-include="'templates/user-navigation-sidebar.html'"></div>
-        <div ng-include="'templates/user-ads-navigation-sidebar.html'" ng-show="!isPublish"></div>
+        <div ng-include="'templates/user/user-navigation-sidebar.html'"></div>
+        <div ng-include="'templates/user/user-ads-navigation-sidebar.html'" ng-show="!isPublish"></div>
     </div>
     <!-- Main ads bar -->
-    <div class="col-md-9" ng-include="'templates/all-ads.html'" ng-show="!isPublish"></div>
-<!--     <div class="col-md-9" ng-include="'templates/user-ads.html'" ng-show="!isPublish"></div>
-    <div class="col-md-9" ng-include="'templates/user-publish-ads.html'" ng-show="isPublish"></div> -->
+    <div class="col-md-9" ng-include="'templates/public/all-ads.html'" ng-show="isLogged && ready"></div>
+    <div class="col-md-9" ng-include="'templates/user/user-ads.html'" ng-show="!isPublish"></div>
+    <div class="col-md-9" ng-include="'templates/user/user-publish-ads.html'" ng-show="isPublish"></div>
     <!-- Pager -->
     <div class="bs-component text-center" ng-show="!isPublish">
         <ul class="pagination">
