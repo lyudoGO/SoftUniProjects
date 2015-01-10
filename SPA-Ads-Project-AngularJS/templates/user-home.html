@@ -6,7 +6,17 @@
     </div>
     <!-- Main ads bar -->
 	<div class="col-md-9" ng-include="'templates/user-ads.html'" ng-show="!isPublish"></div>
-	<div class="col-md-9" ng-include="'templates/user-publish-ads.html'" ng-show="isPublish"></div>
+    <div class="col-md-9" ng-include="'templates/user-publish-ads.html'" ng-show="isPublish"></div>
+    <!-- Pager -->
+    <div class="bs-component text-center" ng-show="!isPublish">
+        <ul class="pagination">
+            <li><a href="#/user/ads/">First</a></li>
+            <li><a href="#/user/ads/{{startPage - 1}}">Previous</a></li>
+            <li ng-repeat="page in numPages | limitTo : 3"><a href="#/user/ads/">{{page}}</a></li>
+            <li><a href="#/user/ads/{{startPage + 1}}">Next</a></li>
+            <li><a href="#/user/ads/{{numPages.length}}">Last</a></li>
+        </ul>
+    </div>
     <!-- Right public side bar -->
     <div class="col-md-3" ng-show="!isUserHome">
         <right-category-sidebar></right-category-sidebar>
