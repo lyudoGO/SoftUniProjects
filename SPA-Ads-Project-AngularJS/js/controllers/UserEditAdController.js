@@ -12,13 +12,28 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 
 	$scope.adId = $routeParams.adId;
 
-	$scope.isChangeImg = function() {
-		$scope.dataAd['changeImage'] = true;
+	$scope.isChangeImg = function(filetype, base64) {
+		var inputImage = $('#inputImage').val();
+		if ( inputImage != "") {
+			$scope.dataAd.imageDataUrl = "data:" + filetype + ";base64," + base64;
+			$scope.dataAd['changeImage'] = true;
+			alert('Image will be changed!');
+		} else {
+			alert('You should choose image first!');
+		};
+		
 	}
 
+	var isDeleteImage = false;
 	$scope.deleteImg = function() {
 		$scope.dataAd['changeImage'] = true;
-		$scope.dataAd['ImageDataUrl'] = null;
+		isDeleteImage = true;
+		alert('Image will be deleted from server!');
+	}
+
+	$scope.getBase64 = function(filetype, base64) {
+		$scope.dataAd.imageDataUrl = "data:" + filetype + ";base64," + base64;
+		console.log($scope.dataAd.imageDataUrl);
 	}
 
 	townsDataService.getAllTowns(function(data) {
@@ -30,6 +45,10 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 	});
 
 	$scope.editAd = function (userAccessToken, dataAd, id) {
+		
+		if (isDeleteImage) {
+			$scope.dataAd.imageDataUrl = null;
+		};
 		userEditAdService.editUserAd(userAccessToken, dataAd, id, function(data) {
 			$location.path('/user/ads');
 			alert('Ad was edit!');
