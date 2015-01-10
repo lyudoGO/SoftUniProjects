@@ -1,7 +1,7 @@
 'use strict';
 
-adsApp.controller('UserAdsController', ['$scope', 'userAdsService', 'authenticationService', function($scope, userAdsService, authenticationService) {
-	$scope.$parent.pageTitle = 'My Ads';
+adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', 'userAdsService', 'authenticationService', function($scope, $location, $routeParams, userAdsService, authenticationService) {
+	$('#title').text('My Ads');
 	var userAccessToken = '';
 	$scope.isPublish = false;
 	$scope.isUserHome = true;
@@ -41,13 +41,15 @@ adsApp.controller('UserAdsController', ['$scope', 'userAdsService', 'authenticat
 
 	$scope.deactivateAd = function deactivateAd(id) {
 		userAdsService.deactivateUserAd(userAccessToken, id, function(data) {
+			$location.path('/user/home');
 			alert('Ad with id = ' + id + ' was deactivate!');
 		});
 	}
 
-	$scope.deleteUserAd = function deleteUserAd(id) {
-		userAdsService.deleteUserAd(userAccessToken, id, function(data) {
-			alert('Ad with id = ' + id + ' was delete!');
+	$scope.publishAgainUserAd = function publishAgainUserAd(id) {
+		userAdsService.publishAgainUserAd(userAccessToken, id, function(data) {
+			$location.path('/user/home');
+			alert('Ad with id = ' + id + ' was publish again!');
 		});
 	}
 }]);
