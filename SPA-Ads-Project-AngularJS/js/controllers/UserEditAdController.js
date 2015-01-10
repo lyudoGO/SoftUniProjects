@@ -17,9 +17,9 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 		if ( inputImage != "") {
 			$scope.dataAd.imageDataUrl = "data:" + filetype + ";base64," + base64;
 			$scope.dataAd['changeImage'] = true;
-			alert('Image will be changed!');
+			$scope.alertMsg('info', 'Image will be changed!');
 		} else {
-			alert('You should choose image first!');
+			$scope.alertMsg('info', 'You should choose image first!');
 		};
 		
 	}
@@ -28,7 +28,7 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 	$scope.deleteImg = function() {
 		$scope.dataAd['changeImage'] = true;
 		isDeleteImage = true;
-		alert('Image will be deleted from server!');
+		$scope.alertMsg('info', 'Image will be deleted from server!');
 	}
 
 	$scope.getBase64 = function(filetype, base64) {
@@ -49,27 +49,39 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 		if (isDeleteImage) {
 			$scope.dataAd.imageDataUrl = null;
 		};
-		userEditAdService.editUserAd(userAccessToken, dataAd, id, function(data) {
-			$location.path('/user/ads');
-			alert('Ad was edit!');
-		});
+		userEditAdService.editUserAd(userAccessToken, dataAd, id, 
+			function(data, status, headers, config) {
+				$location.path('/user/ads');
+				$scope.alertMsg('success', 'Ad was successfully edited!');
+			},
+			function (data, status, headers, config) {
+            	$scope.alertMsg('danger', 'Edit ad failed. Please try again later.');
+        	});
 	}
 		
 	$scope.deleteAd = function (userAccessToken, id) {
-		userEditAdService.deleteUserAd(userAccessToken, id, function(data) {
-			$location.path('/user/ads');
-			alert('Ad was delete!');
-		});
+		userEditAdService.deleteUserAd(userAccessToken, id, 
+			function(data) {
+				$location.path('/user/ads');
+				$scope.alertMsg('success', 'Ad was successfully deleted!');
+			},
+			function (data, status, headers, config) {
+            	$scope.alertMsg('danger', 'Delete ad failed. Please try again later.');
+        	});
 	}
 
-	userEditAdService.getUserAdById($scope.userAccessToken, $scope.adId, function(data) {
-		$scope.dataAd = data;
-		$scope.dataAd['changeImage'] = false;
-		alert('Ad was get!');
-	});
+	userEditAdService.getUserAdById($scope.userAccessToken, $scope.adId, 
+		function(data, status, headers, config) {
+			$scope.dataAd = data;
+			$scope.dataAd['changeImage'] = false;
+			$scope.alertMsg('success', 'Ad was successfully loaded!');
+		},
+		function (data, status, headers, config) {
+        	$scope.alertMsg('danger', 'Failed to load ad by id. Please try again later.');
+    	});
 
 	$scope.cancelAd = function (dataAd) {
 		$scope.dataAd = {};
-		alert('You are canceling editing!');
+		$scope.alertMsg('warning', 'You canceled the edition of the ad!');
 	}
 }]);
