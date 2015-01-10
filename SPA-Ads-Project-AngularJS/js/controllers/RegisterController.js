@@ -1,7 +1,9 @@
 'use strict';
 
 adsApp.controller('RegisterController', ['$scope', '$location', 'townsDataService', 'userDataService', function($scope, $location, townsDataService, userDataService) {
-	$scope.$parent.pageTitle = 'Register';
+	$scope.parameters.pageTitle = 'Register';
+	$('#title').text('Register');
+	
 	townsDataService.getAllTowns(function(resp) {
 		$scope.towns = resp;
 	});
