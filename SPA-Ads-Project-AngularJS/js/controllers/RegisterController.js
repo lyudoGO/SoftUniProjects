@@ -3,8 +3,8 @@
 adsApp.controller('RegisterController', ['$scope', '$location', 'townsDataService', 'userDataService', function($scope, $location, townsDataService, userDataService) {
 	$('#title').text('Register');
 	
-	townsDataService.getAllTowns(function(resp) {
-		$scope.towns = resp;
+	townsDataService.getAllTowns(function(data) {
+		$scope.towns = data;
 	});
 	
 	$scope.registerUser = function (user) {
