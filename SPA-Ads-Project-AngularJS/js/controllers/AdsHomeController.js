@@ -1,19 +1,21 @@
 'use strict';
 
 adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataService', 'authenticationService', function($scope, $routeParams, adsDataService, authenticationService) {
-	$scope.pageSize = 3;
-	$scope.isLogged = authenticationService.isLogged();
+	/*$('#title').text('Home');*/
+	/*$scope.base.pageTitle = 'Home';*/
 	if (authenticationService.getUser()) {
 		var userData = angular.fromJson(authenticationService.getUser());
 		$scope.username = userData['username'];
+		$scope.isLogged = authenticationService.isLogged();
 	};
 	
-	$scope.logout = function () {
+	$scope.logout = function() {
 		authenticationService.removeUser();
 		$scope.isLogged = false;
 	}
 
-	if($routeParams.page == undefined) {
+	$scope.ready = false;
+/*	if($routeParams.page == undefined) {
 		$scope.startPage = 1;
 	} else {
 		$scope.startPage = Number($routeParams.page);
@@ -28,14 +30,30 @@ adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataServic
 		$scope.townsId = '';
 	} else {
 		$scope.townsId = $routeParams.townsId;
+	}*/
+	getAllAds();
+
+	$scope.reload = function reload() {
+		$scope.parameters.categoryId = '';
+		$scope.parameters.townId = '';
+		$('#title').text('Home');
+		getAllAds();
+	};
+
+	function getAllAds() {
+		adsDataService.getAllAds($scope.parameters.categoryId, $scope.parameters.townId, $scope.parameters.startPage, $scope.parameters.pageSize, function(data) {
+			$scope.data = data;
+			$scope.ready = true;
+			$scope.numPages = [];
+
+			var startWithPage = $scope.parameters.startPage - 1;
+			for (var i = 0; i < 5; i++, startWithPage++) {
+				$scope.numPages[i] = startWithPage + 1;
+			};
+		});
 	}
 
-	adsDataService.getAllAds($scope.categoriesId, $scope.townsId, $scope.startPage, $scope.pageSize, function(data) {
-		$scope.data = data;
-		$scope.numPages = [];
-		for (var i = 0; i < data.numPages; i++) {
-			$scope.numPages[i] = i + 1;
-		};
-		
-	});
+	$scope.changePage = function changePage(page) {
+		$scope.parameters.startPage = page;
+	}
 }]);
