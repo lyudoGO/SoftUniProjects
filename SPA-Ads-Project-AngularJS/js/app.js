@@ -1,6 +1,6 @@
 'use strict';
 
-var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource'])
+var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 'naif.base64'])
 .constant('baseServiceUrl', 'http://softuni-ads.azurewebsites.net/api/')
 .config(['$routeProvider', function($routeProvider) {
 	
@@ -8,15 +8,11 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource'])
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
-	$routeProvider.when('/category/:categoriesId', {
+	$routeProvider.when('/category/:categoryName/town/:townName', {
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
-	$routeProvider.when('/town/:townsId', {
-		templateUrl: 'templates/home.html',
-		controller: 'AdsHomeController'
-	});
-		$routeProvider.when('/ads/page/:page', {
+	$routeProvider.when('/ads/page/:page', {
 		templateUrl: 'templates/home.html',
 		controller: 'AdsHomeController'
 	});
@@ -46,7 +42,7 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource'])
 	});
 	$routeProvider.when('/user/ads/delete/:adId', {
 		templateUrl: 'templates/user-delete-ad.html',
-		controller: 'UserEditAdController'
+		controller: 'UserDeleteAdController'
 	});
 	$routeProvider.when('/user/profile', {
 		templateUrl: 'templates/user-edit-profile.html',
