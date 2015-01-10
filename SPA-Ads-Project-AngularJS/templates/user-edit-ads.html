@@ -25,10 +25,10 @@
                     <div class="form-group">
                         <label for="inputImage" class="col-md-3 control-label">Image</label>
                         <div class="col-md-5">
-                          <input type="text" class="form-control" id="inputImage" placeholder="Image" ng-model="dataAd.imageDataUrl">
+                          <input type="text" class="form-control" id="inputImage" placeholder="Image" ng-model="image.filename" ng-change="getBase64(image.filetype, image.base64)">
                         </div>
                         <div class="col-md-2">
-                            <button type="submit" class="btn btn-primary" ng-click="">Browse...</button>
+                            <input type="file" class="btn btn-primary col-md-8" ng-model="image" base-sixty-four-input />
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,7 +53,7 @@
     	              <img src="" alt="No Image" ng-src="{{dataAd.imageDataUrl?dataAd.imageDataUrl:'img/no_image.svg'}}">
     	            </div>
                     <div class="col-md-12">
-                        <p class="text-center"><button type="button" class="btn btn-primary" ng-click="isChangeImg()">Change image</button></p>
+                        <p class="text-center"><button type="button" class="btn btn-primary" ng-click="isChangeImg(image.filetype, image.base64)">Change image</button></p>
                     </div>
                     <div class="col-md-12">
                         <p class="text-center"><button type="button" class="btn btn-primary" ng-click="deleteImg()">Delete image</button></p>
