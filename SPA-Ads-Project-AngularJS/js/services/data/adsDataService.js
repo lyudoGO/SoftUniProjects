@@ -2,7 +2,7 @@
 
 adsApp.factory('adsDataService', ['$http', '$log', 'baseServiceUrl', function ($http, $log, baseServiceUrl) {
 		
-	function getAllAds(categoryId, townId, startPage, pageSize, success) {
+	function getAllAds(categoryId, townId, startPage, pageSize, success, error) {
 		$http({
 				method: 'GET',
 				url: baseServiceUrl + 'ads'/*?CategoryId=' + categoryId +
@@ -18,6 +18,7 @@ adsApp.factory('adsDataService', ['$http', '$log', 'baseServiceUrl', function ($
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
