@@ -17,26 +17,34 @@ adsApp.controller('UserEditProfileController', ['$scope', '$location', '$routePa
 		});
 
 		$scope.editProfile = function editProfile(userAccessToken, profileData) {
-			userEditProfileService.editUserProfile(userAccessToken, profileData, function(data) {
-				$location.path('/user/ads');
-				alert('User profile was updated!');
-			});
+			userEditProfileService.editUserProfile(userAccessToken, profileData, 
+				function(data, status, headers, config) {
+					$scope.alertMsg('success', 'User profile was successfully updated!');
+					$location.path('/user/ads');
+				},
+				function (data, status, headers, config) {
+                	$scope.alertMsg('danger', 'Profile edit failed. Please try again later.');
+            	});
 		}
 
 		$scope.changePassword = function changePassword(userAccessToken, passwordData) {
-			userEditProfileService.changeUserPassword(userAccessToken, passwordData, function(data) {
-				$location.path('/user/ads');
-				alert('User password was changed!');
-			});
+			userEditProfileService.changeUserPassword(userAccessToken, passwordData, 
+				function(data, status, headers, config) {
+					$scope.alertMsg('success', 'User password was successfully changed!');
+					$location.path('/user/ads');
+				},  
+				function (data, status, headers, config) {
+                	$scope.alertMsg('danger', 'Password change failed. Please try again later.');
+            	});
 		}
 
 		$scope.cancelUpdateProfile = function cancelUpdateProfile(profileData) {
 			$scope.profileData = {};
-			alert('You are canceling updating!');
+			$scope.alertMsg('info', 'You canceled the update profile!');
 		}
 
 		$scope.cancelChangePassword = function cancelChangePassword(passwordData) {
 			$scope.passwordData = {};
-			alert('ou are cancel changing password!');
+			$scope.alertMsg('info', 'You canceled the change passowrd!');
 		}
 }]);
