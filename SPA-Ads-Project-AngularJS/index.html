@@ -10,15 +10,16 @@
 <body data-ng-app="adsApp" data-ng-controller="BaseController">
 	<div class="row">
 		<div id="header" class="navbar navbar-fixed-top">
-			<h2>Ads - <strong id="title" >{{base.pageTitle}}</strong></h2>
+			<h2>Ads - <strong id="title" ></strong></h2>
 		</div>
 
 	</div>
     
-	<div id="wrapper"  data-ng-controller="BaseController">
+	<div  id="wrapper"  data-ng-controller="BaseController" class="container-fluid">
 		<div id="errors">ssssssss</div>
-		<div data-ng-view class="container-fluid"></div>
+		<ng-view></ng-view>
 	</div>
+
 
 	<div id="footer" class="navbar navbar-fixed-bottom">
 		<h4>&copy; 2014 by Software University Foundation, No Rights Reserved</h4>
@@ -28,9 +29,9 @@
 	<script src="lib/angular/angular-resource.min.js"></script>
 	<script src="lib/angular/angular-local-storage.js"></script>
 	<script src="lib/jquery-2.1.1.js"></script>
+	<script src="lib/bootstrap/bootstrap.js"></script>
 	<script src="lib/ui-bootstrap-min.js"></script>
 	<script src="lib/angular-base64-upload.js"></script>
-	<script src="lib/bootstrap/bootstrap.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/controllers/BaseController.js"></script>
 	<script src="js/controllers/AdsHomeController.js"></script>
@@ -41,6 +42,7 @@
 	<script src="js/controllers/UserAdsController.js"></script>
 	<script src="js/controllers/UserPostAdController.js"></script>
 	<script src="js/controllers/UserEditAdController.js"></script>
+	<script src="js/controllers/UserDeleteAdController.js"></script>
 	<script src="js/controllers/UserEditProfileController.js"></script>
 	<script src="js/controllers/PaginationController.js"></script>
 	<script src="js/services/data/adsDataService.js"></script>
