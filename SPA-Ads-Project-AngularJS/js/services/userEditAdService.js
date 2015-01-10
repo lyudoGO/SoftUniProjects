@@ -2,7 +2,7 @@
 
 adsApp.factory('userEditAdService', ['$http', '$log', 'baseServiceUrl', function ($http, $log, baseServiceUrl) {
 		
-	function editUserAd(userAccessToken, dataAd, id, success) {
+	function editUserAd(userAccessToken, dataAd, id, success, error) {
 		$http({
 				method: 'PUT',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
@@ -13,11 +13,12 @@ adsApp.factory('userEditAdService', ['$http', '$log', 'baseServiceUrl', function
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
 
-	function getUserAdById(userAccessToken, id, success) {
+	function getUserAdById(userAccessToken, id, success, error) {
 		$http({
 				method: 'GET',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
@@ -27,11 +28,12 @@ adsApp.factory('userEditAdService', ['$http', '$log', 'baseServiceUrl', function
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
 
-	function deleteUserAd(userAccessToken, id, success) {
+	function deleteUserAd(userAccessToken, id, success, error) {
 		$http({
 				method: 'DELETE',
 				headers: { Authorization: 'Bearer ' + userAccessToken },
@@ -41,6 +43,7 @@ adsApp.factory('userEditAdService', ['$http', '$log', 'baseServiceUrl', function
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}
