@@ -8,8 +8,8 @@ adsApp.controller('RegisterController', ['$scope', '$location', 'townsDataServic
 	});
 	
 	$scope.registerUser = function (user) {
-		//console.log(user);
 		userDataService.registerUser(user);
-		$location.path('/user/ads');
+		$scope.alertMsg('info', 'Your successfully login!');
+		$location.path('/user/home');
 	}
 }]);
