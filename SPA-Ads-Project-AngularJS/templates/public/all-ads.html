@@ -1,4 +1,4 @@
-<div ng-repeat="ad in data.ads" class="jumbotron">
+<div dir-paginate="ad in data.ads | itemsPerPage: parameters.pageSize" total-items="totalAds" class="jumbotron">
     <div class="row">
         <div class="col-md-9">
             <h3 class="pull-left">{{ad.title}}</h3>
@@ -30,4 +30,8 @@
             </div>
         </div>
     </div>
+ </div>
+<!-- Pager -->
+<div class="text-center">
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="lib/pagination/dirPagination.tpl.html"></dir-pagination-controls>
 </div>
