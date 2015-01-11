@@ -8,10 +8,8 @@ adsApp.factory('userAdsService', ['$http', '$log', 'baseServiceUrl', function ($
 				headers: { Authorization: 'Bearer ' + userAccessToken },
 				url: baseServiceUrl + 'user/ads/',
 				params: { 
-					StartPage: startPage,
-					PageSize: pageSize,
-					CategoryId: categoryId,
-					TownId: townId
+					startpage: startPage,
+					pagesize: pageSize,
 				}
 		})
 		.success(function(data, status, headers, config) {
