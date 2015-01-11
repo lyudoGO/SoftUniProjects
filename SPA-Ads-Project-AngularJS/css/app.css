@@ -20,14 +20,11 @@
 }
 
 img {
-	width: 50%;
+	width: 75%;
 }
 
-#categories-sidebar {
-	
-}
-
-#towns-sidebar {
+#alerts {
+	font-size: 22px;
 }
 
 #loading {
