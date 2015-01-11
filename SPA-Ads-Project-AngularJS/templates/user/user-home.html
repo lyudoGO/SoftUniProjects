@@ -5,19 +5,34 @@
         <div ng-include="'templates/user/user-ads-navigation-sidebar.html'" ng-show="!isPublish"></div>
     </div>
     <!-- Main ads bar -->
-    <div class="col-md-6" ng-include="'templates/public/all-ads.html'" ng-show="!isUserHome"></div>
-    <div class="col-md-9" ng-include="'templates/user/user-ads.html'" ng-show="!isPublish && isUserHome"></div>
-    <div class="col-md-9" ng-include="'templates/user/user-publish-ads.html'" ng-show="isPublish"></div>
-    <!-- Pager -->
-    <div class="bs-component text-center" ng-show="!isPublish">
-        <ul class="pagination">
-            <li><a href="#/user/ads/">First</a></li>
-            <li><a href="#/user/ads/{{startPage - 1}}">Previous</a></li>
-            <li ng-repeat="page in numPages | limitTo : 3"><a href="#/user/ads/">{{page}}</a></li>
-            <li><a href="#/user/ads/{{startPage + 1}}">Next</a></li>
-            <li><a href="#/user/ads/{{numPages.length}}">Last</a></li>
-        </ul>
+    <div class="col-md-6" ng-show="!isUserHome">
+        <div ng-include="'templates/public/all-ads.html'"></div>
+            <!-- Pager -->
+            <div class="bs-component text-center">
+                <ul class="pagination">
+                    <li><a href="#/ads/page/1">First</a></li>
+                    <li><a href="#/ads/page/{{parameters.startPage - 1}}">Previous</a></li>
+                    <li ng-repeat="page in numPages"><a href="#/ads/page/{{page}}" ng-click="changePage(page)">{{page}}</a></li>
+                    <li><a href="#/ads/page/{{parameters.startPage + 1}}">Next</a></li>
+                    <li><a href="#/ads/page/{{numPages.length - 1}}">Last</a></li>
+                </ul>
+        </div>
     </div>
+    <div class="col-md-9" ng-show="!isPublish && isUserHome">
+        <div ng-include="'templates/user/user-ads.html'"></div>
+            <!-- Pager -->
+            <div class="bs-component text-center">
+                <ul class="pagination">
+                    <li><a href="#/user/ads/">First</a></li>
+                    <li><a href="#/user/ads/{{startPage - 1}}">Previous</a></li>
+                    <li ng-repeat="page in numPages | limitTo : 3"><a href="#/user/ads/">{{page}}</a></li>
+                    <li><a href="#/user/ads/{{startPage + 1}}">Next</a></li>
+                    <li><a href="#/user/ads/{{numPages.length}}">Last</a></li>
+                </ul>
+            </div>
+    </div>
+    <div class="col-md-9" ng-include="'templates/user/user-publish-ads.html'" ng-show="isPublish"></div>
+
     <!-- Right public side bar -->
     <div class="col-md-3" ng-show="!isUserHome">
         <right-category-sidebar></right-category-sidebar>
