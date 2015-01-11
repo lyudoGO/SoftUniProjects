@@ -5,8 +5,7 @@ adsApp.factory('adsDataService', ['$http', '$log', 'baseServiceUrl', function ($
 	function getAllAds(categoryId, townId, startPage, pageSize, success, error) {
 		$http({
 				method: 'GET',
-				url: baseServiceUrl + 'ads'/*?CategoryId=' + categoryId +
-				'&TownId=' + townId + '&StartPage=' + startPage + '&PageSize=' + pageSize*/,
+				url: baseServiceUrl + 'ads',
 				params: { 
 					StartPage: startPage,
 					PageSize: pageSize,
