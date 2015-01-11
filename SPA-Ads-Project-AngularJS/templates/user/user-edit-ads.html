@@ -28,7 +28,7 @@
                           <input type="text" class="form-control" id="inputImage" placeholder="Image" ng-model="image.filename" ng-change="getBase64(image.filetype, image.base64)">
                         </div>
                         <div class="col-md-2">
-                            <input type="file" class="btn btn-primary col-md-8" ng-model="image" base-sixty-four-input />
+                            <input type="file" class="btn btn-primary btn-sm btn-block" ng-model="image" base-sixty-four-input />
                         </div>
                     </div>
                     <div class="form-group">
@@ -49,14 +49,14 @@
                 </div>
 
                 <div class="col-md-4">
-    	            <div class="form-group">
+    	            <div class="form-group col-md-12">
     	              <img src="" alt="No Image" ng-src="{{dataAd.imageDataUrl?dataAd.imageDataUrl:'img/no_image.svg'}}" class="img-rounded">
     	            </div>
                     <div class="col-md-12">
-                        <p class="text-center"><button type="button" class="btn btn-primary" ng-click="isChangeImg(image.filetype, image.base64)">Change image</button></p>
+                        <p class="text-center"><button type="button" class="btn btn-primary btn-sm btn-block" ng-click="isChangeImg(image.filetype, image.base64)">Change image</button></p>
                     </div>
                     <div class="col-md-12">
-                        <p class="text-center"><button type="button" class="btn btn-primary btn-block" ng-click="deleteImg()">Delete image</button></p>
+                        <p class="text-center"><button type="button" class="btn btn-primary btn-sm btn-block" ng-click="deleteImg()">Delete image</button></p>
                     </div>
             	</div>
             </div>
@@ -64,8 +64,8 @@
             <div class="row"> 
                 <div class="form-group text-center">
                     <div class="col-md-6">
-                        <button type="submit" class="btn btn-primary btn-block" ng-click="editAd(userAccessToken, dataAd, adId)">Edit</button>
-                        <a href="#/user/ads"  class="btn btn-primary btn-block" ng-click="cancelAd(dataAd)">Cancel</a>
+                        <button type="submit" class="btn btn-primary" ng-click="editAd(userAccessToken, dataAd, adId)">Edit</button>
+                        <a href="#/user/ads"  class="btn btn-primary" ng-click="cancelAd(dataAd)">Cancel</a>
                     </div>
                 </div>
             </div>
