@@ -3,20 +3,20 @@
 adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', 'userAdsService', 'authenticationService', function($scope, $location, $routeParams, userAdsService, authenticationService) {
 	$('#title').text('My Ads');
 	$scope.userAccessToken = $scope.userParams.userAccessToken;
+	$scope.parameters.pageSize = 3;
 	$scope.isPublish = false;
 	$scope.isUserHome = true;
-	/*$scope.isLogged = authenticationService.isLogged();
-		if (authenticationService.getUser()) {
-		var userData = angular.fromJson(authenticationService.getUser());
-		$scope.username = userData['username'];
-	};
-	if (authenticationService.getUser()) {
-		var userData = angular.fromJson(authenticationService.getUser());
-		userAccessToken = userData['access_token'];
-	};*/
 
 	$scope.status = '';
 	$scope.ready = true;
+
+    $scope.pagination = {
+        current: 1
+    };
+
+    $scope.pageChanged = function(newPage) {
+        getAllAds(newPage);
+    };
 
 	$scope.filterByStatus = function(stat) {
 		$scope.status = stat;
@@ -27,24 +27,24 @@ adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', '
 		};
 	};
 
-	userAdsService.getAllUserAds($scope.userAccessToken, 
-		function(data, status, headers, config) {
-			
-			if (data.numItems == 0) {
-				$scope.alertMsg('info', 'Your are no ads to load!');
-			} else {
-				$scope.alertMsg('success', 'Your ads was successfully loaded!');
-			};
-			$scope.data = data;
-			$scope.numPages = [];
-			$scope.startPage = 1;
-			for (var i = 0; i < data.numPages; i++) {
-				$scope.numPages[i] = i + 1;
-			};
-		},
-		function (data, status, headers, config) {
-        	$scope.alertMsg('danger', 'Failed to load your ads. Please try again later.');
-    	});
+	getAllAds(1);
+
+	function getAllAds(newPage) {
+		userAdsService.getAllUserAds($scope.userAccessToken, newPage, $scope.parameters.pageSize,
+			function(data, status, headers, config) {
+				
+				if (data.numItems == 0) {
+					$scope.alertMsg('info', 'Your have not ads to load!');
+				} else {
+					$scope.alertMsg('success', 'Your ads was successfully loaded!');
+				};
+				$scope.data = data;
+				$scope.totalAds = data.numItems;
+			},
+			function (data, status, headers, config) {
+	        	$scope.alertMsg('danger', 'Failed to load your ads. Please try again later.');
+	    	});
+	}
 
 	$scope.deactivateAd = function deactivateAd(id) {
 		userAdsService.deactivateUserAd($scope.userAccessToken, id, 
