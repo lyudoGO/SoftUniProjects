@@ -8,19 +8,19 @@
     <!-- Main ads bar -->
     
     <div ng-cloak id="main-bar" class="col-md-6">
-        <div  data-ng-include="'templates/public/all-ads.html'"></div>
+        <div data-ng-include="'templates/public/all-ads.html'"></div>
         <img id="loading" src="img/loading-bar.gif" alt="" ng-hide="ready">
-
+ 
         <!-- Pager -->
-        <div class="bs-component text-center">
-            <ul class="pagination">
-                <li><a href="#/ads/page/1">First</a></li>
-                <li><a href="#/ads/page/{{parameters.startPage - 1}}">Previous</a></li>
-                <li ng-repeat="page in numPages"><a href="#/ads/page/{{page}}" ng-click="changePage(page)">{{page}}</a></li>
-                <li><a href="#/ads/page/{{parameters.startPage + 1}}">Next</a></li>
-                <li><a href="#/ads/page/{{numPages.length - 1}}">Last</a></li>
-            </ul>
-        </div>
+ <!--        <div class="bs-component text-center">
+     <ul class="pagination">
+         <li><a href="#/ads/page/1">First</a></li>
+         <li><a href="#/ads/page/{{parameters.startPage - 1}}">Previous</a></li>
+         <li ng-repeat="page in numPages"><a href="#/ads/page/{{page}}" ng-click="changePage(page)">{{page}}</a></li>
+         <li><a href="#/ads/page/{{parameters.startPage + 1}}">Next</a></li>
+         <li><a href="#/ads/page/{{numPages.length - 1}}">Last</a></li>
+     </ul>
+ </div> -->
     </div>
     <!-- Right public side bar -->
     <div id="categories-sidebar" class="col-md-3">
