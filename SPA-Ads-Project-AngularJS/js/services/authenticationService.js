@@ -22,6 +22,7 @@ adsApp.factory('authenticationService', function() {
 
 	function removeUser() {
 		sessionStorage.removeItem(key);
+		sessionStorage.clear();
 	}
 
 	function isLogged() {

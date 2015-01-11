@@ -27,7 +27,12 @@ adsApp.controller('UserPostAdController', ['$scope', '$location', 'userPostAdSer
 	});
 
 	$scope.publishAd = function (userAccessToken, dataAd, filetype, base64) {
-		$scope.dataAd.imageDataUrl = "data:" + filetype + ";base64," + base64;
+		if (filetype) {
+			$scope.dataAd.imageDataUrl = "data:" + filetype + ";base64," + base64;
+		} else {
+			$scope.dataAd.imageDataUrl = null;
+		};
+		
 		userPostAdService.postUserAd(userAccessToken, dataAd, 
 			function(data, status, headers, config) {
 				$location.path('/user/ads');

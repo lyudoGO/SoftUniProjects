@@ -4,18 +4,21 @@ adsApp.controller('UserEditProfileController', ['$scope', '$location', '$routePa
 
 		$('#title').text('Edit User Profile');
 		$scope.userAccessToken = $scope.userParams.userAccessToken;
-/*		var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
-		$scope.userAccessToken = userData['access_token'];
-		$scope.username = userData['username'];*/
+		console.log($scope.userAccessToken);
 		$scope.passwordData = {};
 
 		townsDataService.getAllTowns(function(data) {
 			$scope.towns = data;
 		});
 
-		userEditProfileService.getUserProfile($scope.userAccessToken, function(data) {
-			$scope.profileData = data;
-		});
+		userEditProfileService.getUserProfile($scope.userAccessToken, 
+			function(data) {
+				$scope.alertMsg('success', 'User profile was successfully load!');
+				$scope.profileData = data;
+			},
+			function (data, status, headers, config) {
+            	$scope.alertMsg('danger', 'Failed to get progile. Please try again later.');
+        	});
 
 		$scope.editProfile = function editProfile(userAccessToken, profileData) {
 			userEditProfileService.editUserProfile(userAccessToken, profileData, 

@@ -3,6 +3,7 @@
 adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', 'userAdsService', 'authenticationService', function($scope, $location, $routeParams, userAdsService, authenticationService) {
 	$('#title').text('My Ads');
 	$scope.userAccessToken = $scope.userParams.userAccessToken;
+	console.log($scope.userAccessToken);
 	$scope.parameters.pageSize = 3;
 	$scope.isPublish = false;
 	$scope.isUserHome = true;
