@@ -1,6 +1,6 @@
 'use strict';
 
-adsApp.controller('LoginController', ['$rootScope', '$scope', '$location', 'userDataService', function($rootScope, $scope, $location, userDataService) {
+adsApp.controller('LoginController', ['$scope', '$location', 'userDataService', function($scope, $location, userDataService) {
 	$('#title').text('Login');
 	
 	$scope.loginUser = function (user) {
