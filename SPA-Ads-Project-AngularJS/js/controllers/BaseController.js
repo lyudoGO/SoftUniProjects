@@ -1,7 +1,6 @@
 'use strict';
 
-adsApp.controller('BaseController', ['$scope', 'authenticationService', function($scope, authenticationService) {
-	$scope.alertMsg = false;
+adsApp.controller('BaseController', ['$scope', 'authenticationService', 'alertsService', function($scope, authenticationService, alertsService) {
 	$('#title').text('Home');
 	$scope.parameters = {
 		startPage: 1,
@@ -10,17 +9,27 @@ adsApp.controller('BaseController', ['$scope', 'authenticationService', function
 		townId: '',
 		categoryName: '',
 		townName: '',
-		pageTitle: 'Home'
 	};
+
+	$scope.userParams = {
+		username: '',
+		userAccessToken: '',
+		isLogged: ''
+	}
 
 	if (authenticationService.getUser()) {
 		var userData = angular.fromJson(authenticationService.getUser());
-		$scope.username = userData['username'];
-		$scope.isLogged = authenticationService.isLogged();
+		$scope.userParams.username = userData['username'];
+		$scope.userParams.userAccessToken = userData['access_token'];
+		$scope.userParams.isLogged = authenticationService.isLogged();
 	};
 	
 	$scope.logout = function () {
 		authenticationService.removeUser();
-		$scope.isLogged = false;
+		$scope.userParams.isLogged = false;
+	}
+
+	$scope.alertMsg = function (type, message) {
+		alertsService.showAlerts(type, message);
 	}
 }]);
