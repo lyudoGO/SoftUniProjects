@@ -1,12 +1,8 @@
 <!-- User ads navigation bar -->
-<div>
-    <div class="jumbotron" ng-show="!isPublish">
-        <div class="bs-component">
-            <h3 class="text-center">My Ads</h3>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('')">All</a></p>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('Published')">Published</a></p>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('WaitingApproval')">Waiting Approval</a></p>
-            <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('Inactive')">Inactive</a></p>
-        </div>
-    </div>
+<div class="well bs-component" ng-show="!isPublish">
+    <h3 class="text-center">My Ads</h3>
+    <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('')">All</a></p>
+    <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('Published')">Published</a></p>
+    <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('WaitingApproval')">Waiting Approval</a></p>
+    <p class="text-center"><a href="#/user/ads" class="btn btn-primary btn-sm btn-block" ng-click="filterByStatus('Inactive')">Inactive</a></p>
 </div>

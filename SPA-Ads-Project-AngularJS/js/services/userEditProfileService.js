@@ -28,6 +28,7 @@ adsApp.factory('userEditProfileService', ['$http', '$log', 'baseServiceUrl', fun
 			success(data);
 		})
 		.error(function(data, status, headers, config) {
+			error(data);
 			$log.error(data);
 		})
 	}

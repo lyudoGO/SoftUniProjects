@@ -1,4 +1,4 @@
-<div ng-repeat="ad in data.ads | filter: status" total-items="totalAds" class="jumbotron">
+<div dir-paginate="ad in data.ads | filter: status  | itemsPerPage: 3" total-items="totalAds" class="jumbotron">
     <div class="row">
         <div class="col-md-9">
             <h3 class="pull-left">{{ad.title}}</h3>

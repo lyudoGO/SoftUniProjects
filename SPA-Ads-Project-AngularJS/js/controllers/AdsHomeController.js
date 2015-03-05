@@ -1,9 +1,16 @@
 'use strict';
 
-adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataService', 'authenticationService', function($scope, $routeParams, adsDataService, authenticationService) {
+adsApp.controller('AdsHomeController', ['$scope', 'adsDataService', 'authenticationService', function($scope, adsDataService, authenticationService) {
 	$('#title').text('Home');
+/*	if (authenticationService.getUser()) {
+		var userData = angular.fromJson(authenticationService.getUser());
+		$scope.username = userData['username'];
+		$scope.userAccessToken = userData['access_token'];
+		$scope.isLogged = authenticationService.isLogged();
+	};*/
+	$scope.userParams.isUserAds = false;
+	$scope.pageSize = 4;
 
-    $scope.totalAds = 0;
     $scope.pagination = {
         current: 1
     };
@@ -14,7 +21,8 @@ adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataServic
 
 	$scope.ready = false;
 	$scope.isUserHome = false;
-
+	$scope.isPublish = false;
+	$scope.pageSize = 4;
 	getAllAds(1);
 
 	$scope.reload = function reload() {
@@ -25,17 +33,12 @@ adsApp.controller('AdsHomeController', ['$scope', '$routeParams', 'adsDataServic
 	};
 
 	function getAllAds(newPage) {
-		adsDataService.getAllAds($scope.parameters.categoryId, $scope.parameters.townId, newPage, $scope.parameters.pageSize, 
+		adsDataService.getAllAds($scope.parameters.categoryId, $scope.parameters.townId, newPage, $scope.pageSize, 
 			function(data, status, headers, config) {
 				$scope.alertMsg('success', 'Ads was successfully loaded!');
 				$scope.data = data;
 				$scope.ready = true;
-				/*$scope.numPages = [];
 				$scope.totalAds = data.numItems;
-				var startWithPage = $scope.parameters.startPage - 1;
-				for (var i = 0; i < 5; i++, startWithPage++) {
-					$scope.numPages[i] = startWithPage + 1;
-				};*/
 			},
 			function (data, status, headers, config) {
             	$scope.alertMsg('danger', 'Failed to load all ads. Please try again later.');

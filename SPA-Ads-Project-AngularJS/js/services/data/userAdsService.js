@@ -28,7 +28,6 @@ adsApp.factory('userAdsService', ['$http', '$log', 'baseServiceUrl', function ($
 				url: baseServiceUrl + 'user/ads/deactivate/' + id
 		})
 		.success(function(data, status, headers, config) {
-			error(data);
 			success(data);
 		})
 		.error(function(data, status, headers, config) {

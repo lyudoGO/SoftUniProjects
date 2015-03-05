@@ -1,18 +1,10 @@
-<div class="row">
-    <!-- Left public side bar -->
-    <div class="col-md-3">
-        <!-- <left-public-sidebar></left-public-sidebar> -->
-        <div ng-include="'templates/public/left-public-sidebar.html'" ng-show="!isLogged"></div>
-        <div ng-include="'templates/user/user-navigation-sidebar.html'" ng-show="isLogged"></div>
-    </div>
-    <!-- Main ads bar -->
-    <div ng-cloak id="main-bar" class="col-md-6">
-        <div data-ng-include="'templates/public/all-ads.html'"></div>
-        <img id="loading" src="img/loading-bar.gif" alt="" ng-hide="ready">
-    </div>
-    <!-- Right public side bar -->
-    <div id="categories-sidebar" class="col-md-3">
-        <right-category-sidebar></right-category-sidebar>
-        <right-town-sidebar></right-town-sidebar>
-    </div>
+<!-- Main ads bar -->
+<div ng-cloak id="main-bar" class="col-md-8">
+    <div data-ng-include="'templates/public/all-ads.html'"></div>
+    <img id="loading" src="img/loading-bar.gif" alt="" ng-hide="ready"/>
+</div>
+<!-- Right public side bar -->
+<div id="categories-sidebar" class="col-md-2">
+    <right-category-sidebar></right-category-sidebar>
+    <right-town-sidebar></right-town-sidebar>
 </div>

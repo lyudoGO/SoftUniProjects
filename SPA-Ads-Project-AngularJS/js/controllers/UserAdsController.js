@@ -3,12 +3,19 @@
 adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', 'userAdsService', 'authenticationService', function($scope, $location, $routeParams, userAdsService, authenticationService) {
 	$('#title').text('My Ads');
 	$scope.userAccessToken = $scope.userParams.userAccessToken;
-	console.log($scope.userAccessToken);
-	$scope.parameters.pageSize = 3;
+	$scope.userParams.isUserAds = true;
+
+/*	if (authenticationService.getUser()) {
+		var userData = angular.fromJson(authenticationService.getUser());
+		$scope.username = userData['username'];
+		$scope.userAccessToken = userData['access_token'];
+		$scope.isLogged = authenticationService.isLogged();
+	};*/
+	$scope.pageSize = 3;
 	$scope.isPublish = false;
 	$scope.isUserHome = true;
-
-	$scope.status = '';
+	$scope.userAds = [];
+	/*$scope.status = '';*/
 	$scope.ready = true;
 
     $scope.pagination = {
@@ -19,19 +26,20 @@ adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', '
         getAllAds(newPage);
     };
 
-	$scope.filterByStatus = function(stat) {
+/*	$scope.filterByStatus = function(stat) {
 		$scope.status = stat;
+		console.log($scope.status);
 		if (stat == 'Inactive') {
 			$scope.isInactive = true;
 		} else {
 			$scope.isInactive = false;
 		};
-	};
+	};*/
 
 	getAllAds(1);
 
 	function getAllAds(newPage) {
-		userAdsService.getAllUserAds($scope.userAccessToken, newPage, $scope.parameters.pageSize,
+		userAdsService.getAllUserAds($scope.userAccessToken, newPage, $scope.pageSize,
 			function(data, status, headers, config) {
 				
 				if (data.numItems == 0) {
@@ -51,10 +59,10 @@ adsApp.controller('UserAdsController', ['$scope', '$location', '$routeParams', '
 		userAdsService.deactivateUserAd($scope.userAccessToken, id, 
 			function(data, status, headers, config) {
 				$location.path('/user/ads');
-				$scope.alertMsg('success', 'Your ad = ' + id + ' was successfully deactivate!');
+				$scope.alertMsg('success', data.message);
 			},
 			function (data, status, headers, config) {
-	        	$scope.alertMsg('danger', 'Failed to deactivate your ad. Please try again later.');
+	        	$scope.alertMsg('danger', data.message);
 	    	});
 	}
 

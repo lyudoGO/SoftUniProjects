@@ -1,13 +1,11 @@
 <!-- Towns side bar -->
 <div>
-    <div class="jumbotron">
-        <div class="bs-component">
-        	<p class="text-center"><span class="label label-info">Town:{{parameters.townName}}</span></p>
-            <h3 class="text-center">Towns</h3>
-            <ul class="nav nav-pills nav-stacked">
-                <li><a href="#/category/{{parameters.categoryName}}/town/{{town.name}}" ng-click="cancelTownId()">All</a></li>
-                <li ng-repeat="town in towns"><a href="#/category/{{parameters.categoryName}}/town/{{town.name}}" ng-click="getTownId(town.id, town.name)">{{town.name}}</a></li>
-            </ul>
-        </div>
+    <div class="well bs-component">
+    	<p class="text-center"><span class="label label-info">Town:{{parameters.townName}}</span></p>
+        <h3 class="text-center">Towns</h3>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#/category/{{parameters.categoryName}}/town/{{town.name}}" ng-click="cancelTownId()">All</a></li>
+            <li ng-repeat="town in towns"><a href="#/category/{{parameters.categoryName}}/town/{{town.name}}" ng-click="getTownId(town.id, town.name)">{{town.name}}</a></li>
+        </ul>
     </div>
-</div>
+ </div>

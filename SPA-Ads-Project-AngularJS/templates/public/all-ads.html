@@ -1,4 +1,4 @@
-<div dir-paginate="ad in data.ads | itemsPerPage: parameters.pageSize" total-items="totalAds" class="jumbotron">
+<div dir-paginate="ad in data.ads | itemsPerPage: pageSize" total-items="totalAds" class="well bs-component">
     <div class="row">
         <div class="col-md-9">
             <h3 class="pull-left">{{ad.title}}</h3>
@@ -8,23 +8,23 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 text-center">
             <img src="" alt="No Image" ng-src="{{ad.imageDataUrl?ad.imageDataUrl:'img/no_image.svg'}}">
         </div>
         <div class="col-md-8">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Ad text</div>
                 <div class="panel-body">{{ad.text}}</div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Name</div>
                 <div class="panel-body">{{ad.ownerName}}</div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Email</div>
                 <div class="panel-body">{{ad.ownerEmail}}</div>
             </div>
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Telephone</div>
                 <div class="panel-body">{{ad.ownerPhone}}</div>
             </div>

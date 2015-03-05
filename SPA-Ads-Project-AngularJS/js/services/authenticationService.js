@@ -3,11 +3,11 @@
 adsApp.factory('authenticationService', function() {
 	var key = 'user';
 	function saveUser(data) {
-		sessionStorage.setItem(key, angular.toJson(data))
+		localStorage.setItem(key, angular.toJson(data))
 	}
 
 	function getUser() {
-		return angular.fromJson(sessionStorage.getItem(key));
+		return angular.fromJson(localStorage.getItem(key));
 	}
 
 	function getHeaders(argument) {
@@ -21,8 +21,8 @@ adsApp.factory('authenticationService', function() {
 	}
 
 	function removeUser() {
-		sessionStorage.removeItem(key);
-		sessionStorage.clear();
+		localStorage.removeItem(key);
+		localStorage.clear();
 	}
 
 	function isLogged() {

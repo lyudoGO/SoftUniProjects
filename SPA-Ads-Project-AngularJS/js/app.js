@@ -8,14 +8,14 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 
 		templateUrl: 'templates/public/home.html',
 		controller: 'AdsHomeController'
 	});
-	$routeProvider.when('/category/:categoryName/town/:townName', {
+/*	$routeProvider.when('/category/:categoryName/town/:townName', {
 		templateUrl: 'templates/public/home.html',
 		controller: 'AdsHomeController'
-	});
-	$routeProvider.when('/ads/page/:page', {
+	});*/
+/*	$routeProvider.when('/ads/page/:page', {
 		templateUrl: 'templates/public/home.html',
 		controller: 'AdsHomeController'
-	});
+	});*/
 	$routeProvider.when('/login', {
 		templateUrl: 'templates/login.html',
 		controller: 'LoginController'
@@ -23,6 +23,10 @@ var adsApp = angular.module('adsApp', ['ngRoute', 'ngResource', 'ui.bootstrap', 
 	$routeProvider.when('/register', {
 		templateUrl: 'templates/registration.html',
 		controller: 'RegisterController'
+	});
+	$routeProvider.when('/logout', {
+		templateUrl: 'templates/logout.html',
+		controller: 'LogoutController'
 	});
 	$routeProvider.when('/user/home', {
 		templateUrl: 'templates/user/user-home.html',

@@ -7,6 +7,7 @@ adsApp.controller('UserPostAdController', ['$scope', '$location', 'userPostAdSer
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
 	$scope.isLogged = authenticationService.isLogged();*/
+	$scope.userParams.isUserAds = false;
 	$scope.isPublish = true;
 	$scope.isUserHome = true;
 
@@ -18,13 +19,13 @@ adsApp.controller('UserPostAdController', ['$scope', '$location', 'userPostAdSer
 		townId: ''
 	};
 
-	townsDataService.getAllTowns(function(data) {
+/*	townsDataService.getAllTowns(function(data) {
 		$scope.towns = data;
 	});
 
 	categoriesDataService.getAllCategories(function(data) {
 		$scope.categories = data;
-	});
+	});*/
 
 	$scope.publishAd = function (userAccessToken, dataAd, filetype, base64) {
 		if (filetype) {

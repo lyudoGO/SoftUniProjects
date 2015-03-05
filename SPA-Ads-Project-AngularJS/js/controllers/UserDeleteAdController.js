@@ -4,6 +4,7 @@ adsApp.controller('UserDeleteAdController', ['$scope', '$location', '$routeParam
 	$('#title').text('Delete Ad');
 
 	$scope.userAccessToken = $scope.userParams.userAccessToken;
+	$scope.userParams.isUserAds = false;
 /*	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
@@ -18,7 +19,7 @@ adsApp.controller('UserDeleteAdController', ['$scope', '$location', '$routeParam
 		userEditAdService.deleteUserAd(userAccessToken, id, 
 			function(data, status, headers, config) {
 				$location.path('/user/ads');
-				$scope.alertMsg('success', 'Ad was successfully deleted!');
+				$scope.alertMsg('success', data.message);
 			},
 			function (data, status, headers, config) {
             	$scope.alertMsg('danger', 'Failed to delete ad. Please try again later.');

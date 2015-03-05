@@ -3,6 +3,7 @@
 adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams', 'userEditAdService', 'authenticationService', 'categoriesDataService', 'townsDataService', function($scope, $location, $routeParams, userEditAdService, authenticationService, categoriesDataService, townsDataService) {
 	$('#title').text('Edit Ad');
 	$scope.userAccessToken = $scope.userParams.userAccessToken;
+	$scope.userParams.isUserAds = false;
 /*	var userData = JSON.parse(angular.fromJson(localStorage.getItem('user')));
 	$scope.userAccessToken = userData['access_token'];
 	$scope.username = userData['username'];
@@ -36,13 +37,13 @@ adsApp.controller('UserEditAdController', ['$scope', '$location', '$routeParams'
 		/*console.log($scope.dataAd.imageDataUrl);*/
 	}
 
-	townsDataService.getAllTowns(function(data) {
+/*	townsDataService.getAllTowns(function(data) {
 		$scope.towns = data;
 	});
 
 	categoriesDataService.getAllCategories(function(data) {
 		$scope.categories = data;
-	});
+	});*/
 
 	$scope.editAd = function (userAccessToken, dataAd, id) {
 		userEditAdService.editUserAd(userAccessToken, dataAd, id, 
