@@ -1,0 +1,1 @@
+<div>index from genres vew</div>

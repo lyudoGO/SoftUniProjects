@@ -1,0 +1,1 @@
+<div>Master view</div>
