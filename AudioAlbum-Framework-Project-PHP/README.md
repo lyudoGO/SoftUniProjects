@@ -40,7 +40,7 @@ Please choose one of the projects below.
 * 	Implement a sidebar holding a list of posts sorted by month / year / etc. and a list of the most popular tags.
 * 	Counter of visits for each post.
 * 	Functionality for searching by tags.
-* 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab).
+* 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab).                           
 **Optional** functionalities:                                                                       
 * 	Admin panel: add / edit / delete posts, comments, tags, etc.
 
@@ -54,7 +54,7 @@ Please choose one of the projects below.
 * 	Adding answers to the questions by the forum visitors – each visitor must fill out his name, email (optionally) and comment text.
 * 	Counter for visits for each question.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
-**Optional** functionalities:                                                                                                
+**Optional** functionalities:                                                                                                                                
 * 	Admin panel: add /edit /delete forum posts, tags, answers, categories.
 * 	Functionality for searching by question, answer and tags.
 * 	Implement ranking according to user activity.
@@ -68,7 +68,7 @@ Please choose one of the projects below.
 * 	Adding comments to photos and albums.
 * 	Implement album's ranking system (e.g. vote from 1 to 10 or like / dislike).
 * 	Show the most highly ranked albums in a special section at the main page.
-* 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
+* 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab).                           
 **Optional** functionalities:                                                                                     
 * 	Functionality for searching by album name / category.
 * 	Admin panel (if registration is implemented): add / edit /delete albums, photos, comments.
@@ -82,7 +82,7 @@ Please choose one of the projects below.
 * 	Uploading songs (validating file size and type).
 * 	Adding comments to songs and playlists.
 * 	Implement playlists' and songs' ranking system. Show the most highly ranked playlists in a special section at the main page.
-* 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
+* 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab).                           
 **Optional** functionalities:                                                                                                
 * 	Functionality for searching / filtering by playlist name / song name / genre.
 * 	Admin panel (if registration is implemented): add / edit /delete songs, playlists, genres, comments.
