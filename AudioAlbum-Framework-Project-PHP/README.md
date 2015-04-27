@@ -27,9 +27,9 @@ Design and implement a Blog / Forum / Photo Album / Audio Album using PHP and HT
 * 	Using audio album systems (like kPlaylist) is forbidden.
 * 	Using Laravel, Zend Framework, CakePHP or other PHP MVC Framework is forbidden.
 ###Projects
-##Please choose one of the projects below.
+Please choose one of the projects below.                                           
 ###Blog
-##Required functionalities:
+Required functionalities:                                                   
 * 	User registration / login and user profiles.
 * 	View all posts (optionally with paging).
 * 	Adding new posts by the blog owner (after login or password protected). Each post must have tags. 
@@ -38,10 +38,10 @@ Design and implement a Blog / Forum / Photo Album / Audio Album using PHP and HT
 * 	Counter of visits for each post.
 * 	Functionality for searching by tags.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab).
-Optional functionalities:
+Optional functionalities:                                                                       
 * 	Admin panel: add / edit / delete posts, comments, tags, etc.
 ###Forum
-##Required functionalities:
+Required functionalities:                                                                             
 * 	User registration / login and user profiles.
 * 	View all questions / categories (optionally with paging).
 * 	Implement a simple registration for forum users.
@@ -50,12 +50,12 @@ Optional functionalities:
 * 	Adding answers to the questions by the forum visitors – each visitor must fill out his name, email (optionally) and comment text.
 * 	Counter for visits for each question.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
-##Optional functionalities:
+Optional functionalities:                                                                 
 * 	Admin panel: add /edit /delete forum posts, tags, answers, categories.
 * 	Functionality for searching by question, answer and tags.
 * 	Implement ranking according to user activity.
 ###Photo Album
-##Required functionalities:
+Required functionalities:                                                                             
 * 	User registration / login and user profiles. 
 * 	View all albums / categories (optionally with paging). Browse album photos.
 * 	Creating new album in a category.
@@ -68,7 +68,7 @@ Optional functionalities:
 * 	Functionality for searching by album name / category.
 * 	Admin panel (if registration is implemented): add / edit /delete albums, photos, comments.
 ###Audio Album 
-##Required functionalities:
+Required functionalities:                                                         
 * 	User registration / login and user profiles. 
 * 	View all playlists / genres / songs (optionally with paging).
 * 	Listening to songs online. Downloading songs.
@@ -77,18 +77,18 @@ Optional functionalities:
 * 	Adding comments to songs and playlists.
 * 	Implement playlists' and songs' ranking system. Show the most highly ranked playlists in a special section at the main page.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
-##Optional functionalities:
+Optional functionalities:                                              
 * 	Functionality for searching / filtering by playlist name / song name / genre.
 * 	Admin panel (if registration is implemented): add / edit /delete songs, playlists, genres, comments.
 ###Deliverables
-Put the following in a ZIP archive and submit it (each team member submits the same file):
+Put the following in a ZIP archive and submit it (each team member submits the same file):                   
 * 	The complete source code of your project (PHP, HTML, CSS, images, scripts and other files).
 * 	Any other information (optionally).
 ###Public Project Defense
-Each student will have to deliver a public defense of its work in front of the SoftUni team. The students will have only ~20 minutes for the following:
+Each student will have to deliver a public defense of its work in front of the SoftUni team. The students will have only ~20 minutes for the following:           
 * 	Demonstrate the web application (very shortly).
 * 	Show the source code and explain how it works.
-Be well prepared for presenting maximum of your work for minimum time. Open the project assets beforehand to save time.
+Be well prepared for presenting maximum of your work for minimum time. Open the project assets beforehand to save time.      
 ###Assessment Criteria
 * 	Functionality (all the required functionalities according to the type of project you choose) – 0…30
 * 	Overview (HTML / CSS / Usability / UX) – 0…15
