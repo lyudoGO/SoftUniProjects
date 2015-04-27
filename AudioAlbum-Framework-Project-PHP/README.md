@@ -1,6 +1,6 @@
-###Project Assignment for the Web Development Basics Course @ SoftUni
+## Project Assignment for the Web Development Basics Course @ SoftUni
 Design and implement a Blog / Forum / Photo Album / Audio Album using PHP and HTML / CSS / JavaScript. Your project must meet all the requirements listed below.
-###Requirements
+### Requirements
 * 	Use PHP – the major part of your work should be PHP written
   * 	You should create custom PHP Framework
   * 	You should create the project over your framework
@@ -19,17 +19,17 @@ Design and implement a Blog / Forum / Photo Album / Audio Album using PHP and HT
 * 	Usability, UX and browser support
   * 	Your web application should be easy-to-use, with intuitive UI, with good usability
   * 	Ensure your web application works correctly in the latest HTML5-compatible browsers: Chrome, Firefox, IE, Opera, Safari  (latest versions, desktop and mobile versions)
-  * 	You do not need to support old browsers like IE9                                                         
-###Forbidden Techniques and Tools                                                                                      
+  * 	You do not need to support old browsers like IE9  
+### Forbidden Techniques and Tools                                                                                      
 * 	Using CMS / blog systems (like WordPress, Drupal and Joomla) is forbidden.
 * 	Using forum systems (like phpBB) is forbidden.
 * 	Using photo album systems (like Plogger) is forbidden.
 * 	Using audio album systems (like kPlaylist) is forbidden.
 * 	Using Laravel, Zend Framework, CakePHP or other PHP MVC Framework is forbidden.
-###Projects                                                                                                              
+### Projects                                                                                                             
 Please choose one of the projects below.                                                                                     
-###Blog                                                                                                              
-Required functionalities:                                                                                                    
+### Blog                                                                                                              
+*Required* functionalities:                                                                                                  
 * 	User registration / login and user profiles.
 * 	View all posts (optionally with paging).
 * 	Adding new posts by the blog owner (after login or password protected). Each post must have tags. 
@@ -38,10 +38,10 @@ Required functionalities:
 * 	Counter of visits for each post.
 * 	Functionality for searching by tags.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab).
-Optional functionalities:                                                                       
+*Optional* functionalities:                                                                       
 * 	Admin panel: add / edit / delete posts, comments, tags, etc.
-###Forum                                                                                                               
-Required functionalities:                                                                                                    
+### Forum                                                                                                               
+*Required* functionalities:                                                                                                  
 * 	User registration / login and user profiles.
 * 	View all questions / categories (optionally with paging).
 * 	Implement a simple registration for forum users.
@@ -50,12 +50,12 @@ Required functionalities:
 * 	Adding answers to the questions by the forum visitors – each visitor must fill out his name, email (optionally) and comment text.
 * 	Counter for visits for each question.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
-Optional functionalities:                                                                                                    
+*Optional* functionalities:                                                                                                  
 * 	Admin panel: add /edit /delete forum posts, tags, answers, categories.
 * 	Functionality for searching by question, answer and tags.
 * 	Implement ranking according to user activity.
-###Photo Album                                                                                                           
-Required functionalities:                                                                                                    
+### Photo Album                                                                                                           
+*Required* functionalities:                                                                                                  
 * 	User registration / login and user profiles. 
 * 	View all albums / categories (optionally with paging). Browse album photos.
 * 	Creating new album in a category.
@@ -64,11 +64,11 @@ Required functionalities:
 * 	Implement album's ranking system (e.g. vote from 1 to 10 or like / dislike).
 * 	Show the most highly ranked albums in a special section at the main page.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
-##Optional functionalities:                                                                                     
+*Optional* functionalities:                                                                                     
 * 	Functionality for searching by album name / category.
 * 	Admin panel (if registration is implemented): add / edit /delete albums, photos, comments.
-###Audio Album                                                                                                           
-Required functionalities:                                                                                                   
+### Audio Album                                                                                                           
+*Required* functionalities:                                                                                                  
 * 	User registration / login and user profiles. 
 * 	View all playlists / genres / songs (optionally with paging).
 * 	Listening to songs online. Downloading songs.
@@ -77,22 +77,22 @@ Required functionalities:
 * 	Adding comments to songs and playlists.
 * 	Implement playlists' and songs' ranking system. Show the most highly ranked playlists in a special section at the main page.
 * 	Use a database (like MySQL or MongoDB) or cloud-based data storage (like MongoLab and RedisLab). 
-Optional functionalities:                                                                                                    
+*Optional* functionalities:                                                                                                  
 * 	Functionality for searching / filtering by playlist name / song name / genre.
 * 	Admin panel (if registration is implemented): add / edit /delete songs, playlists, genres, comments.
-###Deliverables                                                                                                             
+### Deliverables                                                                                                             
 Put the following in a ZIP archive and submit it (each team member submits the same file):                                   
 * 	The complete source code of your project (PHP, HTML, CSS, images, scripts and other files).
 * 	Any other information (optionally).
-###Public Project Defense                                                                                                  
+### Public Project Defense                                                                                                  
 Each student will have to deliver a public defense of its work in front of the SoftUni team. The students will have only ~20 minutes for the following:                                                                                          
 * 	Demonstrate the web application (very shortly).
 * 	Show the source code and explain how it works.
 Be well prepared for presenting maximum of your work for minimum time. Open the project assets beforehand to save time.      
-###Assessment Criteria                                                                                                     
-* 	Functionality (all the required functionalities according to the type of project you choose) – 0…30
-* 	Overview (HTML / CSS / Usability / UX) – 0…15
-* 	Code quality (correct naming, code formatting, separation of concerns, etc.) – 0…30
-* 	Security (XSS, SQL Injection, CSRF…) – 0…25
-* 	Bonus (bonus point are given for implementing optional functionalities according to the type of project you choose) – 0..10
-*	Additional Bonus for early defense – 0..10
+### Assessment Criteria                                                                                                     
+* 	*Functionality* (all the required functionalities according to the type of project you choose) – 0…30
+* 	*Overview* (HTML / CSS / Usability / UX) – 0…15
+* 	*Code quality* (correct naming, code formatting, separation of concerns, etc.) – 0…30
+* 	*Security* (XSS, SQL Injection, CSRF…) – 0…25
+* 	*Bonus* (bonus point are given for implementing optional functionalities according to the type of project you choose) – 0..10
+*	*Additional Bonus for early defense – 0..10*
