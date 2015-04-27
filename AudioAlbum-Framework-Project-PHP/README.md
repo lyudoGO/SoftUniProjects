@@ -19,8 +19,7 @@ Design and implement a Blog / Forum / Photo Album / Audio Album using PHP and HT
 * 	Usability, UX and browser support
   * 	Your web application should be easy-to-use, with intuitive UI, with good usability
   * 	Ensure your web application works correctly in the latest HTML5-compatible browsers: Chrome, Firefox, IE, Opera, Safari  (latest versions, desktop and mobile versions)
-  * 	You do not need to support old browsers like IE9  
-### Forbidden Techniques and Tools                                                                                      
+  * 	You do not need to support old browsers like IE9                                                                   ###Forbidden Techniques and Tools                                                                                      
 * 	Using CMS / blog systems (like WordPress, Drupal and Joomla) is forbidden.
 * 	Using forum systems (like phpBB) is forbidden.
 * 	Using photo album systems (like Plogger) is forbidden.
