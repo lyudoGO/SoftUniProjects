@@ -1,28 +1,29 @@
 <!-- Front Controller Pattern -->
 <?php
+session_start();
+include_once 'includes/config.php';
 // Define root path and dir
-define('/', DIRECTORY_SEPARATOR);
-define('ALBUMS_ROOT_DIR', dirname(__FILE__) . '/');
-define('ALBUMS_ROOT_PATH', basename(dirname(__FILE__)) . '/');
+define('DEFAULT_ROOT_DIR', dirname(__FILE__) . '\\');
+define('DEFAULT_ROOT_PATH', basename(dirname(__FILE__)) . '/');
 
-$request_home = '/' . ALBUMS_ROOT_PATH;
+$requestHome = '/' . DEFAULT_ROOT_PATH ;
 
 $request = $_SERVER['REQUEST_URI'];
-$controller = 'Master';
-$method = 'index';
+$controllerName = 'Base';
+$methodName = 'index';
 $components = array();
 $parameters = array();
 
-include_once 'controllers/master.php';
-$master = new \Controllers\Master_Controller();
+include_once 'controllers/BaseController.php';
+$baseController = new \Controllers\BaseController();
 
 if (!empty($request)) {
-	if (strpos($request, $request_home) === 0) {
-		$request = substr($request, strlen($request_home));
-		$components = explode('/', $request, 3);
+	if (strpos($request, $requestHome) === 0) {
+		$request = substr($request, strlen($requestHome));
+		$components = explode('/', $request);
 
 		if (count($components) > 1) {
-			list($controller, $method) = $components;
+			list($controllerName, $methodName) = $components;
 
 			if (isset($components[2])) {
 				$parameters = $components[2];
@@ -32,22 +33,22 @@ if (!empty($request)) {
 }
 
 // Check if controller is found
-if (strcmp($controller, 'Master') != 0 && file_exists('controllers/' . $controller . '.php')) {
+if (isset($controllerName) && file_exists('controllers/' . ucfirst($controllerName) . 'Controller.php')) {
 	// If we have new controller should load it
-	include_once 'controllers/' . $controller . '.php';
+	include_once 'controllers/' . ucfirst($controllerName) . 'Controller.php';
 
-	$controller_class = '\Controllers\\' . ucfirst($controller) . '_Controller';
+	$controllerClass = '\Controllers\\' . ucfirst($controllerName) . 'Controller';
 
 	// Create instance of controllers matched in URL
-	$instance = new $controller_class();
+	$controller = new $controllerClass();
 
 	// Call method and object
-	if (method_exists($instance, $method)) {
-		call_user_func_array(array($instance, $method), array($parameters));
+	if (method_exists($controller, $methodName)) {
+		call_user_func_array(array($controller, $methodName), array($parameters));
 	} else {
-		call_user_func_array(array($instance, 'index'), array());
+		call_user_func_array(array($controller, 'index'), array());
 	}
 
 } else {
-	$master->index();
+	$baseController->index();
 }
