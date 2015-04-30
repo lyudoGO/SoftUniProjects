@@ -4,17 +4,17 @@ namespace Models;
 class BaseModel {
 
 	protected $table;
-	protected $where;
+/*	protected $where;
 	protected $columns;
-	protected $limit;
-	protected static $db;
+	protected $limit;*/
+	protected $db;
 
 	public function __construct($args = array()) {
-		$args = array_merge( array(
+	/*	$args = array_merge( array(
 			'where' => '',
 			'columns' => '*',
 			'limit' => 0
-		), $args );
+		), $args );*/
 
 		if (!isset($args['table'])) {
 			die('Table not defined.');
@@ -23,16 +23,15 @@ class BaseModel {
 		extract($args);
 		
 		$this->table = $table;
-		$this->where = $where;
+	/*	$this->where = $where;
 		$this->columns = $columns;
-		$this->limit = $limit;
+		$this->limit = $limit;*/
 
-		if (self::$db == null) {
-            self::$db = new \mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-            if (self::$db->connect_errno) {
-                die('Cannot connect to database');
-            }
-        }
+		$dbInstance = \Includes\Database::getInstance();
+		$this->db = $dbInstance::getDb();
+		if ($this->db->connect_errno) {
+			die('Cannot connect to database');
+		}
 	}
 
 	public function get($id) {
@@ -41,27 +40,25 @@ class BaseModel {
 		return $results;
 	}
 
-	public function find( $args = array() ) {
+	public function find($args = array()) {
 		$args = array_merge( array(
 			'table' => $this->table,
-			'where' => '',
+			//'where' => '',
 			'columns' => '*',
-			'limit' => 0
+			//'limit' => 0
 		), $args );
 		
 		extract($args);
-		
+
 		$query = "SELECT {$columns} FROM {$table}";
-		
-		if(!empty($where)) {
-			$query .= ' where ' . $where;
+
+		foreach ($args as $key => $value) {
+			if(!empty($key) && $key !== 'table' && $key !== 'columns') {
+				$query .= ' ' . strtoupper($key) . ' ' . $value;
+			}
 		}
-		
-		if(!empty($limit)) {
-			$query .= ' limit ' . $limit;
-		}
-		
-		$resultSet = self::$db->query($query);
+
+		$resultSet = $this->db->query($query);
 		
 		$results = $this->processResults($resultSet);
 		
@@ -75,7 +72,7 @@ class BaseModel {
 		
 		// Escape values, like prepared statement
 		foreach($pairs as $key => $value) {
-			$values[] = "'" . self::$db->real_escape_string($value) . "'";	
+			$values[] = "'" . $this->db->real_escape_string($value) . "'";	
 		}
 		
 		$keys = implode($keys, ',');
@@ -83,9 +80,33 @@ class BaseModel {
 		
 		$query = "INSERT INTO {$this->table}($keys) VALUES($values)";
 	
-		self::$db->query($query);
+		$this->db->query($query);
 		
-		return self::$db->affected_rows;
+		return $this->db->affected_rows > 0;
+	}
+
+	public function delete($id) {
+		$query = "DELETE FROM {$this->table} WHERE id=" . intval($id);
+		
+		$this->db->query($query);
+		
+		return $this->db->affected_rows > 0;
+	}
+
+	public function update($model) {
+		$query = "UPDATE " . $this->table . " SET ";
+		
+		foreach($model as $key => $value) {
+			if($key === 'id') {
+				continue;
+			}
+			$query .= "$key = '" . $this->db->real_escape_string($value) . "',"; 
+		}
+		$query = rtrim($query, ",");
+		$query .= " WHERE id = " . $model['id'];
+		$this->db->query($query);
+		
+		return $this->db->affected_rows > 0;
 	}
 
 	protected function processResults($resultSet) {

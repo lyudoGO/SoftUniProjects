@@ -16,7 +16,11 @@
 				<td><?php echo $song['duration']; ?></td>
 				<td><?php echo $song['likes']; ?></td>
 				<td><?php echo $song['dislikes']; ?></td>
+				<td><a href="/albums/comments/song/<?=$song['id'] ?>">[Add Comment]</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
+	<ul>
+		<li><a href="/albums/songs/upload">[Upload file]</a></li>
+	</ul>
 </div>

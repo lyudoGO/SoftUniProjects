@@ -8,8 +8,8 @@ class GenresController extends BaseController {
 	}
 
 	public function index(){
-		$genres = $this->modelName->find();
-		$templateFile = DEFAULT_ROOT_DIR . $this->viewsDir . 'index.php';
+		$genres = $this->model->find();
+		$this->templateFile .= 'index.php';
 		include_once $this->layout;
 	}
 }

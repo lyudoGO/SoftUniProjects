@@ -8,11 +8,17 @@
 		</tr>
 		<?php foreach ($playlists as $playlist) :?>
 			<tr>
-				<td><?= htmlspecialchars($playlist['id']); ?></td>
+				<td><?= $playlist['id']; ?></td>
 				<td><?= htmlspecialchars($playlist['name']); ?></td>
 				<td><?= htmlspecialchars($playlist['likes']); ?></td>
 				<td><?= htmlspecialchars($playlist['dislikes']); ?></td>
+				<td><a href="/albums/playlists/delete/<?=$playlist['id'] ?>">[Delete]</a></td>
+				<td><a href="/albums/playlists/edit/<?=$playlist['id'] ?>">[Edit]</a></td>
+				<td><a href="/albums/comments/playlist/<?=$playlist['id'] ?>">[Add Comment]</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
+	<ul>
+		<li><a href="/albums/playlists/create">[Create]</a></li>
+	</ul>
 </div>
