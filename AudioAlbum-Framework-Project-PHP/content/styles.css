@@ -1,0 +1,51 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	width: 90%;
+ 	margin: 10px auto;
+ 	text-align: center;
+}
+
+header {
+	border: 1px solid black;
+	width: 100%;
+}
+
+#container {
+	float: left;
+	width: 100%;
+	margin: 0 auto;
+	border: 1px solid black;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#right {
+	float: left;
+	width: 12%;
+	border: 1px solid black;
+}
+
+#right > ul {
+	list-style: none;
+}
+
+#home {
+	float: right;
+	width: 87%;
+	border: 1px solid black;
+}
+
+#home > ul {
+	display: inline-block;
+	list-style: none;
+}
+
+footer {
+	float: left;
+	border: 1px solid black;
+	width: 100%;
+}
