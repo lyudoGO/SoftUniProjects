@@ -15,7 +15,7 @@ class PlaylistsController extends BaseController {
 
 	public function view($id) {
 		$playlists = $this->model->get($id);
-		$this->templateFile .= 'index.php';
+		$this->templateFile .= 'view.php';
 		include_once $this->layout;
 	}
 

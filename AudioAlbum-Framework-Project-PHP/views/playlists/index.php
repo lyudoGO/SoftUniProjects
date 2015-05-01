@@ -1,4 +1,5 @@
 <div>
+	<h3>List Playlists</h3>
 	<table>
 		<tr>
 			<th>Id</th>
@@ -12,13 +13,11 @@
 				<td><?= htmlspecialchars($playlist['name']); ?></td>
 				<td><?= htmlspecialchars($playlist['likes']); ?></td>
 				<td><?= htmlspecialchars($playlist['dislikes']); ?></td>
-				<td><a href="/albums/playlists/delete/<?=$playlist['id'] ?>">[Delete]</a></td>
-				<td><a href="/albums/playlists/edit/<?=$playlist['id'] ?>">[Edit]</a></td>
-				<td><a href="/albums/comments/playlist/<?=$playlist['id'] ?>">[Add Comment]</a></td>
+				<td><a href="/albums/playlists/view/<?=$playlist['id'] ?>">[View]</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
 	<ul>
-		<li><a href="/albums/playlists/create">[Create]</a></li>
+		<li><a href="/albums/playlists/create">[Create new playlist]</a></li>
 	</ul>
 </div>

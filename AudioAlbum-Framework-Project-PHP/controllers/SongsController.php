@@ -15,33 +15,26 @@ class SongsController extends BaseController {
 
 	public function view($id) {
 		$songs = $this->model->get($id);
-		$this->templateFile .= 'index.php';
+		$this->templateFile .= 'view.php';
 		include_once $this->layout;
 	}
 
-	public function upload() {
-		$this->templateFile .= 'upload.php';
+	public function create() {
+		$this->templateFile .= 'create.php';
 		include_once $this->layout;
 
-		if (isset($_FILES['uploaded-file'])) {
-			//var_dump($_FILES['uploaded-file']);die;
-			if($_FILES['uploaded-file']['error'] == 0) {
-				$pairs = array(
-					'name' => $_FILES['uploaded-file']['name'],
-					'size' => intval($_FILES['uploaded-file']['size']),
-					'mime' => $_FILES['uploaded-file']['type'],
-					'data' => file_get_contents($_FILES['uploaded-file']['tmp_name']),
-				);
+		if (isset($_POST['song-name'])) {
+			$pairs = array(
+				'name' => $_POST['song-name'],
+				'artist' => $_POST['artist-name'],
+				'duration' => $_POST['duration'],
+			);
 			if ($this->model->create($pairs)) {
-	            $this->addInfoMessage("File uploaded.");
-	            //$this->redirect('songs');
+	            $this->addInfoMessage("Song created.");
+	            $this->redirect('songs');
 	        } else {
-	            $this->addErrorMessage("Cannot upload file.");
+	            $this->addErrorMessage("Cannot create song.");
 	        }
-		} else {
-			$this->addErrorMessage("An error accured while the file was being uploaded.");
-		}
-
 		}
 	}
 }

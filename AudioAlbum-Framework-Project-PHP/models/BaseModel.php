@@ -4,17 +4,9 @@ namespace Models;
 class BaseModel {
 
 	protected $table;
-/*	protected $where;
-	protected $columns;
-	protected $limit;*/
 	protected $db;
 
 	public function __construct($args = array()) {
-	/*	$args = array_merge( array(
-			'where' => '',
-			'columns' => '*',
-			'limit' => 0
-		), $args );*/
 
 		if (!isset($args['table'])) {
 			die('Table not defined.');
@@ -23,9 +15,6 @@ class BaseModel {
 		extract($args);
 		
 		$this->table = $table;
-	/*	$this->where = $where;
-		$this->columns = $columns;
-		$this->limit = $limit;*/
 
 		$dbInstance = \Includes\Database::getInstance();
 		$this->db = $dbInstance::getDb();
@@ -43,9 +32,7 @@ class BaseModel {
 	public function find($args = array()) {
 		$args = array_merge( array(
 			'table' => $this->table,
-			//'where' => '',
 			'columns' => '*',
-			//'limit' => 0
 		), $args );
 		
 		extract($args);

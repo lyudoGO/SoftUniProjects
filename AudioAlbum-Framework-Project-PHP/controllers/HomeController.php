@@ -8,7 +8,7 @@ class HomeController extends BaseController {
 	}
 
 	public function index(){
-		$playlists = $this->model->find(array('order by' => 'likes', 'desc' => ''));
+		$playlists = $this->model->find(array('order by' => 'likes', 'desc' => '', 'limit' => 5));
 		$this->templateFile .= 'index.php';
 		include_once $this->layout;
 	}
