@@ -2,18 +2,20 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/albums/content/styles.css">
 	<title>Audio Albums</title>
 </head>
 <body>
 	<header>
 		<h1>Audio Albums</h1>
-		<ul>
-			<li><a href="/albums">Home</a></li>
-			<li><a href="/albums/playlists">Playlists</a></li>
-			<li><a href="/albums/songs">Songs</a></li>
-			<li><a href="/albums/genres">Genres</a></li>
-			<li><a href="/albums/comments">Comments</a></li>
-		</ul>
+		<nav>
+			<a href="/albums">Home</a>
+			<a href="/albums/playlists">Playlists</a>
+			<a href="/albums/songs">Songs</a>
+			<a href="/albums/genres">Genres</a>
+			<a href="/albums/comments">Comments</a>
+			<a href="/albums/files">Files</a>
+		</nav>
 	</header>
 	<div id="messages"><?php include_once('\\views\\layouts\\messages.php'); ?></div>
 	<div id="container">

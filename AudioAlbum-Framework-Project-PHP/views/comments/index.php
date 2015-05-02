@@ -1,4 +1,5 @@
 <div>
+	<h3>List Comments</h3>
 	<table>
 		<tr>
 			<th>Id</th>
@@ -14,6 +15,7 @@
 				<td><?php echo $comment['song_id']; ?></td>
 				<td><?php echo $comment['playlist_id']; ?></td>
 				<td><?php echo $comment['user_id']; ?></td>
+				<td><a href="/albums/comments/view/<?=$comment['id'] ?>">[View]</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>

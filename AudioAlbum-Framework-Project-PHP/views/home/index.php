@@ -1,16 +1,18 @@
-<div>
-	<h2>Home page</h2>
-	<h4>Playlist list</h4>
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Name</th>
-		</tr>
+<aside id="right">
+	<h4>Top 5 playlists</h4>
+	<ul>
 		<?php foreach ($playlists as $playlist) :?>
-			<tr>
-				<td><?= $playlist['id']; ?></td>
-				<td><?= htmlspecialchars($playlist['name']); ?></td>
-			</tr>
+			<li>
+				<a href="/albums/playlists/view/<?=$playlist['id'] ?>"><?= htmlspecialchars($playlist['name']); ?></a>
+				<span></span>
+			</li>
 		<?php endforeach; ?>
-	</table>
-</div>
+	</ul>
+</aside>
+<section id="home">
+	<h2>Home page</h2>
+	<ul>
+		<li><a href="/albums/login">[Login]</a></li>
+		<li><a href="/albums/register">[Register]</a></li>
+	</ul>
+</section>

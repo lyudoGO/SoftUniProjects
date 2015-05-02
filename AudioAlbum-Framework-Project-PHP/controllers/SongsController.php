@@ -37,4 +37,35 @@ class SongsController extends BaseController {
 	        }
 		}
 	}
+
+	public function delete($id) {
+		$this->model->setForeignKey();
+		if ($this->model->delete($id)) {
+			$this->model->setForeignKey();
+			$this->addInfoMessage("Song deleted.");
+            $this->redirect('songs');
+		} else {
+            $this->addErrorMessage("Cannot delete song.");
+        }
+	}
+
+	public function edit($id) {
+		$song = $this->model->get($id);
+		$model = $song[0];
+		$this->templateFile .= 'edit.php';
+		include_once $this->layout;
+	
+		if (isset($_POST['song-name'])) {
+			$model['name'] = $_POST['song-name'];
+			$model['artist'] = $_POST['artist'];
+			$model['duration'] = $_POST['duration'];
+
+			if ($this->model->update($model)) {
+				$this->addInfoMessage("Song edited.");
+            	$this->redirect('songs');
+			} else {
+	            $this->addErrorMessage("Cannot edit song.");
+	        }
+		}
+	}
 }

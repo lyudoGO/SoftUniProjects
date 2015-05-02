@@ -24,7 +24,7 @@ class FilesController extends BaseController {
 		include_once $this->layout;
 
 		if (isset($_FILES['uploaded-file'])) {
-			//var_dump($_FILES['uploaded-file']);die;
+			
 			if($_FILES['uploaded-file']['error'] == 0) {
 				$pairs = array(
 					'name' => $_FILES['uploaded-file']['name'],
@@ -33,14 +33,25 @@ class FilesController extends BaseController {
 					'data' => file_get_contents($_FILES['uploaded-file']['tmp_name']),
 					'song_id' => $song_id
 				);
+			/*	$uploaddir = 'C:/xampp/htdocs/albums/views/files/';
+			   $file = basename($_FILES['uploaded-file']['name']);
+			   $uploadfile = $uploaddir . $file;*/
+			
+			   
+			
+	/*		   if (move_uploaded_file($_FILES['uploaded-file']['tmp_name'], $uploadfile)) {
+			   		echo "File uploaded";
+			   } else {
+			   		echo "Cannot upload";
+			   }*/
 				if ($this->model->create($pairs)) {
 		            $this->addInfoMessage("File uploaded.");
 		            $this->redirect('files');
 		        } else {
-		            $this->addErrorMessage("Cannot upload file.");
+		            $this->addErrorMessage("Cannot upload file to database.");
 		        }
 			} else {
-				$this->addErrorMessage("An error accured while the file was being uploaded.");
+				$this->addErrorMessage("Error uploading from tmp.");
 			}
 		}
 	}

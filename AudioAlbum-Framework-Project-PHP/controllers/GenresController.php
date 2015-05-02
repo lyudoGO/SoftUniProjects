@@ -14,8 +14,15 @@ class GenresController extends BaseController {
 	}
 
 	public function view($id) {
-		$genres = $this->model->get($id);
-		$this->templateFile .= 'view.php';
+		$genres = $this->model->find( array(
+			'columns' => 'g.id, g.name, s.id, s.name, s.artist, s.duration, s.likes, s.dislikes',
+			'g' => '',
+			'JOIN' => 'songs',
+			's' => '',
+			'on' => 's.genre_id = g.id',
+			'where' => 'g.id=' . $id
+			));   
+		$this->templateFile .= 'view.php';    
 		include_once $this->layout;
 	}
 

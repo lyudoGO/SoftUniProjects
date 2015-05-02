@@ -1,5 +1,5 @@
 <div>
-	<h3>List songs</h3>
+	<h3>Song view</h3>
 	<table>
 		<tr>
 			<th>Id</th>
@@ -20,6 +20,8 @@
 				<td><a href="/albums/comments/song/<?=$song['id'] ?>">[Add Comment]</a></td>
 				<td><a href="/albums/files/upload/<?=$song['id'] ?>">[Upload file]</a></td>
 				<td><a href="/albums/files/download/<?=$song['id'] ?>">[Download file]</a></td>
+				<td><a href="/albums/songs/edit/<?=$song['id'] ?>">[Edit]</a></td>
+				<td><a href="/albums/songs/delete/<?=$song['id'] ?>">[Delete]</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>

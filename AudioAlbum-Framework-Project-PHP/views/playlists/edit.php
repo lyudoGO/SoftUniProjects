@@ -1,4 +1,4 @@
-<h1>Edit Playlist</h1>
+<h3>Edit Playlist</h3>
 
 <?php if ($model) { ?>
 <form method="post" action="/albums/playlists/edit/<?= $model['id'] ?>">

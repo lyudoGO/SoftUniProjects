@@ -48,7 +48,7 @@ class BaseModel {
 		$resultSet = $this->db->query($query);
 		
 		$results = $this->processResults($resultSet);
-		
+		var_dump($resultSet);
 		return $results;
 	}
 
