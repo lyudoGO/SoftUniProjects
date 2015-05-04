@@ -1,4 +1,4 @@
-<div>
+<section id="home">
 	<h3>List Comments</h3>
 	<table>
 		<tr>
@@ -19,4 +19,8 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
-</div>
+	<ul id="pagging">
+		<li><a href="/albums/comments/index/<?= ($this->page <= 1) ? 1 : $this->page - 1; ?>/<?= $this->pageSize; ?>">[Previous]</a></li>
+		<li><a href="/albums/comments/index/<?= $this->page + 1; ?>/<?= $this->pageSize; ?>">[Next]</a></li>
+	</ul>
+</section>

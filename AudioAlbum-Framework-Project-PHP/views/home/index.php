@@ -1,4 +1,4 @@
-<aside id="right">
+<aside id="left">
 	<h4>Top 5 playlists</h4>
 	<ul>
 		<?php foreach ($playlists as $playlist) :?>
@@ -12,7 +12,7 @@
 <section id="home">
 	<h2>Home page</h2>
 	<ul>
-		<li><a href="/albums/login">[Login]</a></li>
-		<li><a href="/albums/register">[Register]</a></li>
+		<li><a href="/albums/account/login">[Login]</a></li>
+		<li><a href="/albums/account/register">[Register]</a></li>
 	</ul>
 </section>

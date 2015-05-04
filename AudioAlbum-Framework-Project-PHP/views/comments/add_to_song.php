@@ -5,6 +5,6 @@
     Comment: <textarea rows="4" cols="50" name="comment-text" autofocus></textarea>
     <br/>
     <input type="submit" value="Add Comment">
-    <a href="/albums/songs">[Cancel]</a>
+    <a href="/albums/songs/view/<?= $song_id ?>">[Cancel]</a>
 </form>
 <?php } ?>

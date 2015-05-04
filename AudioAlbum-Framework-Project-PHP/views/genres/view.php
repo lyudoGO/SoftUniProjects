@@ -1,19 +1,27 @@
-<div>
+<section>
 	<table>
 		<tr>
 			<th>Id</th>
-			<th>Name</th>
+			<th>Genre Name</th>
 		</tr>
-		<?php foreach ($genres as $genre) :?>
+		<tr>
+			<td><?= htmlspecialchars($genre[0]['id']); ?></td>
+			<td><?= htmlspecialchars($genre[0]['name']); ?></td>
+		</tr>
+	</table>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Song Name</th>
+		</tr>
+		<?php foreach ($songs as $song) :?>
 			<tr>
-				<td><?= htmlspecialchars($genre['id']); ?></td>
-				<td><?= htmlspecialchars($genre['name']); ?></td>
-				<td><a href="/albums/genres/edit/<?=$genre['id'] ?>">[Edit]</a></td>
-				<td><a href="/albums/genres/delete/<?=$genre['id'] ?>">[Delete]</a></td>
+				<td><?= htmlspecialchars($song['song_id']); ?></td>
+				<td><?= htmlspecialchars($song['song_name']); ?></td>
+				<td><a href="/albums/songs/edit/<?=$song['song_id'] ?>">[Edit]</a></td>
+				<td><a href="/albums/songs/delete/<?=$song['song_id'] ?>">[Delete]</a></td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
-	<ul>
-		<li><a href="/albums/genres">[Cancel]</a></li>
-	</ul>
-</div>
+	<p><a href="/albums/genres">[Cancel]</a></p>
+</section>

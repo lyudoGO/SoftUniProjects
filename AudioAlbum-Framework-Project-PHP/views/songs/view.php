@@ -25,6 +25,22 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
+	<h4>Comments</h4>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Comment text</th>
+			<th>Username</th>
+		</tr>
+		<?php foreach ($comments as $comment) :?>
+			<tr>
+				<td><?= $comment['comment_id']; ?></td>
+				<td><?= htmlspecialchars($comment['text']); ?></td>
+				<td><?= htmlspecialchars($comment['username']); ?></td>
+				<td><a href="/albums/comments/view/<?= $comment['comment_id'] ?>">[View]</a></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
 	<ul>
 		<li><a href="/albums/songs">[Cancel]</a></li>
 	</ul>

@@ -16,6 +16,12 @@
 			<a href="/albums/comments">Comments</a>
 			<a href="/albums/files">Files</a>
 		</nav>
+		<?php if($this->isLoggedIn()) :?>
+		<div id="loggedin-info">
+			<span>Hello, <?= htmlspecialchars($_SESSION['username']); ?></span>
+			<form action="/albums/account/logout/"><input type="submit" value="Logout"></form>
+		</div>
+	<?php endif ?>
 	</header>
 	<div id="messages"><?php include_once('\\views\\layouts\\messages.php'); ?></div>
 	<div id="container">

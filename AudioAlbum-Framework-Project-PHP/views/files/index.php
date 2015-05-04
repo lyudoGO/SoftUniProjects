@@ -14,6 +14,7 @@
 				<td><?php echo $file['size']; ?></td>
 				<td><?php echo $file['mime']; ?></td>
 				<td><a href="/albums/files/delete/<?=$file['id'] ?>">[Delete]</a></td>
+				<!-- <td><a href="/images/myw3schoolsimage.jpg" download="w3logo"></td> -->
 			</tr>
 		<?php endforeach; ?>
 	</table>

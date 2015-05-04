@@ -20,7 +20,5 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
-	<ul>
-		<li><a href="/albums/comments">[Cancel]</a></li>
-	</ul>
+	<p><a href="/albums/comments">[Cancel]</a></p>
 </div>

@@ -1,4 +1,4 @@
-<div>
+<section id="home">
 	<h3>List Genres</h3>
 	<table>
 		<tr>
@@ -13,7 +13,9 @@
 			</tr>
 		<?php endforeach; ?>
 	</table>
-		<ul>
-		<li><a href="/albums/genres/create">[Create new genre]</a></li>
+	<p><a href="/albums/genres/create">[Create new genre]</a></p>
+	<ul id="pagging">
+		<li><a href="/albums/genres/index/<?= ($this->page <= 1) ? 1 : $this->page - 1; ?>/<?= $this->pageSize; ?>">[Previous]</a></li>
+		<li><a href="/albums/genres/index/<?= $this->page + 1; ?>/<?= $this->pageSize; ?>">[Next]</a></li>
 	</ul>
-</div>
+</section>
