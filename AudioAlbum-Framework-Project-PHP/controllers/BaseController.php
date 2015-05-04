@@ -6,6 +6,8 @@ class BaseController {
 	protected $layout;
 	protected $viewsDir;
 	protected $templateFile;
+    protected $page;
+    protected $pageSize;
 
 	public function __construct($className = '\Controllers\BaseController',
 								$modelName = 'Base',
@@ -41,6 +43,25 @@ class BaseController {
         die;
 	}
 
+    protected function isPost() {
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+
+    protected function isLoggedIn() {
+        if (isset($_SESSION['username'])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    protected function authorize() {
+        if (!$this->isLoggedIn()) {
+            $this->addErrorMessage('Please, login first');
+            $this->redirect("account", "login");
+        }
+    }
+
 	public function addErrorMessage($errorMsg) {
         if (!isset($_SESSION['errorMessages'])) {
             $_SESSION['errorMessages'] = [];
@@ -54,4 +75,5 @@ class BaseController {
         }
         array_push($_SESSION['infoMessages'], $infoMsg);
     }
+
 }

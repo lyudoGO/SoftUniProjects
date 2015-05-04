@@ -12,6 +12,15 @@ body {
 header {
 	border: 1px solid black;
 	width: 100%;
+	overflow: hidden;
+}
+
+#loggedin-info {
+	float: right;
+}
+
+#loggedin-info > form {
+	display: inline-block;
 }
 
 #container {
@@ -23,8 +32,29 @@ header {
 	margin-bottom: 10px;
 }
 
-#right {
+#left {
 	float: left;
+	width: 12%;
+	border: 1px solid black;
+}
+
+#left > ul {
+	list-style: none;
+}
+
+#home {
+	float: left;
+	width: 70%;
+	border: 1px solid black;
+}
+
+#home > ul {
+	display: -webkit-inline-box;
+	list-style: none;
+}
+
+#right {
+	float: right;
 	width: 12%;
 	border: 1px solid black;
 }
@@ -33,19 +63,24 @@ header {
 	list-style: none;
 }
 
-#home {
-	float: right;
-	width: 87%;
-	border: 1px solid black;
+.info-messages {
+	background-color: green;
 }
 
-#home > ul {
-	display: inline-block;
-	list-style: none;
+.error-messages {
+	background-color: red;
 }
 
 footer {
 	float: left;
 	border: 1px solid black;
 	width: 100%;
+}
+
+#home > table {
+	border-collapse: collapse;
+}
+
+#home > table, td, th {
+    border: 1px solid black;
 }

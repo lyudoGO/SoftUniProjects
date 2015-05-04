@@ -8,18 +8,54 @@ class FilesController extends BaseController {
 	}
 
 	public function index(){
+		$this->authorize();
 		$files = $this->model->find();
 		$this->templateFile .= 'index.php';
 		include_once $this->layout;
 	}
 
 	public function view($id) {
+		$this->authorize();
 		$files = $this->model->get($id);
 		$this->templateFile .= 'index.php';
 		include_once $this->layout;
 	}
 
-	public function upload($song_id) {
+	public function download($songId) {
+		$this->authorize();
+		$file = $this->model->findBySongId($songId);
+
+        if($file) {
+            header("Content-Type: ". $file['mime']);
+            header("Content-Length: ". $file['size']);
+            header("Content-Disposition: attachment; filename=". $file['name']);
+
+        } else {
+        	$this->addErrorMessage("Error!No file exists for this song.");
+        	$this->redirect('songs');
+        }
+	}
+
+	public function listen($songId) {
+		$this->authorize();
+		$file = $this->model->findBySongId($songId);
+
+		if ($file) {
+			$uploadDir = DEFAULT_ROOT_DIR . '\\files\\';
+			$uploadFile = $uploadDir . basename($file['name']);
+			file_put_contents($uploadFile, $file['data']);
+			
+			$this->templateFile .= 'listen.php';
+			include_once $this->layout;
+
+		} else {
+			$this->addErrorMessage("Error!No file for this song.");
+			$this->redirect('songs');
+		}
+	}
+
+	public function upload($songId) {
+		$this->authorize();
 		$this->templateFile .= 'upload.php';
 		include_once $this->layout;
 
@@ -31,19 +67,9 @@ class FilesController extends BaseController {
 					'size' => intval($_FILES['uploaded-file']['size']),
 					'mime' => $_FILES['uploaded-file']['type'],
 					'data' => file_get_contents($_FILES['uploaded-file']['tmp_name']),
-					'song_id' => $song_id
+					'song_id' => $songId
 				);
-			/*	$uploaddir = 'C:/xampp/htdocs/albums/views/files/';
-			   $file = basename($_FILES['uploaded-file']['name']);
-			   $uploadfile = $uploaddir . $file;*/
-			
-			   
-			
-	/*		   if (move_uploaded_file($_FILES['uploaded-file']['tmp_name'], $uploadfile)) {
-			   		echo "File uploaded";
-			   } else {
-			   		echo "Cannot upload";
-			   }*/
+
 				if ($this->model->create($pairs)) {
 		            $this->addInfoMessage("File uploaded.");
 		            $this->redirect('files');
@@ -57,6 +83,7 @@ class FilesController extends BaseController {
 	}
 
 	public function delete($id) {
+		$this->authorize();
 		if ($this->model->delete($id)) {
 			$this->addInfoMessage("File deleted.");
             $this->redirect('files');

@@ -5,28 +5,36 @@ class GenresController extends BaseController {
 
 	public function __construct(){
 		parent::__construct(get_class(), 'Genre', '/views/genres/');
+			$this->page = PAGE_START;
+			$this->pageSize = PAGE_SIZE;
 	}
 
-	public function index(){
-		$genres = $this->model->find();
+	public function index($params = null){
+		$this->authorize();
+		if ($params != null) {
+			$this->page = intval($params) <= PAGE_START ? PAGE_START : intval($params);
+		} 
+		
+		$from = ($this->page - 1) * $this->pageSize;
+		
+		$songs = $this->model->find();
+		$genres = $this->model->find(array('limit' => $from . ', ' . $this->pageSize));
+		
 		$this->templateFile .= 'index.php';
 		include_once $this->layout;
 	}
 
 	public function view($id) {
-		$genres = $this->model->find( array(
-			'columns' => 'g.id, g.name, s.id, s.name, s.artist, s.duration, s.likes, s.dislikes',
-			'g' => '',
-			'JOIN' => 'songs',
-			's' => '',
-			'on' => 's.genre_id = g.id',
-			'where' => 'g.id=' . $id
-			));   
+		$this->authorize();
+		$genre = $this->model->get($id);
+		$songs = $this->model->getWithSongs($id);
+
 		$this->templateFile .= 'view.php';    
 		include_once $this->layout;
 	}
 
 	public function create() {
+		$this->authorize();
 		$this->templateFile .= 'create.php';
 		include_once $this->layout;
 
@@ -42,6 +50,7 @@ class GenresController extends BaseController {
 	}
 
 	public function delete($id) {
+		$this->authorize();
 		if ($this->model->delete($id)) {
 			$this->addInfoMessage("Genre deleted.");
             $this->redirect('genres');
@@ -51,6 +60,7 @@ class GenresController extends BaseController {
 	}
 
 	public function edit($id) {
+		$this->authorize();
 		$genre = $this->model->get($id);
 		$model = $genre[0];
 		$this->templateFile .= 'edit.php';

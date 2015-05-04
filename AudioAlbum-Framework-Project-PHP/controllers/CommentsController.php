@@ -5,28 +5,42 @@ class CommentsController extends BaseController {
 
 	public function __construct(){
 		parent::__construct(get_class(), 'Comment', 'views\\comments\\');
+			$this->page = PAGE_START;
+			$this->pageSize = PAGE_SIZE;
 	}
 
-	public function index(){
-		$comments = $this->model->find();
+	public function index($params = null){
+		$this->authorize();
+		if ($params != null) {
+			$this->page = intval($params) <= PAGE_START ? PAGE_START : intval($params);
+		} 
+		
+		$from = ($this->page - 1) * $this->pageSize;
+		
+		$songs = $this->model->find();
+		$comments = $this->model->find(array('limit' => $from . ', ' . $this->pageSize));
+		
 		$this->templateFile .= 'index.php';
 		include_once $this->layout;
 	}
 
 	public function view($id) {
+		$this->authorize();
 		$comments = $this->model->get($id);
 		$this->templateFile .= 'view.php';
 		include_once $this->layout;
 	}
 
 	public function playlist($playlist_id) {
+		$this->authorize();
 		$this->templateFile .= 'add_to_playlist.php';
 		include_once $this->layout;
 
 		if (isset($_POST['comment-text'])) {
 			$pairs = array(
 				'text' => $_POST['comment-text'],
-				'playlist_id' => $playlist_id
+				'playlist_id' => $playlist_id,
+				'user_id' => $_SESSION['user_id']
 			);
 			if ($this->model->create($pairs)) {
 	            $this->addInfoMessage("Comment added.");
@@ -38,13 +52,15 @@ class CommentsController extends BaseController {
 	}
 
 	public function song($song_id) {
+		$this->authorize();
 		$this->templateFile .= 'add_to_song.php';
 		include_once $this->layout;
 
 		if (isset($_POST['comment-text'])) {
 			$pairs = array(
 				'text' => $_POST['comment-text'],
-				'song_id' => $song_id
+				'song_id' => $song_id,
+				'user_id' => $_SESSION['user_id']
 			);
 			if ($this->model->create($pairs)) {
 	            $this->addInfoMessage("Comment added.");
@@ -56,6 +72,7 @@ class CommentsController extends BaseController {
 	}
 
 	public function delete($id) {
+		$this->authorize();
 		$this->model->setForeignKey();
 		if ($this->model->delete($id)) {
 			$this->model->setForeignKey();
@@ -67,6 +84,7 @@ class CommentsController extends BaseController {
 	}
 
 	public function edit($id) {
+		$this->authorize();
 		$comment = $this->model->get($id);
 		$model = $comment[0];
 		$this->templateFile .= 'edit.php';
