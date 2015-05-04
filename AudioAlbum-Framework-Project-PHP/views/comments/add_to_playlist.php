@@ -4,6 +4,6 @@
 <form method="post" action="/albums/comments/playlist/<?= $playlist_id ?>">
     Comment: <textarea rows="4" cols="50" name="comment-text" autofocus></textarea><br/>
     <input type="submit" value="Add Comment">
-    <a href="/albums/playlists">[Cancel]</a>
+    <a href="/albums/playlists/view/<?= $playlist_id ?>">[Cancel]</a>
 </form>
 <?php } ?>

@@ -1,5 +1,6 @@
 <!-- Front Controller Pattern -->
 <?php
+session_set_cookie_params(1800, "/");
 session_start();
 
 include_once 'includes/config.php';
@@ -23,7 +24,7 @@ $parameters = array();
 if (!empty($request)) {
 	if (strpos($request, $requestHome) === 0) {
 		$request = substr($request, strlen($requestHome));
-		$components = explode('/', $request, 4);
+		$components = explode('/', $request);
 
 		if (count($components) > 1) {
 			$controllerName = $components[1];
@@ -32,7 +33,7 @@ if (!empty($request)) {
 			}
 
 			if (isset($components[3])) {
-				$parameters = $components[3];
+				$parameters = array_splice($components, 3);
 			}
 		}
 	}
@@ -50,7 +51,7 @@ if (isset($controllerName) && file_exists('controllers/' . ucfirst($controllerNa
 
 	// Call method and object
 	if (method_exists($controller, $methodName)) {
-		call_user_func_array(array($controller, $methodName), array($parameters));
+		call_user_func_array(array($controller, $methodName), $parameters);
 	} else {
 		call_user_func_array(array($controller, 'index'), array());
 	}

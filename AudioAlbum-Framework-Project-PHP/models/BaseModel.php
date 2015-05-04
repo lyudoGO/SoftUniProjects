@@ -19,7 +19,7 @@ class BaseModel {
 		$dbInstance = \Includes\Database::getInstance();
 		$this->db = $dbInstance::getDb();
 		if ($this->db->connect_errno) {
-			die('Cannot connect to database');
+			die('Cannot connect to database.Error: ' . mysqli_connect_errno());
 		}
 	}
 
@@ -48,7 +48,7 @@ class BaseModel {
 		$resultSet = $this->db->query($query);
 		
 		$results = $this->processResults($resultSet);
-		var_dump($resultSet);
+
 		return $results;
 	}
 
@@ -96,7 +96,7 @@ class BaseModel {
 		return $this->db->affected_rows > 0;
 	}
 
-	protected function processResults($resultSet) {
+	public function processResults($resultSet) {
 		$results = array();
 		
 		if(!empty($resultSet) && $resultSet->num_rows > 0) {
