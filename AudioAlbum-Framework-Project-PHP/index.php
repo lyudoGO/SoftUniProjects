@@ -1,5 +1,8 @@
 <!-- Front Controller Pattern -->
 <?php
+use \Controllers\BaseController;
+use \Controllers\HomeController;
+
 session_set_cookie_params(1800, "/");
 session_start();
 
@@ -11,7 +14,7 @@ include_once 'controllers/BaseController.php';
 define('DEFAULT_ROOT_DIR', dirname(__FILE__) . '\\');
 define('DEFAULT_ROOT_PATH', basename(dirname(__FILE__)));
 
-$baseController = new \Controllers\BaseController();
+$baseController = new BaseController();
 
 // Extract the $controller, $method and $params from the HTTP request
 $requestHome = '/' . DEFAULT_ROOT_PATH;
@@ -58,6 +61,6 @@ if (isset($controllerName) && file_exists('controllers/' . ucfirst($controllerNa
 
 } else {
 	include_once 'controllers/HomeController.php';
-	$homeController = new \Controllers\HomeController();
+	$homeController = new HomeController();
 	$homeController->index();
 }
