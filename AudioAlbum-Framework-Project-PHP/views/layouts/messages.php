@@ -1,15 +1,17 @@
 <?php
 
-renderMessages('infoMessages', 'info-messages');
-renderMessages('errorMessages', 'error-messages');
+renderMessages('infoMessages', 'alert-success');
+renderMessages('errorMessages', 'alert-danger');
 
 function renderMessages($messagesKey, $cssClass) {
     if (isset($_SESSION[$messagesKey]) && count($_SESSION[$messagesKey]) > 0) {
-        echo '<ul class="' . $cssClass . '">';
+    	echo '<div class="alert ' . $cssClass . '">';
+    	echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+        echo '<ul>';
         foreach ($_SESSION[$messagesKey] as $msg) {
             echo "<li>" . htmlspecialchars($msg) . '</li>';
         }
-        echo '</ul>';
+        echo '</ul></div>';
     }
     $_SESSION[$messagesKey] = [];
 }

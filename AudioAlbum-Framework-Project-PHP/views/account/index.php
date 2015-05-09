@@ -1,18 +1,37 @@
-<aside id="right">
-	<h4>Top 5 playlists</h4>
-	<ul>
-		<?php foreach ($playlists as $playlist) :?>
-			<li>
-				<a href="/albums/playlists/view/<?=$playlist['id'] ?>"><?= htmlspecialchars($playlist['name']); ?></a>
-				<span></span>
-			</li>
-		<?php endforeach; ?>
-	</ul>
-</aside>
 <section id="home">
-	<h2>Home page</h2>
-	<ul>
-		<li><a href="/albums/account/login">[Login]</a></li>
-		<li><a href="/albums/account/register">[Register]</a></li>
-	</ul>
+	<form method="post" action="/albums/account/edit" class="form-horizontal">
+	  <fieldset>
+	    <legend>Edit Account</legend>
+	    <div class="form-group">
+			<label for="inputUsername" class="col-lg-2 control-label">Username</label>
+			<div class="col-lg-6">
+				<input type="text" class="form-control input-sm" id="inputUsername" placeholder="Username" name="username" value="<?= $user['username']; ?>" required>
+			</div>
+	    </div>
+	    <div class="form-group">
+			<label for="inputPassword" class="col-lg-2 control-label">Password</label>
+			<div class="col-lg-6">
+				<input type="password" class="form-control input-sm" id="inputPassword" placeholder="Password" name="password" required>
+			</div>
+	    </div>
+	    <div class="form-group">
+			<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+			<div class="col-lg-6">
+				<input type="text" class="form-control input-sm" id="inputEmail" placeholder="Email" name="email" value="<?= $user['email']; ?>" />
+			</div>
+	    </div>
+	    <div class="form-group">
+	      <label for="inputFullname" class="col-lg-2 control-label">Fullname</label>
+			<div class="col-lg-6">
+				<input type="text" class="form-control input-sm" id="inputFullname" placeholder="Fullname" name="fullname" value="<?= $user['fullname']; ?>" />
+			</div>
+	    </div>
+	    <div class="form-group">
+			<div class="col-lg-6 col-lg-offset-2">
+				<button type="submit" class="btn-sm btn btn-primary">Edit account</button>
+				<a href="/albums/home" class="btn-sm btn btn-default" type="reset" role="button">Cancel</a>
+			</div>
+	    </div>
+	  </fieldset>
+	</form>
 </section>
