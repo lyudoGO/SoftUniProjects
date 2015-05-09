@@ -7,7 +7,7 @@ class GenreModel extends BaseModel {
 		parent::__construct(array('table' => 'genres'));
 	}
 
-	public function getWithSongs($id) {
+/*	public function getWithSongs($id) {
 		$statement = $this->db->prepare( "SELECT g.id, g.name, s.id as song_id, s.name as song_name
 											FROM genres g 
 											JOIN songs s ON s.genre_id = g.id 
@@ -21,5 +21,5 @@ class GenreModel extends BaseModel {
 		$result = $this->processResults($resultSet);
 
 		return $result;
-	}
+	}*/
 }

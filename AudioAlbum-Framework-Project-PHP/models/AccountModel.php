@@ -19,6 +19,7 @@ class AccountModel extends BaseModel {
 				'username' => $username,
 				'password' => $hashPassword,
 		);
+		
 		if (!empty($fullname)) {
 			$pairs['fullname'] = $fullname;
 		}
@@ -35,9 +36,12 @@ class AccountModel extends BaseModel {
 		$result = $this->find(array('where' => 'username = "' . $username . '"'));
 
 		if (password_verify($password, $result[0]['password'])) {
-			$_SESSION['username'] = $result[0]['username'];
 			$_SESSION['user_id'] = $result[0]['id'];
+			$_SESSION['username'] = $result[0]['username'];
+			$_SESSION['fullname'] = $result[0]['fullname'];
+			$_SESSION['email'] = $result[0]['email'];
 			$_SESSION['is_admin'] = $result[0]['is_admin'];
+
 			return true;
 		}
 
@@ -50,8 +54,11 @@ class AccountModel extends BaseModel {
 		}
 		
 		return array( 
+				'user_id' => $_SESSION['user_id'],
 				'username' => $_SESSION['username'], 
-				'user_id' => $_SESSION['user_id'] 
+				'fullname' => $_SESSION['fullname'], 
+				'email' => $_SESSION['email'], 
+				'is_admin' => $_SESSION['is_admin']
 		);
 		
 	}

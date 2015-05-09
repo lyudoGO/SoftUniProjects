@@ -1,6 +1,8 @@
 <?php
 namespace Models;
 
+use \Includes\Database;
+
 class BaseModel {
 
 	protected $table;
@@ -16,7 +18,7 @@ class BaseModel {
 		
 		$this->table = $table;
 
-		$dbInstance = \Includes\Database::getInstance();
+		$dbInstance = Database::getInstance();
 		$this->db = $dbInstance::getDb();
 		if ($this->db->connect_errno) {
 			die('Cannot connect to database.Error: ' . mysqli_connect_errno());
@@ -45,7 +47,7 @@ class BaseModel {
 			}
 		}
 
-		$resultSet = $this->db->query($query);
+		$resultSet = $this->db->query($query);//var_dump($query);
 		
 		$results = $this->processResults($resultSet);
 
@@ -91,7 +93,7 @@ class BaseModel {
 		}
 		$query = rtrim($query, ",");
 		$query .= " WHERE id = " . $model['id'];
-		$this->db->query($query);
+		$this->db->query($query);//var_dump($query);
 		
 		return $this->db->affected_rows > 0;
 	}
