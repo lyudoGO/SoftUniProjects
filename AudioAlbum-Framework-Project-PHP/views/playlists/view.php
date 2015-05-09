@@ -1,51 +1,77 @@
 <section id="home">
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Likes</th>
-			<th>Dislikes</th>
-		</tr>
-		<?php foreach ($playlists as $playlist) :?>
-			<tr>
-				<td><?= $playlist['id']; ?></td>
-				<td><?= htmlspecialchars($playlist['name']); ?></td>
-				<td><?= htmlspecialchars($playlist['likes']); ?></td>
-				<td><?= htmlspecialchars($playlist['dislikes']); ?></td>
-				<td><a href="/albums/comments/playlist/<?=$playlist['id'] ?>">[Add Comment]</a></td>
-				<td><a href="/albums/playlists/edit/<?=$playlist['id'] ?>">[Edit]</a></td>
-				<td><a href="/albums/playlists/delete/<?=$playlist['id'] ?>">[Delete]</a></td>
-			</tr>
-		<?php endforeach; ?>
-	</table>
+	<div class="panel panel-primary">
+	    <div class="panel-heading">
+	    	<h2 class="panel-title"><strong>Playlist: </strong><?= htmlspecialchars($playlists[0]['name']); ?></h2>
+		</div>
+	    <div class="panel-body">
+			<div class="row">
+				<div class="col-md-2">
+					<span><a class="btn-xs btn btn-primary" href="/albums/comments/playlist/<?=$playlists[0]['id'] ?>">Add Comment</a></span>
+				</div>
+				<div class="col-md-1">
+					<form method="post" action="/albums/playlists/like">
+						<input type="hidden" name="playlist-id" value="<?=$playlists[0]['id'] ?>">
+						<input class="btn-xs btn btn-primary" type="submit" value="Like">
+					</form>
+				</div>
+				<div class="col-md-1">
+					<form method="post" action="/albums/playlists/dislike">
+						<input type="hidden" name="playlist-id" value="<?=$playlists[0]['id'] ?>">
+						<input class="btn-xs btn btn-primary" type="submit" value="Dislike">
+					</form>
+				</div>
+				<div class="col-md-6">
+					<form method="post" action="/albums/playlists/addsong">
+					    <label for="addSong">Add song to playlist</label>
+					    <select name="songs">
+					    	<?php foreach ($songsToAdd as $song) :?>
+								<option id="addSong" value="<?= htmlspecialchars($song['id']); ?>"><?= htmlspecialchars($song['name']); ?></option>
+							<?php endforeach; ?>
+						</select>
+						<input type="hidden" name="playlist-id" value="<?=$playlists[0]['id'] ?>">
+						<input class="btn-xs btn btn-primary" type="submit" value="Add song">	
+					</form>					
+				</div>
+				<span class="badge glyphicon glyphicon-thumbs-up"><?= htmlspecialchars($playlists[0]['likes']); ?></span>
+				<span class="badge glyphicon glyphicon-thumbs-down"><?= htmlspecialchars($playlists[0]['dislikes']); ?></span>
+			</div>
+		</div>
+	</div>
 	<h4>Comments</h4>
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Comment text</th>
-			<th>Username</th>
-		</tr>
-		<?php foreach ($comments as $comment) :?>
-			<tr>
-				<td><?= $comment['comment_id']; ?></td>
-				<td><?= htmlspecialchars($comment['text']); ?></td>
-				<td><?= htmlspecialchars($comment['username']); ?></td>
-				<td><a href="/albums/comments/view/<?= $comment['comment_id'] ?>">[View]</a></td>
-			</tr>
-		<?php endforeach; ?>
-	</table>
-
-	<ul>
-		<li><a href="/albums/playlists">[Cancel]</a></li>
-	</ul>
+	<?php foreach ($playlists as $playlist) :?>
+	<div class="panel panel-info">
+		<div class="panel-heading text-left">
+			<h3 class="panel-title"><strong>user: </strong><?= htmlspecialchars($playlist['username']); ?></h3>
+		</div>
+		<div class="panel-body text-left">
+			<?= htmlspecialchars($playlist['text']); ?>
+			<a class="btn-xs btn btn-info" href="/albums/comments/view/<?= $playlist['comment_id'] ?>">View</a>
+		</div>
+	</div>
+	<?php endforeach; ?>
+	<p><a class="btn-sm btn btn-primary" href="/albums/playlists">Cancel</a></p>
 </section>
-<aside id="right">
-	<h4>Song from playlist</h4>
-	<ul>
+<div class="col-md-4">
+	<?php if ($this->isAdmin()) :?>
+	<aside id="admin-panel">
+		<div class="panel panel-default">
+			<div class="panel-heading">Admin panel for Playlist</div>
+			<div class="panel-body">
+				<a class="btn btn-primary btn-sm" href="/albums/playlists/edit/<?=$playlists[0]['id']; ?>">Edit</a>
+				<a class="btn btn-primary btn-sm" href="/albums/playlists/delete/<?=$playlists[0]['id']; ?>">Delete</a>
+			</div>
+		</div>
+	</aside>
+	<?php endif; ?>
+	<aside id="songs-list">
+		<div class="panel-heading">Songs from <strong><?= htmlspecialchars($playlists[0]['name']); ?></strong></div>
 		<?php foreach ($songs as $song) :?>
-			<li>
-				<a href="/albums/songs/view/<?= $song['song_id'] ?>"><?= htmlspecialchars($song['song_name']); ?></a>
-			</li>
+			<ul class="list-group">
+				<li class="list-group-item"><span><?= htmlspecialchars($song['song_name']); ?></span>
+					<span><a class="btn-xs btn btn-info" href="/albums/files/download/<?= $song['song_id'] ?>">Download</a></span>
+					<span><a class="btn-xs btn btn-info" href="/albums/files/listen/<?= $song['song_id'] ?>">Listen</a></span>
+				</li>
+			</ul>
 		<?php endforeach; ?>
-	</ul>
-</aside>
+	</aside>	
+</div>
