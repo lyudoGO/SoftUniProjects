@@ -9,9 +9,9 @@
 			<div class="panel panel-info">
 				<div class="panel-body text-left">
 					<strong><?= htmlspecialchars($genre['song_name']); ?></strong>
-					<?php if($genre['song_id']) { 
-						echo '<a class="btn-xs btn btn-info" href="/albums/songs/view/<?= $genre["song_id"]; ?>View</a>';
-					} else { echo "No songs"; } ?>
+					<?php if($genre['song_id']) { ?>
+						<a class="btn-xs btn btn-info" href="/albums/songs/view/<?= $genre["song_id"]; ?>">View</a>
+					<?php } else { echo "No songs"; } ?>
 				</div>
 			</div>
 			<?php endforeach; ?>

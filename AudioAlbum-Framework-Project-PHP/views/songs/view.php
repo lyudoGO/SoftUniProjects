@@ -11,29 +11,29 @@
 	    <div class="panel-body">
 			<div class="row">
 				<div class="col-md-2">
-					<span><a class="btn-xs btn btn-primary" href="/albums/comments/song/<?=$song['id']; ?>">Add Comment</a></span>
+					<span><a class="btn-xs btn btn-primary" href="/albums/comments/song/<?= $song['id']; ?>">Add Comment</a></span>
 				</div>
 				<div class="col-md-1">
 					<form method="post" action="/albums/songs/like">
-						<input type="hidden" name="playlist-id" value="<?=$song['id']; ?>">
+						<input type="hidden" name="song-id" value="<?= $song['id']; ?>">
 						<input class="btn-xs btn btn-primary" type="submit" value="Like">
 					</form>
 				</div>
 				<div class="col-md-1">
 					<form method="post" action="/albums/songs/dislike">
-						<input type="hidden" name="playlist-id" value="<?=$song['id']; ?>">
+						<input type="hidden" name="song-id" value="<?=$song['id']; ?>">
 						<input class="btn-xs btn btn-primary" type="submit" value="Dislike">
 					</form>
 				</div>
 				<div class="col-md-6">
 					<form method="post" action="/albums/songs/addplaylist">
 					    <label for="addSong">Add to playlist</label>
-					    <select name="songs">
+					    <select name="playlist-id">
 					    	<?php foreach ($playlists as $playlist) :?>
 								<option id="addSong" value="<?= htmlspecialchars($playlist['id']); ?>"><?= htmlspecialchars($playlist['name']); ?></option>
 							<?php endforeach; ?>
 						</select>
-						<input type="hidden" name="song-id" value="<?=$song['id']; ?>">
+						<input type="hidden" name="song-id" value="<?= $song['id']; ?>">
 						<input class="btn-xs btn btn-primary" type="submit" value="Add to playlist">	
 					</form>					
 				</div>
@@ -42,8 +42,8 @@
 			</div>
 		</div>
 		<p>
-			<a class="btn-sm btn btn-primary" href="/albums/files/upload/<?=$song['id'] ?>">Upload file</a>
-			<a class="btn-sm btn btn-primary" href="/albums/files/download/<?=$song['id'] ?>">Download file</a>
+			<a class="btn-sm btn btn-primary" href="/albums/files/upload/<?= $song['id'] ?>">Upload file</a>
+			<a class="btn-sm btn btn-primary" href="/albums/files/download/<?= $song['id'] ?>">Download file</a>
 		</p>
 	</div>
 	<?php if ($comments) :?>
@@ -68,8 +68,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Admin panel for Songs</div>
 			<div class="panel-body">
-				<a class="btn btn-primary btn-sm" href="/albums/songs/edit/<?=$song['id'] ?>">Edit</a>
-				<a class="btn btn-primary btn-sm" href="/albums/songs/delete/<?=$song['id'] ?>">Delete</a>
+				<a class="btn btn-primary btn-sm" href="/albums/songs/edit/<?= $song['id'] ?>">Edit</a>
+				<a class="btn btn-primary btn-sm" href="/albums/songs/delete/<?= $song['id'] ?>">Delete</a>
 			</div>
 		</div>
 	</aside>

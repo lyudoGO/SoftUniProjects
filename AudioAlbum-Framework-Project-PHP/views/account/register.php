@@ -29,7 +29,7 @@
 	    <div class="form-group">
 			<div class="col-lg-4 col-lg-offset-2">
 				<button type="submit" class="btn-sm btn btn-primary">Register</button>
-				<a href="/albums/home" class="btn-sm btn btn-default" type="reset" role="button">Cancel</a>
+				<a href="/albums/home" class="btn-sm btn btn-primary" type="reset" role="button">Cancel</a>
 			</div>
 	    </div>
 	  </fieldset>

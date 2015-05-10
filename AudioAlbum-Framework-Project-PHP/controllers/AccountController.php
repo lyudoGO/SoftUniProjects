@@ -130,7 +130,7 @@ class AccountController extends BaseController {
 				$this->addInfoMessage("User account edited.");
             	$this->redirect('home');
 			} else {
-	            $this->addErrorMessage("Cannot edit user account.");var_dump($model['password']);die;
+	            $this->addErrorMessage("Cannot edit user account.");
 	            $this->redirect('home');
 	        }
 		}

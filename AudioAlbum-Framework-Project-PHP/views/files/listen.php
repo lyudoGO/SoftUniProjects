@@ -5,7 +5,7 @@
 	    </div>
 		<div class="panel-body">
 			<audio controls autoplay>
-			  	<source src="<?php echo '/albums/download/' . $file['name']; ?>" type="audio/mpeg">
+			  	<source src="" type="audio/mpeg">
 				<p>Your browser does not support the audio element.</p>
 			</audio>
 		</div>

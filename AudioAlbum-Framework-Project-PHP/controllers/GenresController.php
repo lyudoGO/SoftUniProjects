@@ -64,7 +64,7 @@ class GenresController extends BaseController {
 									'where' => 'g.id = ' . $id,
 									'order by' => 's.name'));
 		
-		$this->templateFile .= 'view.php';    
+		$this->templateFile .= 'view.php';  
 		include_once $this->layout;
 	}
 

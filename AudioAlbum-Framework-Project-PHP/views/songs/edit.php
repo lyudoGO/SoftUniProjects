@@ -36,6 +36,7 @@
           <label for="select" class="col-md-2 control-label">Genre Name</label>
           <div class="col-md-6">
             <select class="form-control input-sm" id="select" name="genres">
+              <option value=""></option>
                 <?php foreach ($genres as $genre) :?>
                     <option value="<?= htmlspecialchars($genre['id']); ?>"><?= htmlspecialchars($genre['name']); ?></option>
                 <?php endforeach; ?>
@@ -51,24 +52,3 @@
       </fieldset>
     </form>
 <?php } ?>
-
-<!-- <h3>Edit Song</h3>
-
-<?php if ($model) { ?>
-<form method="post" action="/albums/songs/edit/<?= $model['id'] ?>">
-    Song name: <input type="text" name="song-name" value="<?= htmlspecialchars($model['name']) ?>"/><br/>
-    Artist name: <input type="text" name="artist" value="<?= htmlspecialchars($model['artist']) ?>"/><br/>
-    Duration: <input type="text" name="duration" value="<?= htmlspecialchars($model['duration']) ?>"/><br/>
-    Likes: <input type="text" name="likes" value="<?= htmlspecialchars($model['likes']) ?>"/><br/>
-    Dislikes: <input type="text" name="dislikes" value="<?= htmlspecialchars($model['dislikes']) ?>"/><br/>
-    Genres:
-    <select name="genres">
-        <?php foreach ($genres as $genre) :?>
-            <option value="<?= htmlspecialchars($genre['id']); ?>"><?= htmlspecialchars($genre['name']); ?></option>
-        <?php endforeach; ?>
-    </select></br>
-    
-    <input type="submit" value="Edit Song Attributs">
-    <a href="/albums/songs">[Cancel]</a>
-</form>
-<?php } ?> -->

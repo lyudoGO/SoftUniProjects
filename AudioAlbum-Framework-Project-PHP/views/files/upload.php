@@ -1,5 +1,5 @@
 <section id="home">
-<?php if ($songId) { ?>
+
 	<form method="post" action="/albums/files/upload/<?= $songId ?>" enctype="multipart/form-data" class="form-horizontal">
 	  <fieldset>
 	    <legend>Upload Song File</legend>
@@ -16,5 +16,5 @@
 	    </div>
 	  </fieldset>
 	</form>
-<?php } ?>
+
 </section>

@@ -111,18 +111,27 @@ class SongsController extends BaseController {
 		include_once $this->layout;
 
 		if ($this->isPost()) {
-			$pairs = array(
-				'name' => $_POST['song-name'],
-				'artist' => $_POST['artist-name'],
-				'duration' => $_POST['duration'],
-				'genre_id' => $_POST['genres']
-			);
+			if (!empty($_POST['genres'])) {
+				$pairs = array(
+					'name' => $_POST['song-name'],
+					'artist' => $_POST['artist-name'],
+					'duration' => $_POST['duration'],
+					'genre_id' => $_POST['genres']
+				);
+			} else {
+				$pairs = array(
+					'name' => $_POST['song-name'],
+					'artist' => $_POST['artist-name'],
+					'duration' => $_POST['duration']
+				);
+			}
+
 			if ($this->model->create($pairs)) {
 				$result = $this->model->find(array('where' => 'name = ' . $pairs['name']));
 				$songId = $result[0]['id'];
-				array_push($this->parametars, $songId);
+				array_push($this->parameters, $songId);
 	            $this->addInfoMessage("Song created.");
-	            $this->redirect('songs', 'view', $this->parametars);
+	            $this->redirect('songs', 'view', $this->parameters);
 	        } else {
 	            $this->addErrorMessage("Cannot create song.");
 	            $this->redirect('songs');
@@ -164,10 +173,16 @@ class SongsController extends BaseController {
 		include_once $this->layout;
 	
 		if ($this->isPost()) {
-			$model['name'] = $_POST['song-name'];
-			$model['artist'] = $_POST['artist'];
-			$model['duration'] = $_POST['duration'];
-			$model['genre_id'] = $_POST['genres'];
+			if (!empty($_POST['genres'])) {
+				$model['name'] = $_POST['song-name'];
+				$model['artist'] = $_POST['artist'];
+				$model['duration'] = $_POST['duration'];
+				$model['genre_id'] = $_POST['genres'];
+			} else {
+				$model['name'] = $_POST['song-name'];
+				$model['artist'] = $_POST['artist'];
+				$model['duration'] = $_POST['duration'];
+			}
 
 			if ($this->model->update($model)) {
 				$this->addInfoMessage("Song edited.");
@@ -222,7 +237,7 @@ class SongsController extends BaseController {
 	
 		if ($this->isPost()) {
 			$songId = $_POST['song-id'];
-			$playlistId = $_POST['playlist'];
+			$playlistId = $_POST['playlist-id'];
 
 			if ($this->model->addToPlaylist($songId, $playlistId)) {
 				$this->addInfoMessage("You are adding to playlist.");
@@ -234,7 +249,6 @@ class SongsController extends BaseController {
 	        }
 		}
 	}
-
 /*	protected function genresToArray($results) {
 		$genres = array();
 		if ($results) {

@@ -23,6 +23,7 @@
           <label for="select" class="col-lg-2 control-label">Genre Name</label>
           <div class="col-lg-4">
             <select class="form-control input-sm" id="select" name="genres">
+                 <option value=""></option>
                 <?php foreach ($genres as $genre) :?>
                     <option value="<?= htmlspecialchars($genre['id']); ?>"><?= htmlspecialchars($genre['name']); ?></option>
                 <?php endforeach; ?>
@@ -32,7 +33,7 @@
         <div class="form-group form-group-sm">
           <div class="col-lg-4 col-lg-offset-2">
             <button type="submit" class="btn btn-sm btn-primary">Create</button>
-            <a href="/albums/songs" class="btn btn-sm btn-default" type="reset" role="button">Cancel</a>
+            <a href="/albums/songs" class="btn btn-sm btn-primary" type="reset" role="button">Cancel</a>
           </div>
         </div>
       </fieldset>

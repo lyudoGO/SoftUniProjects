@@ -4,7 +4,7 @@ namespace Controllers;
 class FilesController extends BaseController {
 
 	public function __construct(){
-		parent::__construct(get_class(), 'File', '/views/files/');
+		parent::__construct(get_class(), 'File', 'views/files/');
 
 		$this->activeClass = 'files';
 	}
@@ -57,10 +57,15 @@ class FilesController extends BaseController {
 		$file = $this->model->findBySongId($songId);
 
 		if ($file) {
-			$uploadDir = DEFAULT_ROOT_DIR . '\\download\\';
-			$uploadFile = $uploadDir . basename($file['name']);
-			file_put_contents($uploadFile, $file['data']);
-			
+			header("Content-Type: ". $file['mime']);
+            header("Content-Length: ". $file['size']);
+            echo $file['data'];
+ 			//$uploadDir = DEFAULT_ROOT_DIR . 'upload/';
+			//$uploadFile = $uploadDir . basename($file['name']);
+			//file_put_contents($uploadFile, $file['data']);var_dump($uploadFile);
+
+            //$uploadFile = $file['song_url'];
+
 			$this->templateFile .= 'listen.php';
 			include_once $this->layout;
 
@@ -90,13 +95,26 @@ class FilesController extends BaseController {
 		            $this->addInfoMessage("File type should be " . FILE_TYPE);
 		            $this->redirect('songs', 'view', $this->parameters);
 				}
+
+				$uploadDir = DEFAULT_ROOT_DIR . 'upload/';
+				$uploadFile = $uploadDir . basename($_FILES['uploaded-file']['name']);
+
 				$pairs = array(
 					'name' => $_FILES['uploaded-file']['name'],
 					'size' => $size,
 					'mime' => $_FILES['uploaded-file']['type'],
 					'data' => file_get_contents($_FILES['uploaded-file']['tmp_name']),
-					'song_id' => $songId
+					'song_id' => $songId,
+					'song_url' => $uploadFile
 				);
+
+				if (move_uploaded_file($_FILES['uploaded-file']['tmp_name'], $uploadFile)) {
+				    $this->addInfoMessage("File is valid, and was successfully uploaded.");
+					//$this->redirect('songs', 'view', $this->parameters);
+				} else {
+				    $this->addErrorMessage("Error upload file to server.");
+					//$this->redirect('songs', 'view', $this->parameters);
+				}	
 
 				if ($this->model->create($pairs)) {
 		            $this->addInfoMessage("File uploaded.");
@@ -128,3 +146,13 @@ class FilesController extends BaseController {
         }
 	}
 }
+
+/*			header("Content-Type: ". $file['mime']);
+            header("Content-Length: ". $file['size']);*/
+            //header("Content-Disposition: attachment; filename=". $file['name']);
+            //header("Location: " . DEFAULT_ROOT_DIR . '/files/listen/' . $file['id']);
+			//echo $file['data'];
+			//$uploadDir = DEFAULT_ROOT_DIR . 'download/';
+			//$uploadFile = $uploadDir . basename($_FILES['uploaded-file']['name']);
+			//file_put_contents($uploadFile, $file['data']);
+			//$urlListen = DEFAULT_ROOT_DIR . 'upload/' . basename($file['name']);//$file['song_url'];
