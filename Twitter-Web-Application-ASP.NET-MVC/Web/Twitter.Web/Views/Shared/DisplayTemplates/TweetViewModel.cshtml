@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Twitter.Web.Models.TweetViewModel>
+
+@foreach (var tweet in Model)
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <strong>@tweet.Author</strong>
+            <span>@tweet.SendDate</span>
+        </div>
+        <div class="panel-body">@tweet.Text</div>
+        <div class="panel-footer">
+            <a class="btn btn-sm btn-default" href="">Favorite</a>
+            <a class="btn btn-sm btn-default" href="">Retweet</a>
+            <a class="btn btn-sm btn-default" href="">Report</a>
+            <a class="btn btn-sm btn-default" href="">Reply</a>
+            <a class="btn btn-sm btn-default" href="">Share</a>
+        </div>
+    </div>
+}

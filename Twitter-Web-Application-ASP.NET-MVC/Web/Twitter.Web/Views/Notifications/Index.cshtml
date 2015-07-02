@@ -1,0 +1,14 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Twitter.Web.Models.NotificationViewModel>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>List All Notifications</h2>
+
+        @Html.DisplayFor(n => Model, "NotificationViewModel")
+    </div>
+</div>
+<div class="row">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

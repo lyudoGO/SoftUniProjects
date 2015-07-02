@@ -1,0 +1,32 @@
+﻿@model Twitter.Web.Models.UserProfileViewModel
+
+
+<div>
+    <div class="row text-right">
+        <div class="col-md-2 text-center"><p><strong>Tweets</strong></p><span>@Model.Tweets.Count()</span></div>
+        <div class="col-md-2 text-center"><p><strong>Following</strong></p><span>@Model.Followings.Count()</span></div>
+        <div class="col-md-2 text-center"><p><strong>Followers</strong></p><span>@Model.Followers.Count()</span></div>
+        <div class="col-md-2 text-center"><p><strong>Favorites</strong></p><span>@Model.Favorites.Count()</span></div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p><strong>@Model.Fullname</strong></p>
+            <p><em>@Model.UserName</em></p>
+        </div>
+        <div class="col-md-8">
+            @foreach (var tweet in Model.Tweets)
+            {
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <strong>@tweet.Author</strong>
+                        <span>@tweet.SendDate</span>
+                    </div>
+                    <div class="panel-body">@tweet.Text</div>
+                    <div class="panel-footer">
+                        <a class="btn btn-sm btn-default" href="">Retweet</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

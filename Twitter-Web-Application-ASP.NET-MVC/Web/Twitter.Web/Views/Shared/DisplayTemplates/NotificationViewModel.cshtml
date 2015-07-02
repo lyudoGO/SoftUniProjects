@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Twitter.Web.Models.NotificationViewModel>
+
+@foreach (var notification in Model)
+{
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <strong>@notification.UserName</strong>
+            <span>@notification.Date</span>
+        </div>
+        <div class="panel-body">
+            @notification.Content
+        </div>
+    </div>
+}

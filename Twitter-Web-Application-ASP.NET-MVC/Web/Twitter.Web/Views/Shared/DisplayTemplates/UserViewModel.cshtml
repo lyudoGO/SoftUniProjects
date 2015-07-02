@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Twitter.Web.Models.UserViewModel>
+
+@foreach (var user in Model)
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h3><strong>From user:</strong> @user.UserName</h3>
+
+            @foreach (var tweet in user.Tweets)
+            {
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <strong>Send On Date: @tweet.SendDate</strong>
+                    </div>
+                    <div class="panel-body">
+                        @tweet.Text
+                    </div>
+                </div>
+            }
+        </div>
+     </div>
+}

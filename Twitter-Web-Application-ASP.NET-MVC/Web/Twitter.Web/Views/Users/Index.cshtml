@@ -1,0 +1,35 @@
+﻿@model ICollection<Twitter.Web.Models.UserViewModel>
+@{
+    ViewBag.Title = "User Home page";
+}
+
+<h2>List All Tweets from followers</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-primary text-center">
+            @Html.Partial("_CreateTweetPartial", new Twitter.Web.Models.InputTweetModel())
+        </div>
+        
+    </div>
+</div>
+
+@Html.DisplayFor(m => Model, "UserViewModel")
+
+    @*@Html.DisplayFor(u => user, "UserViewModel")
+    <div class="row">
+        <div class="col-md-4">
+            <h3><strong>From user:</strong> @user.UserName</h3>
+
+            @foreach (var tweet in user.Tweets)
+            {
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <strong>Send On Date: @tweet.SendDate</strong>
+                    </div>
+                    <div class="panel-body">
+                        @tweet.Text
+                    </div>
+                </div>
+            }
+        </div>
+    </div>*@
