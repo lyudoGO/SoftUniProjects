@@ -1,0 +1,22 @@
+﻿@model SportSystem.Web.Models.PlayerDetailViewModel
+@{
+    ViewBag.Title = "Player Details";
+}
+<h2 class="text-center">Player details</h2>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p><strong>Name: </strong><em>@Model.Name</em></p>
+            <p><strong>Date Of Birth: </strong><em>@string.Format("{0:dd.MM.yyyy}", Model.BirthDate)</em></p>
+            <p><strong>Height: </strong>@Model.Height</p>
+            @if (Model.TeamId != null)
+            {
+                <p><strong>Team: </strong>@Model.Team.Name</p>
+            }
+            else
+            {
+                <p><strong>Team: </strong>Player has not a team!</p>
+            }
+        </div>
+    </div>
+</div>

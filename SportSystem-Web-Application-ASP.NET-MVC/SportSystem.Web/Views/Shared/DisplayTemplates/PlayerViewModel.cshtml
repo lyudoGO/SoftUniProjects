@@ -1,0 +1,13 @@
+﻿@model SportSystem.Web.Models.PlayerViewModel
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">@Model.Name</h4>
+    </div>
+    <p><em>Born: </em><strong>@string.Format("{0:dd.MM.yyyy}", Model.BirthDate)</strong></p>
+    <p><em>Height: </em><strong>@Model.Height</strong></p>
+    @if (this.User.Identity.IsAuthenticated)
+    {
+        <p>@Html.ActionLink("Details", "Details", "Players", new { id = Model.Id }, new { @class = "btn btn-default" })</p>
+    }   
+</div>

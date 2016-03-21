@@ -1,0 +1,137 @@
+﻿@model SportSystem.Web.Models.MatchDetailViewModel
+@{
+    ViewBag.Title = "Match Details";
+}
+<h2 class="text-center">Match details</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p>
+                    <strong>Home Team: </strong>
+                    <em>@Model.HomeTeam.Name</em>
+                    <strong class="text-success">(Bets: $<span id="home-bet-count">@Model.Bets.Sum(b => b.HomeBet)</span>)</strong>
+                </p>
+                <p>
+                    <strong>Away Team: </strong>
+                    <em>@Model.AwayTeam.Name</em>
+                    <strong class="text-success">(Bets: $<span id="away-bet-count">@Model.Bets.Sum(b => b.AwayBet)</span>)</strong>
+                </p>
+                <p>
+                    <strong>Date: </strong>
+                    <em>@Model.MatchDate</em>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3 class="text-center">Bets:</h3>
+        <div id="home-bet">
+            @using (Ajax.BeginForm("Bet", "Matches", new { id = Model.Id }, new AjaxOptions()
+                            {
+                                HttpMethod = "POST",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "home-bet-count",
+                                OnSuccess = "onBetSuccess"
+                            }, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HomeBet, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.HomeBet, new { @class = "form-control" })
+                    </div>
+                    <input type="submit" class="btn btn-sm btn-primary" value="Bet" />
+                    <div class="col-md-12 pull-left"> 
+                        @Html.ValidationMessageFor(m => m.HomeBet)
+                    </div>
+                </div>
+            }
+        </div>
+        <div id="away-bet">
+            @using (Ajax.BeginForm("Bet", "Matches", new { id = Model.Id }, new AjaxOptions()
+                            {
+                                HttpMethod = "POST",
+                                InsertionMode = InsertionMode.Replace,
+                                UpdateTargetId = "away-bet-count",
+                                OnSuccess = "onBetSuccess"
+                            }, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.AwayBet, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-3">
+                        @Html.TextBoxFor(m => m.AwayBet, new { @class = "form-control" })
+                    </div>
+                    <input type="submit" class="btn btn-sm btn-primary" value="Bet" />
+                    <div class="col-md-12 pull-left"> 
+                        @Html.ValidationMessageFor(m => m.AwayBet)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12" id="comments">
+    <h3>Commnets:</h3>
+    @if (Model.Comments.Any())
+    {
+        @Html.DisplayFor(m => m.Comments)
+    }
+    else
+    {
+        <p class="text-left text-danger" id="no-comments">No commnets!</p>
+    }
+</div>
+
+<div class="col-md-12">
+    @using (Ajax.BeginForm("Add", "Comments", new { MatchId = Model.Id }, new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.InsertAfter,
+            UpdateTargetId = "comments",
+            OnSuccess = "emptyTextareaForm"
+        }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <h4 class="text-center">Add comment</h4>
+        <hr />
+        <div class="form-group">
+            @Html.Label("Comment text", new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextArea("Content", "", 5, 150, new { @class = "form-control", id = "textarea" })
+                @Html.ValidationMessage("Content")
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" class="btn btn-default" value="Add Comment" />
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        function emptyTextareaForm () {
+            document.getElementById("textarea").value = '';
+            document.getElementById("no-comments").value = '';
+        }
+
+        function onVoteSuccess() {
+            var button = document.getElementById("vote-button");
+            button.parentNode.removeChild(button);
+        }
+
+        function onBetSuccess() {
+            document.getElementById("HomeBet").value = '';
+            document.getElementById("AwayBet").value = '';
+        }
+    </script>
+}

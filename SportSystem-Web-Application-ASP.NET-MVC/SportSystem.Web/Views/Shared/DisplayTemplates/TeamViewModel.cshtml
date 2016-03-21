@@ -1,0 +1,25 @@
+﻿@model SportSystem.Web.Models.TeamViewModel
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">@Model.Name</h2>
+    </div>
+    <div class="panel-body">
+        <p>@Model.WebSite</p>
+        <p>Votes: 
+            @if (Model.VotesCount > 0)
+            {
+                <span>@Model.VotesCount</span>
+            }
+            else
+            {
+               <span>0</span> 
+            }
+        </p> 
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <p>@Html.ActionLink("Details", "Details", "Teams", new { id = Model.Id }, new { @class = "btn btn-default" })</p>
+        }  
+    </div>
+</div>
+

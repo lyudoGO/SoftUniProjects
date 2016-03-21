@@ -1,0 +1,29 @@
+﻿@model SportSystem.Web.Models.MatchInputModel
+@{
+    ViewBag.Title = "Create Match";
+}
+@using (Html.BeginForm("Create", "Matches", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+     @Html.AntiForgeryToken()
+     @Html.ValidationSummary(true)
+    <h2 class="text-center">Create Matches</h2>
+    <hr />
+    <div id="teams-list">
+        @Html.Partial("_ListTeamsPartial")
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.MatchDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">         
+            @Html.EditorFor(m => m.MatchDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(m => m.MatchDate)
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" value="Create" />
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

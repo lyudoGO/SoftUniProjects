@@ -1,0 +1,61 @@
+﻿@model SportSystem.Web.Models.TeamInputModel
+@{
+    ViewBag.Title = "Create Team";
+}
+@using (Html.BeginForm("Create", "Teams", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h2 class="text-center">Create Team</h2>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.NickName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.NickName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.NickName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.WebSite, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.WebSite, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.WebSite, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.DateFounded, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.DateFounded, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.DateFounded, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <p><h2>Free Players:</h2></p>
+    <div id="players-list">
+        @Html.Partial("_ListPlayersPartial")
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-3">
+            <p class="text-right text-primary">
+                @Ajax.ActionLink("Add more players", "GetPlayersList", null, new AjaxOptions()
+                {
+                    HttpMethod = "GET",
+                    UpdateTargetId = "players-list",
+                    InsertionMode = InsertionMode.InsertAfter
+                }, new { @class = "col-md-offset-4" })
+            </p>
+            <input type="submit" class="btn btn-primary" value="Add Team" />
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
+}
+

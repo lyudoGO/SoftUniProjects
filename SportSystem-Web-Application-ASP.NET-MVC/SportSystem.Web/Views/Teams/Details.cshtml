@@ -1,0 +1,62 @@
+﻿@model SportSystem.Web.Models.TeamDetailViewModel
+@{
+    ViewBag.Title = "Team Details";
+}
+<h2 class="text-center">Team details</h2>
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <p><strong>Name: </strong><em>@Model.Name</em></p>
+            <p><strong>Nickname: </strong><em>@Model.NickName</em></p>
+            <p><strong>Url: </strong><a href="@Model.WebSite">@Model.WebSite</a></p>
+            <p><strong>Founded date: </strong>@Model.DateFounded</p>
+            <p><strong>Votes: </strong><em id="votes-count">@Model.VotesCount</em></p>
+            @if (Model.UserHasVote)
+            {
+                <p class="text-danger"><strong>You are voted</strong></p>
+            }
+            
+            @if (!Model.UserHasVote)
+            {
+                <div id="vote-button">
+                    @using (Ajax.BeginForm("Vote", "Teams", new { id = Model.Id }, new AjaxOptions()
+                        {
+                            HttpMethod = "POST",
+                            InsertionMode = InsertionMode.Replace,
+                            UpdateTargetId = "votes-count",
+                            OnSuccess = "onVoteSuccess"
+                        }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="submit" class="btn btn-sm btn-success" value="Vote" />
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6" id="players">
+    <h3>Players:</h3>
+    @if (Model.Players.Any())
+    {
+        @Html.DisplayFor(m => m.Players)
+    }
+    else
+    {
+        <p class="text-left text-danger" id="no-players">No players!</p>
+    }
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryunobtrusive")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        function onVoteSuccess() {
+            var button = document.getElementById("vote-button");
+            button.parentNode.removeChild(button);
+        }
+    </script>
+}

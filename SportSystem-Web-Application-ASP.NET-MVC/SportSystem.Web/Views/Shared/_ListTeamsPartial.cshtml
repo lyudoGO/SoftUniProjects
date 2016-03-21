@@ -1,0 +1,17 @@
+﻿@using System.Collections.Generic
+
+<div class="form-group">
+    @Html.Label("Home Team", new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownList("HomeTeamId", (IEnumerable<SelectListItem>)this.ViewBag.Teams, "--- select team ---", new { name = "HomeTeamId", @class = "form-control" })
+        @Html.ValidationMessage("HomeTeamId", "Please select a team", new { @class = "text-danger" })
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.Label("Away Team", new { @class = "col-md-2 control-label" })
+    <div class="col-md-10">
+        @Html.DropDownList("AwayTeamId", (IEnumerable<SelectListItem>)this.ViewBag.Teams, "--- select team ---", new { name = "AwayTeamId", @class = "form-control" })
+        @Html.ValidationMessage("AwayTeamId", "Pleace select a team", new { @class = "text-danger" })
+    </div>
+</div>
